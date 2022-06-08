@@ -1,0 +1,2 @@
+class MonthList < ApplicationRecord
+end
