@@ -18,11 +18,10 @@ class FlatsController < ApplicationController
   end
 
   def add_flatmates
-    @flat = current_user
   end
 
   def show
-
+    @users = Flat.find[params[id]].users
   end
 
   def edit
