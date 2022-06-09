@@ -6,7 +6,13 @@ class FlatsController < ApplicationController
 
   def create
     # Should create new flat
-    @flat = Flat.create(flat_params)
+    @flat = Flat.new(flat_params)
+
+    if @flat.save
+      redirect_to add_flatmates_to_flat_path(@flat)
+    else
+      render :home
+    end
     flat_user = FlatUser.new(flat: @flat, user: current_user)
     flat_user.save
   end
