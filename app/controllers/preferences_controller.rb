@@ -1,9 +1,7 @@
 class PreferencesController < ApplicationController
-  def edit
-
+  def index
   end
 
   def update
-
   end
 end
