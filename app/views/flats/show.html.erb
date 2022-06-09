@@ -1,0 +1,6 @@
+<h1>Here we will display the overall avatar pages</h1>
+
+<h2>Test user:<%= @users.first.name %></h2>
+
+<p>To test for linking to my chores page</p>
+<%= link_to "my chores", chore_list_path(current_user) %>
