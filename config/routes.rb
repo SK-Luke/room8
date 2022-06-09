@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: '/'
+  root to: 'pages#home'
 
   get "/flats/:id/add_flatmates", to: "flats#edit"
   patch "/flats/:id/add_flatmates", to: "flats#update"
@@ -20,3 +20,4 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+#
