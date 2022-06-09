@@ -18,9 +18,11 @@ class FlatsController < ApplicationController
   end
 
   def add_flatmates
+    @flat = current_user
   end
 
   def show
+
   end
 
   def edit

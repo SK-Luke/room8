@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # For creation of flats
   resources :flats, only: %i[create edit update show] do
+    # show methods bring us to the add chores page, where we can use ajax to create chores
     member do
       # add flatmates to the flat
       get "/add_flatmates", to: "flats#add_flatmates", as: :add_flatmates_to
