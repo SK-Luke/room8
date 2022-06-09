@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'flats#home'
 
   # For creation of flats
   resources :flats, only: %i[create edit update show] do
