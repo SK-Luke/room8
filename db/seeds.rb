@@ -5,6 +5,10 @@
 
 puts "Cleaning database"
 # Call destroy method
+User.destroy_all
+Flat.destroy_all
+Chore.destroy_all
+FlatUser.destroy_all
 
 puts "Creating users..."
 user = User.new({
