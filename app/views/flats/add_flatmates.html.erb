@@ -1,4 +1,10 @@
-<h1>Add flatmates here</h1>
+<div class="container w-50 mx-auto">
+  <h1>Add flatmates here</h1>
+  <%= simple_form_for(@flat_user) do |f| %>
+    <%= f.input :user_id, placeholder: "user@domain.com", label:"Flatmate's Email" %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <%# should be able to lead us add_chores page after here %>
-<%= link_to "add chores to flat", add_chores_flat_path %>
+<%= link_to "add chores to flat", setup_chores_flat_path %>

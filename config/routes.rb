@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     member do
       # add flatmates to the flat
       get "/add_flatmates", to: "flats#add_flatmates", as: :add_flatmates_to
-      # validate flatmate
-      patch "add_flatmates", to: "flats#validate_flatmate"
       # set up chores page after finishing adding flatmates
       get "/setup_chores", to: "chores#setup"
       # see roommate's chores

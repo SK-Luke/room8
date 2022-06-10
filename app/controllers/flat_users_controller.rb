@@ -4,5 +4,7 @@ class FlatUsersController < ApplicationController
   end
 
   def create
+    @flat_user = FlatUser.new()
+    # @flat = Flat.find(params[:id])
   end
 end

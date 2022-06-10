@@ -7,7 +7,7 @@ seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“
 # DB wipeout
 puts "_______"
 puts "Cleaning up database..."
-MonthList.destroy_all
+MonthList.destro_all
 Preference.destroy_all
 ChoreList.destroy_all
 Chore.destroy_all

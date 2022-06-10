@@ -25,6 +25,7 @@ class FlatsController < ApplicationController
   end
 
   def add_flatmates
+    @flat_user = FlatUser.new()
   end
 
   def show
