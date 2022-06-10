@@ -2,6 +2,13 @@ class FlatsController < ApplicationController
 
   def home
     @flat = Flat.new
+
+    # Redirect user if user status is active
+    @flat_user = FlatUser.where(user: current_user, active: true).first
+    if @flat_user
+      # redirect to chore_list index page
+      redirect_to chore_list_index_path()
+    end
   end
 
   def create
@@ -28,6 +35,11 @@ class FlatsController < ApplicationController
   end
 
   def update
+  end
+
+  def validate_flatmate
+    # @flat = current_user
+    # raise 
   end
 
   private
