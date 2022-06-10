@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       # add flatmates to the flat
       get "/add_flatmates", to: "flats#add_flatmates", as: :add_flatmates_to
       # set up chores page after finishing adding flatmates
-      get "/add_chores", to: "chores#new"
+      get "/setup_chores", to: "chores#setup"
       # see roommate's chores
       get "/:username/chores", to: "chores#index"
 

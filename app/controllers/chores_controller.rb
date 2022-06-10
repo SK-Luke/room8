@@ -8,4 +8,9 @@ class ChoresController < ApplicationController
 
   def create
   end
+
+  def setup
+    flat = Flat.find(params[:id])
+    @chores = flat.chores
+  end
 end
