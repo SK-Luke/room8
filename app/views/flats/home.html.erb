@@ -1,6 +1,24 @@
-<h1>We should be able to create flats from this homepage</h1>
+<div class="container mx-auto w-50">
+  <h1>Welcome to Room8</h1>
+  <div class="card">
+    <div class="card-body">
+      <h2>Create your flat</h2>
+      <%= simple_form_for @flat do |f| %>
+        <%= f.input :name%>
+        <%= f.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
 
-  <%= simple_form_for @flat do |f| %>
-    <%= f.input :name%>
-    <%= f.submit class: "btn btn-primary" %>
-  <% end %>
+  <div class="card">
+    <div class="card-body">
+      <h2>Join a flat</h2>
+        <%= simple_form_for @flat do |f| %>
+          <%= f.input :name %>
+          <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
