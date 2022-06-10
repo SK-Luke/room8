@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["choreCard"]
+  static targets = ["choreCard", "choresList","form"]
 
   connect() {
     console.log("hello from setup_chores_controller!")
@@ -43,9 +43,18 @@ export default class extends Controller {
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
       body: new FormData(this.formTarget)
     })
-      .then(response => response.json())
+      .then(response =>
+        response.json()
+        )
       .then((data) => {
         console.log(data)
+        const modal = document.getElementById("addChoreModal");
+        modal.style.display = "none";
+        if (data.inserted_item) {
+          this.choresListTarget.insertAdjacentHTML("afterbegin", data.inserted_item)
+        }
+        this.formTarget.outerHTML = data.form
       })
+      //location.reload();
   }
 }
