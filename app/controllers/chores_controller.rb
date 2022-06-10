@@ -1,9 +1,11 @@
 class ChoresController < ApplicationController
-  def new
 
+  def index
+  end
+
+  def new
   end
 
   def create
-
   end
 end

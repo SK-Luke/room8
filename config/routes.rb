@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
+  # Uncomment below for sidekiq
+  # require "sidekiq/web"
+  # authenticate :user, ->(user) { user.admin? } do
+  # mount Sidekiq::Web => '/sidekiq'
   devise_for :users
-  root to: 'pages#home'
+  root to: 'flats#home'
 
   # For creation of flats
   resources :flats, only: %i[create edit update show] do
+    # show methods bring us to the overall room8 page where we see the users avatars cards
     member do
       # add flatmates to the flat
       get "/add_flatmates", to: "flats#add_flatmates", as: :add_flatmates_to
-      # set up chores
+      # set up chores page after finishing adding flatmates
       get "/add_chores", to: "chores#new"
       # see roommate's chores
       get "/:username/chores", to: "chores#index"

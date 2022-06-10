@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :flats
+  has_many :flat_users
+  has_many :flats, through: :flat_users
   has_many :chore_lists
   has_many :chores, through: :preferences
 
@@ -10,4 +11,3 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
-

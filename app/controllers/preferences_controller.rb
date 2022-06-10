@@ -1,9 +1,8 @@
 class PreferencesController < ApplicationController
-  def edit
-
+  def index
+    @flat = FlatUser.where(user: current_user, active: true)
   end
 
   def update
-
   end
 end
