@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 2022_06_08_060056) do
     t.boolean "complete", default: false
     t.bigint "month_list_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "chores_id", null: false
+    t.bigint "chore_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["chores_id"], name: "index_chore_lists_on_chores_id"
+    t.index ["chore_id"], name: "index_chore_lists_on_chore_id"
     t.index ["month_list_id"], name: "index_chore_lists_on_month_list_id"
     t.index ["user_id"], name: "index_chore_lists_on_user_id"
   end
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 2022_06_08_060056) do
   create_table "preferences", force: :cascade do |t|
     t.integer "rating"
     t.bigint "user_id", null: false
-    t.bigint "chores_id", null: false
+    t.bigint "chore_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["chores_id"], name: "index_preferences_on_chores_id"
+    t.index ["chore_id"], name: "index_preferences_on_chore_id"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
@@ -85,12 +85,12 @@ ActiveRecord::Schema.define(version: 2022_06_08_060056) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "chore_lists", "chores", column: "chores_id"
+  add_foreign_key "chore_lists", "chores"
   add_foreign_key "chore_lists", "month_lists"
   add_foreign_key "chore_lists", "users"
   add_foreign_key "chores", "flats"
   add_foreign_key "flat_users", "flats"
   add_foreign_key "flat_users", "users"
-  add_foreign_key "preferences", "chores", column: "chores_id"
+  add_foreign_key "preferences", "chores"
   add_foreign_key "preferences", "users"
 end
