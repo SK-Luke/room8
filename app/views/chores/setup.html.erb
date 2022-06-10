@@ -1,6 +1,10 @@
 <div class="container" data-controller="setup-chores">
   <h2 style="display: inline-block;">Setup your chores</h1>
-  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->availability#modalAppear">+</button>
+  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
+  <!-- Modal for new chore -->
+  <%= render 'chores/newchore' %>
+
+  <!-- Display all chores -->
   <div class="chores">
     <% @chores.each do |chore| %>
     <div class="chore_card" id="chore-<%= chore.id %>" data-action="click->setup-chores#highlight" data-setup-chores-target="choreCard">

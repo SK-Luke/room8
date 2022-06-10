@@ -14,13 +14,25 @@ export default class extends Controller {
     console.log(element)
     if (element.className === "chore_card") {
       element.className = "chore_card_selected"
-      let details = element.getElementsByClassName("chore_details")
+      const details = element.getElementsByClassName("chore_details")
       // using array from bc foreach method does not work on html collection
       Array.from(details).forEach(detail => detail.className = "chore_details_selected")
     } else {
       element.className = "chore_card"
-      let details = element.getElementsByClassName("chore_details_selected")
-      Array.from(details).forEach(detail => detail.className = "chore_details")
+      const selected_details = element.getElementsByClassName("chore_details_selected")
+      Array.from(selected_details).forEach(detail => detail.className = "chore_details")
     }
+  }
+  addChore(event) {
+    event.preventDefault();
+    console.log(event)
+    const modal = document.getElementById("addChoreModal");
+    modal.style.display = "block";
+  }
+
+  modalClose(event) {
+    event.preventDefault();
+    const modal = document.getElementById("addChoreModal");
+    modal.style.display = "none";
   }
 }
