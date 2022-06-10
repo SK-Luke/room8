@@ -5,16 +5,18 @@ durations_array = [30, 60, 90, 120]
 seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“A seed has a few friends, but a tree has many enemies.”', '“All memories carry the seeds of suffering.”', '“Show me your seed and I ll show you your harvest.”']
 
 # DB wipeout
-puts "Cleaning database..."
-FlatUser.destroy_all
-User.destroy_all
-Chore.destroy_all
-Flat.destroy_all
-ChoreList.destroy_all
+puts "_______"
+puts "Cleaning up database..."
 MonthList.destroy_all
 Preference.destroy_all
-puts "Database cleaned 👍"
+ChoreList.destroy_all
+Chore.destroy_all
+FlatUser.destroy_all
+Flat.destroy_all
+User.destroy_all
+puts "✨ Database cleaned"
 puts "Starting to seed..."
+puts "_______"
 
 
 #  ----
@@ -34,7 +36,7 @@ user.save!
   })
   user.save!
 end
-puts "Created 4 users"
+puts "👤 Created 4 users"
 
 
 # Flat creation (for now the creating one)
@@ -52,7 +54,7 @@ User.all.each do |user|
   flat_user.active = true
   flat_user.save!
 end
-puts "Created 'Room8' flat and gave it users."
+puts "🏠 Created 'Room8' flat and gave it users"
 
 
 # Chore creation
@@ -78,10 +80,27 @@ Flat.all.each do |flat|
     chore_list.save!
   end
 end
-puts "Created 8 chores for 'Room8' flat, and assigned them to random user."
+puts "🧹 Created 8 chores for 'Room8' flat, and assigned them to random user"
 
 
-puts "Lowfi seeds completed 👍"
+# Preference creation
+puts "Creating preferences..."
+Flat.all.each do |flat|
+  flat.users.each do |user|
+    flat.chores.each do |chore|
+      preference = Preference.new
+      preference.rating = rand(1..3)
+      preference.user = user
+      preference.chore = chore
+      preference.save!
+    end
+  end
+end
+puts "❤️ Created preferences for each user"
+puts "_______"
+
+
+puts "🌱 Lowfi seeds completed"
 puts "Now loading seed quote..."
 sleep 2
 puts seed_quotes.sample
