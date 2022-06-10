@@ -5,7 +5,7 @@ class CreateChoreLists < ActiveRecord::Migration[6.1]
       t.boolean :complete, default: false
       t.references :month_list, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.references :chores, null: false, foreign_key: true
+      t.references :chore, null: false, foreign_key: true
 
       t.timestamps
     end
