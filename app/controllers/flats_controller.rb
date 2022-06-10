@@ -6,7 +6,7 @@ class FlatsController < ApplicationController
     # Redirect user if user status is active
     @flat_user = FlatUser.where(user: current_user, active: true).first
     if @flat_user
-      # change path when chore_list page is up
+      # redirect to chore_list index page
       redirect_to chore_list_index_path()
     end
   end
