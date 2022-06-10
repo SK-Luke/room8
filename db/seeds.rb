@@ -6,13 +6,13 @@ seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“
 
 # DB wipeout
 puts "Cleaning database..."
-Users.destroy_all
-Flat_users.destroy_all
-Chores.destroy_all
-Flats.destroy_all
-Chore_lists.destroy_all
-Month_lists.destroy_all
-Preferences.destroy_all
+FlatUser.destroy_all
+User.destroy_all
+Chore.destroy_all
+Flat.destroy_all
+ChoreList.destroy_all
+MonthList.destroy_all
+Preference.destroy_all
 puts "Database cleaned 👍"
 puts "Starting to seed..."
 
@@ -38,7 +38,7 @@ puts "Created 4 users"
 
 
 # Flat creation (for now the creating one)
-puts "creating 1 flat and linking users to the flat"
+puts "Creating a flat..."
 flat = Flat.new({
   name: "Room8",
   token: "abc123qeytc"
@@ -49,14 +49,16 @@ User.all.each do |user|
   flat_user = FlatUser.new
   flat_user.user = user
   flat_user.flat = flat
+  flat_user.active = true
   flat_user.save!
 end
-puts "created flat and user"
+puts "Created 'Room8' flat and gave it users."
 
 
 # Chore creation
+puts "Creating chores..."
 Flat.all.each do |flat|
-  rand(4..8) do
+  8.times do
     chore = Chore.new({
       name: chores_array.sample,
       frequency: frequencies_array.sample,
@@ -65,20 +67,18 @@ Flat.all.each do |flat|
     })
     chore.flat = flat
     chore.save!
-  end
-end
 
-# Creating a chore list
-Flat.all.each do |flat|
-  flat.chores.each do |chore|
-    chore_list = Chore_list.new
+    month_list = MonthList.create(month: Date.today)
+
+    chore_list = ChoreList.new
     chore_list.chore = chore
-    chore_list.deadline = Date.today+rand(100)
+    chore_list.deadline = Date.today+rand(3)
     chore_list.user = flat.users.sample
+    chore_list.month_list_id = month_list.id
+    chore_list.save!
   end
 end
-
-
+puts "Created 8 chores for 'Room8' flat, and assigned them to random user."
 
 
 puts "Lowfi seeds completed 👍"
