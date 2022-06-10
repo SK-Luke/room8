@@ -10,7 +10,17 @@ export default class extends Controller {
 
   highlight(event) {
     event.preventDefault();
-    const x = event.path.find(element => element.className.includes("chore_card"))
-    console.log(x)
+    const element = event.path.find(element => element.className.includes("chore_card"))
+    console.log(element)
+    if (element.className === "chore_card") {
+      element.className = "chore_card_selected"
+      let details = element.getElementsByClassName("chore_details")
+      // using array from bc foreach method does not work on html collection
+      Array.from(details).forEach(detail => detail.className = "chore_details_selected")
+    } else {
+      element.className = "chore_card"
+      let details = element.getElementsByClassName("chore_details_selected")
+      Array.from(details).forEach(detail => detail.className = "chore_details")
+    }
   }
 }
