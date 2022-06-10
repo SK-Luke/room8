@@ -22,12 +22,40 @@ puts "_______"
 #  ----
 # User creation
 puts "Creating users..."
-user = User.new({
-  name: "admin",
+user1 = User.new({
+  name: "Wan Xin",
+  email: "wanxinpua@yahoo.com.sg",
+  password: "123123"
+})
+user1.save!
+user2 = User.new({
+  name: "Sek Kun",
+  email: "sekkun.luke@gmail.com",
+  password: "123123"
+})
+user2.save!
+user3 = User.new({
+  name: "Kenny",
+  email: "kiansengnp@gmail.com",
+  password: "123123"
+})
+user3.save!
+user4 = User.new({
+  name: "Victor",
   email: "admin@gmail.com",
   password: "123123"
 })
-user.save!
+user4.save!
+user5 = User.new({
+  name: "Ming Fu",
+  email: "mingfu@gmail.com",
+  password: "123123"
+})
+user5.save!
+
+signed_in_users = [user1, user2, user3, user4]
+
+
 3.times do
   user = User.new({
     name: Faker::Name.name,
