@@ -1,0 +1,28 @@
+<div class="container" data-controller="setup-chores">
+  <h2 style="display: inline-block;">Setup your chores</h1>
+  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
+  <!-- Modal for new chore -->
+  <%= render 'chores/newchore' %>
+
+  <!-- Display all chores -->
+  <div class="chores">
+    <% @chores.each do |chore| %>
+    <div class="chore_card" id="chore-<%= chore.id %>" data-action="click->setup-chores#highlight" data-setup-chores-target="choreCard">
+      <h4><%= chore.name %></h4>
+      <div class="chore_details">
+        <p>occurs <%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
+      </div>
+      <div class="chore_details">
+        <% if chore.duration < 60 %>
+          <p>takes <%= pluralize( chore.duration, 'min' ) %></p>
+        <% else %>
+          <p>takes <%= (chore.duration/60).to_i %> h
+          <% if (chore.duration/60.0).modulo(1) > 0 %>
+            <%= pluralize( ((chore.duration/60.0).modulo(1))*60, 'min' ) %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
