@@ -14,8 +14,8 @@ export default class extends Controller {
   highlight(event) {
     event.preventDefault();
     const element = event.path.find(element => element.className.includes("chore_card"))
-    console.log(element)
-    console.log(element.className)
+    //console.log(element)
+    //console.log(element.className)
     const modal = document.getElementById(`edit-${element.id}-modal`);
     if ((element.className === "chore_card") && (modal.style.display === "none"||modal.style.display === "")) {
       element.className = "chore_card_selected";
@@ -23,7 +23,7 @@ export default class extends Controller {
       // using array from bc foreach method does not work on html collection
       Array.from(details).forEach(detail => detail.className = "chore_details_selected");
       const edtbtn = element.querySelector(".chore_edit_button");
-      console.log(edtbtn)
+      //console.log(edtbtn)
       edtbtn.className = "chore_edit_button_display";
     } else if ((element.className === "chore_card_selected") && (modal.style.display === "none"||modal.style.display === "")) {
       element.className = "chore_card";
@@ -70,7 +70,7 @@ export default class extends Controller {
 
   editModalClose(event) {
     event.preventDefault();
-    console.log(event)
+    //console.log(event)
     const modal = event.path.find(element => element.id.includes("edit-chore"))
     //console.log(element)
     //const modal = document.getElementById(`edit-${element.id}-modal`);
@@ -88,10 +88,10 @@ export default class extends Controller {
     event.preventDefault()
     const modal = event.path.find(element => element.id.includes("edit-chore"))
     let choreCard = document.getElementById(`chore-${modal.id.match(/\d+/)[0]}`)
-    console.log(choreCard)
+    // console.log(choreCard)
     const form = event.path.find(element => element.id.includes("edit_chore"))
     const url = `/flats/${this.flatidValue}/chores/${modal.id.match(/\d+/)[0]}`
-    console.log(url)
+    // console.log(url)
     fetch(url, {
       method: "PATCH",
       headers: { "Accept": "text/plain" },
@@ -103,5 +103,36 @@ export default class extends Controller {
         //console.log(data)
         choreCard.outerHTML = data
       })
+  }
+
+  destroy_unselected(event) {
+    event.preventDefault();
+    let selected = []
+    this.choreCardTargets.forEach(chore => {
+      console.log(chore.className)
+      if (chore.className === "chore_card") {
+        console.log(chore)
+        selected.push(chore)
+      }
+    })
+    console.log(selected)
+
+    selected.forEach(sel => {
+      const choreid = sel.id.match(/\d+/)[0]
+      console.log(choreid)
+      fetch(`/flats/${this.flatidValue}/chores/${choreid}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-Token': csrfToken()
+        }
+      })
+      .then(res => res)
+      .then((data) => {
+        console.log(data)
+        })
+      })
+    window.location.href = `/flats/${this.flatidValue}/chores`
   }
 }
