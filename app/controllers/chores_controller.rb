@@ -3,7 +3,14 @@ class ChoresController < ApplicationController
   def index
   end
 
-  def new
+  def update
+    @chore = Chore.find(params[:id])
+    @chore.update(chore_params)
+
+    respond_to do |format|
+      format.text { render partial: "chores/chore", locals: { chore: @chore }, formats: [:html] }
+      format.json
+    end
   end
 
   def create
