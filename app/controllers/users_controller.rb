@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @flat_user = FlatUser.new()
     @flat_user.user = @user
     @flat_user.flat = @flat
+    @flat_user.active = true
     
     respond_to do |format|
       if @flat_user.save
