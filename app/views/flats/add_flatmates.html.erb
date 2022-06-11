@@ -1,16 +1,21 @@
-<div class="container w-50 mx-auto" data-controller>
+<div class="container w-50 mx-auto" data-controller="add-flatmates">
   <h1>Add flatmates here</h1>
-  <ul style="padding: 0px">
+  <ul style="padding: 0px" data-add-flatmates-target="lists">
     <% @flat_user.each do |user| %>
       <li style="list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888">
         <%= user.user.email %>
       </li>
     <% end %>
   </ul>
-  <%= simple_form_for(@roommate, method: :post, url: add_flat_user_flat_path(@flat), remote:true) do |f| %>
-    <%= f.input :email, placeholder: "user@domain.com", label:"Flatmate's Email" %>
+
+  <%= simple_form_for(@roommate, method: :post, url: add_flat_user_flat_path(@flat), remote:true, 
+    data: {add_flatmates_target: "form", 
+          action: "submit->add-flatmates#send" }) do |f| %>  
     <%= f.input :flat, :as => :hidden, :input_html => { :value => params[:id] } %>
-    <%= f.submit class: "btn btn-primary" %>
+    <div class="w-100 d-flex">
+    <%= f.input :email, placeholder: "user@domain.com", label: false %>
+    <%= f.submit '+', class: "btn btn-primary h-100"%>
+    </div>
   <% end %>
 </div>
 

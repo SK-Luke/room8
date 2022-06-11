@@ -1,0 +1,25 @@
+import { Controller } from "@hotwired/stimulus";
+import { csrfToken } from "@rails/ujs";
+
+export default class extends Controller {
+  static targets = ["lists", "form"];
+
+  connect() {
+    console.log("Yay!! add_flatmates controller is connected!");
+  }
+
+  send(event) {
+    event.preventDefault();
+    console.log("send event triggered");
+
+    fetch(this.formTarget.action, {
+      method: "POST",
+      headers: { Accept: "application/json", "X-CSRF-Token": csrfToken() },
+      body: new FormData(this.formTarget),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
+}
