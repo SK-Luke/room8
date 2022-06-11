@@ -94,7 +94,7 @@ export default class extends Controller {
     // console.log(url)
     fetch(url, {
       method: "PATCH",
-      headers: { "Accept": "text/plain" },
+      headers: { "Accept": "text/plain" , "X-CSRF-Token": csrfToken() },
       body: new FormData(form)
     })
       .then(response => response.text())
