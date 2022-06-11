@@ -16,15 +16,19 @@ Rails.application.routes.draw do
       patch "add_flatmates", to: "flats#validate_flatmate"
       # set up chores page after finishing adding flatmates
       get "/setup_chores", to: "chores#setup"
-      # see roommate's chores
+      # see roommate's chores --> WX: hellu, don't think this is the right action for the route
       get "/:username/chores", to: "chores#index"
 
       # post method for chores
+<<<<<<< HEAD
+      resources :chores, only: %i[index create update destroy]
+=======
       resources :chores, only: %i[create index]
+>>>>>>> master
     end
   end
 
-  resources :flat_users, only: %i[update, create]
+  resources :flat_users, only: %i[update create]
   resources :preferences, only: %i[index update]
   # documentation to be read on devise user controller, and route updated accordingly
   resources :chore_list, only: %i[update index]

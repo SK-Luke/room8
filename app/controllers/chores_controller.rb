@@ -5,7 +5,14 @@ class ChoresController < ApplicationController
     @chores = @flat.chores
   end
 
-  def new
+  def update
+    @chore = Chore.find(params[:id])
+    @chore.update(chore_params)
+
+    respond_to do |format|
+      format.text { render partial: "chores/chore", locals: { chore: @chore }, formats: [:html] }
+      format.json
+    end
   end
 
   def create
@@ -17,7 +24,6 @@ class ChoresController < ApplicationController
       if @chore.save
         format.json
       else
-        format.html { render "restaurants/show" }
         format.json # Follow the classic Rails flow and look for a create.json view
       end
     end
@@ -27,6 +33,15 @@ class ChoresController < ApplicationController
     @flat = Flat.find(params[:id])
     @chores = @flat.chores
     @chore = Chore.new
+  end
+
+  def destroy
+    @chore = Chore.find(params[:id])
+    @chore.destroy
+    redirect_to "/flats/#{@flat.id}/chores"
+    respond_to do |format|
+      format.json {{status: "ok"}}
+    end
   end
 
   private
