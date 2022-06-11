@@ -13,5 +13,5 @@ Turbolinks.start();
 ActiveStorage.start();
 
 // controllers is making my add_flatmates save twice
-// import "controllers";
+import "controllers";
 import "bootstrap";

@@ -8,16 +8,8 @@
     <% end %>
   </ul>
 
-  <%= simple_form_for(@roommate, method: :post, url: add_flat_user_flat_path(@flat), remote:true, 
-    data: {add_flatmates_target: "form", 
-          action: "submit->add-flatmates#send" }) do |f| %>  
-    <%= f.input :flat, :as => :hidden, :input_html => { :value => params[:id] } %>
-    <div class="w-100 d-flex">
-    <%= f.input :email, placeholder: "user@domain.com", label: false %>
-    <%= f.submit '+', class: "btn btn-primary h-100"%>
-    </div>
-  <% end %>
+  <%= render 'users/form', flat: @flat, user: @roommate %>
 </div>
 
 <%# should be able to lead us add_chores page after here %>
-<%= link_to "add chores to flat", setup_chores_flat_path(@flat) %>
+<%= link_to "confirm", setup_chores_flat_path(@flat) %>
