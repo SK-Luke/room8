@@ -1,4 +1,4 @@
-chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry"]
+chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed our dog Kenny"]
 frequencies_array = ["daily", "weekly", "monthly"]
 repetitions_array = [1, 2, 3]
 durations_array = [30, 60, 90, 120]
@@ -22,21 +22,40 @@ puts "_______"
 #  ----
 # User creation
 puts "Creating users..."
-user = User.new({
-  name: "admin",
+user1 = User.new({
+  name: "Wan Xin",
+  email: "wanxinpua@yahoo.com.sg",
+  password: "123123"
+})
+user1.save!
+user2 = User.new({
+  name: "Sek Kun",
+  email: "sekkun.luke@gmail.com",
+  password: "123123"
+})
+user2.save!
+user3 = User.new({
+  name: "Kenny",
+  email: "kiansengnp@gmail.com",
+  password: "123123"
+})
+user3.save!
+user4 = User.new({
+  name: "Victor",
   email: "admin@gmail.com",
   password: "123123"
 })
-user.save!
-3.times do
-  user = User.new({
-    name: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: "123123"
-  })
-  user.save!
-end
-puts "👤 Created 4 users"
+user4.save!
+user5 = User.new({
+  name: "Ming Fu",
+  email: "mingfu@gmail.com",
+  password: "123123"
+})
+user5.save!
+
+signed_in_users = [user1, user2, user3, user4]
+
+puts "👤 Created 5 users"
 
 
 # Flat creation (for now the creating one)
@@ -47,20 +66,20 @@ flat = Flat.new({
 })
 flat.save!
 
-User.all.each do |user|
+signed_in_users.each do |user|
   flat_user = FlatUser.new
   flat_user.user = user
   flat_user.flat = flat
   flat_user.active = true
   flat_user.save!
 end
-puts "🏠 Created 'Room8' flat and gave it users"
+puts "🏠 Created 'Room8' flat and gave it 4 flatmates"
 
 
 # Chore creation
 puts "Creating chores..."
 Flat.all.each do |flat|
-  8.times do
+  20.times do
     chore = Chore.new({
       name: chores_array.sample,
       frequency: frequencies_array.sample,
@@ -104,30 +123,3 @@ puts "🌱 Lowfi seeds completed"
 puts "Now loading seed quote..."
 sleep 2
 puts seed_quotes.sample
-
-# Month_lists
-# Chore_lists
-# Preferences
-
-# create_table "preferences", force: :cascade do |t|
-#   t.integer "rating"
-#   t.bigint "user_id", null: false
-#   t.bigint "chores_id", null: false
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-#   t.index ["chores_id"], name: "index_preferences_on_chores_id"
-#   t.index ["user_id"], name: "index_preferences_on_user_id"
-# end
-
-# create_table "chore_lists", force: :cascade do |t|
-#   t.datetime "deadline"
-#   t.boolean "complete", default: false
-#   t.bigint "month_list_id", null: false
-#   t.bigint "user_id", null: false
-#   t.bigint "chores_id", null: false
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-#   t.index ["chores_id"], name: "index_chore_lists_on_chores_id"
-#   t.index ["month_list_id"], name: "index_chore_lists_on_month_list_id"
-#   t.index ["user_id"], name: "index_chore_lists_on_user_id"
-# end
