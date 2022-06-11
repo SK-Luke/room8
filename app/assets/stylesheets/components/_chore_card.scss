@@ -43,3 +43,28 @@
     margin: 0;
   }
 }
+.chore_edit_button {
+  border-radius: 4px;
+  background-color: #e6a62e;
+  margin-bottom: 4px;
+  padding: 6px;
+  display: none;
+  text-align: center;
+  p {
+    font-size: 12px;
+    margin: 0;
+    color: white;
+  }
+}
+.chore_edit_button_display {
+  border-radius: 4px;
+  background-color: #e6a62e;
+  margin-bottom: 4px;
+  display: block;
+  text-align: center;
+  p {
+    font-size: 12px;
+    margin: 0;
+    color: white;
+  }
+}

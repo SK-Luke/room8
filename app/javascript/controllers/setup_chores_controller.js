@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["choreCard", "choresList","form"]
+  static targets = ["choreCard", "choresList","form", "editBtn"]
 
   connect() {
     console.log("hello from setup_chores_controller!")
@@ -11,16 +11,25 @@ export default class extends Controller {
   highlight(event) {
     event.preventDefault();
     const element = event.path.find(element => element.className.includes("chore_card"))
-    console.log(element)
     if (element.className === "chore_card") {
       element.className = "chore_card_selected"
       const details = element.getElementsByClassName("chore_details")
       // using array from bc foreach method does not work on html collection
       Array.from(details).forEach(detail => detail.className = "chore_details_selected")
+      const edtbtn = element.querySelector(".chore_edit_button")
+      console.log(edtbtn)
+      edtbtn.className = "chore_edit_button_display"
+      //edtbtn.className = "chore_edit_button_display"
+      //this.editBtnTarget.style.display = "block"
     } else {
       element.className = "chore_card"
       const selected_details = element.getElementsByClassName("chore_details_selected")
       Array.from(selected_details).forEach(detail => detail.className = "chore_details")
+      const edtbtn = element.querySelector(".chore_edit_button_display")
+      console.log(edtbtn)
+      //edtbtn.className = "chore_edit_button"
+      edtbtn.className = "chore_edit_button"
+      //this.editBtnTarget.style.display = "none"
     }
   }
   addChore(event) {
