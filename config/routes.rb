@@ -12,18 +12,19 @@ Rails.application.routes.draw do
     member do
       # add flatmates to the flat
       get "/add_flatmates", to: "flats#add_flatmates", as: :add_flatmates_to
+      # Post flatmates to /id/user
+      post "/add_flat_user", to: "users#add_flat_user"
       # set up chores page after finishing adding flatmates
       get "/setup_chores", to: "chores#setup"
       # see roommate's chores
       get "/:username/chores", to: "chores#index"
-
       # post method for chores
       resources :chores, only: :create
     end
   end
 
-  resources :flat_users, only: %i[update, create]
+  resources :flat_users, only: %i[update create]
   resources :preferences, only: %i[index update]
   # documentation to be read on devise user controller, and route updated accordingly
   resources :chore_list, only: %i[update index]
-end
+end 

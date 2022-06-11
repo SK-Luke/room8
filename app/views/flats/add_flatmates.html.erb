@@ -1,10 +1,18 @@
-<div class="container w-50 mx-auto">
+<div class="container w-50 mx-auto" data-controller>
   <h1>Add flatmates here</h1>
-  <%= simple_form_for(@flat_user) do |f| %>
-    <%= f.input :user_id, placeholder: "user@domain.com", label:"Flatmate's Email" %>
+  <ul style="padding: 0px">
+    <% @flat_user.each do |user| %>
+      <li style="list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888">
+        <%= user.user.email %>
+      </li>
+    <% end %>
+  </ul>
+  <%= simple_form_for(@roommate, method: :post, url: add_flat_user_flat_path(@flat), remote:true) do |f| %>
+    <%= f.input :email, placeholder: "user@domain.com", label:"Flatmate's Email" %>
+    <%= f.input :flat, :as => :hidden, :input_html => { :value => params[:id] } %>
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>
 
 <%# should be able to lead us add_chores page after here %>
-<%= link_to "add chores to flat", setup_chores_flat_path %>
+<%= link_to "add chores to flat", setup_chores_flat_path(@flat) %>
