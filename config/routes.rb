@@ -16,10 +16,14 @@ Rails.application.routes.draw do
       post "/add_flat_user", to: "users#add_flat_user"
       # set up chores page after finishing adding flatmates
       get "/setup_chores", to: "chores#setup"
-      # see roommate's chores
+      # see roommate's chores --> WX: hellu, don't think this is the right action for the route
       get "/:username/chores", to: "chores#index"
       # post method for chores
-      resources :chores, only: :create
+<<<<<<< HEAD
+      resources :chores, only: %i[index create update destroy]
+=======
+      resources :chores, only: %i[create index]
+>>>>>>> master
     end
   end
 

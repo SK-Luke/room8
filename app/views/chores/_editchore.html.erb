@@ -1,9 +1,8 @@
-<!-- Modal portion -->
 <%= simple_form_for(chore,
-                    data: {
-                    setup_chores_target: "form",
-                    action: "submit->setup-chores#send"
-                    }) do |f| %>
+                  data: {
+                  setup_chores_target: "editForm",
+                  action: "submit->setup-chores#update"
+                  }) do |f| %>
   <div class="modal-body">
     <%= f.input :name %>
     <%= f.input :repetition, label: "Happens", collection: (1..30).to_a %>
@@ -11,8 +10,7 @@
     <%= f.input :duration, :label => "Minutes taken to perform chore" %>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-action="click->setup-chores#modalClose">Close</button>
+    <button type="button" class="btn btn-secondary" data-action="click->setup-chores#editModalClose">Close</button>
     <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
   </div>
 <% end %>
-<!-- End of Modal -->

@@ -1,13 +1,13 @@
-<div class="container" data-controller="setup-chores">
+<div class="container" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2 style="display: inline-block;">Setup your chores</h1>
   <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
-  <!-- Modal for new chore -->
-  <%= render 'chores/newchore' %>
 
   <!-- Display all chores -->
-  <div class="chores">
+  <div class="chores" data-setup-chores-target="choresList">
     <% @chores.each do |chore| %>
-    <div class="chore_card" id="chore-<%= chore.id %>" data-action="click->setup-chores#highlight" data-setup-chores-target="choreCard">
+    <div class="chore_card" id="chore-<%= chore.id %>"
+    data-action="click->setup-chores#highlight"
+    data-setup-chores-target="choreCard">
       <h4><%= chore.name %></h4>
       <div class="chore_details">
         <p>occurs <%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
@@ -22,7 +22,75 @@
           <% end %>
         <% end %>
       </div>
+      <div class="chore_edit_button" data-action="click->setup-chores#editFormAppear">
+        <p>Edit</p>
+      </div>
     </div>
+    <!-- Modal for edit chore -->
+    <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Chore</h5>
+            <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
+          </div>
+          <%= simple_form_for(chore,
+                              data: {
+                              setup_chores_target: "editForm",
+                              action: "submit->setup-chores#update"
+                              }) do |f| %>
+            <div class="modal-body">
+              <%= f.input :name %>
+              <%= f.input :repetition, label: "Happens", collection: (1..30).to_a %>
+              <%= f.input :frequency, collection: %w(daily weekly monthly), label: false, class: "mx-3" %>
+              <%= f.input :duration, :label => "Minutes taken to perform chore" %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-action="click->setup-chores#editModalClose">Close</button>
+              <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- End of Modal -->
     <% end %>
+  </div>
+
+  <!-- Modal for new chore -->
+  <div id="addChoreModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Chore</h5>
+          <button type="button" data-action="click->setup-chores#modalClose" class="btn-close" aria-label="Close"></button>
+        </div>
+        <%= simple_form_for(@chore,
+                            data: {
+                            setup_chores_target: "form",
+                            action: "submit->setup-chores#send"
+                            }) do |f| %>
+          <div class="modal-body">
+            <%= f.input :name %>
+            <%= f.input :repetition, label: "Happens", collection: (1..30).to_a %>
+            <%= f.input :frequency, collection: %w(daily weekly monthly), label: false, class: "mx-3" %>
+            <%= f.input :duration, :label => "Minutes taken to perform chore" %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-action="click->setup-chores#modalClose">Close</button>
+            <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- End of Modal -->
+
+
+  <div class="fixed-bottom mx-3">
+    <button type="button"
+    class="btn btn-primary btn-sm"
+    data-action="click->setup-chores#destroy_unselected"
+    style="float: right;">Confirm</button>
   </div>
 </div>
