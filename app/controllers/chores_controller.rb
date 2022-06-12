@@ -23,9 +23,10 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.save
-        format.json
+        @chore.create_pref_for_all_users
+        format.json # do not remove this
       else
-        format.json # Follow the classic Rails flow and look for a create.json view
+        format.json # do not remove
       end
     end
   end
@@ -39,9 +40,9 @@ class ChoresController < ApplicationController
   def destroy
     @chore = Chore.find(params[:id])
     @chore.destroy
-    redirect_to "/flats/#{@flat.id}/chores"
+    #redirect_to "/flats/#{@flat.id}/chores"
     respond_to do |format|
-      format.json {{status: "ok"}}
+      format.json { { status: "ok" } }
     end
   end
 

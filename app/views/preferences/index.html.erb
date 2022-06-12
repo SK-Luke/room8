@@ -1,4 +1,43 @@
-<h1>Here is where we can ONLY rate our preferences</h1>
-<h2>Ability to edit chores will be on a similar looking page but different link</h2>
-<p>After assigning, we should land on room8 overall page where it will display all the users in flat, which is the show method in flats</p>
-<%= link_to "room8 page", flat_path(@flat.first) %>
+<div class="container text-center" data-controller="preferences">
+  <h2>Rate your Chores</h2>
+
+  <% @preferences.each do |preference| %>
+    <div class="rating_card" data-preferences-target="prefCard">
+      <div class="parent">
+        <div class="child1">
+          <%= simple_form_for(preference, data: { preferences_target: "prefForm"}) do |f| %>
+            <%= f.input :rating %>
+          <% end %>
+        </div>
+        <div class="child1 child2">
+          <h4><%= preference.chore.name %></h4>
+          <p>occurs <%= pluralize( preference.chore.repetition, 'time' ) %> <%= preference.chore.frequency %></p>
+          <!-- Unhappy - Rating = 1 -->
+          <i id="<%= preference.id %>-unhappy-1"
+          style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
+          class="fa-light fa-face-frown fa-3x mx-3"
+          data-action="click->preferences#color_red"></i>
+          <!-- Neutral - Rating = 2 -->
+          <i id="<%= preference.id %>-neutral-2"
+          style="color: <%= preference.rating == 2 ? 'orange' : 'black' %>"
+          class="fa-light fa-face-meh fa-3x mx-3"
+          data-action="click->preferences#color_orange"></i>
+          <!-- Happy - Rating = 3 -->
+          <i id="<%= preference.id %>-happy-3"
+          style="color: <%= preference.rating == 3 ? 'green' : 'black' %>"
+          class="fa-light fa-face-smile fa-3x mx-3"
+          data-action="click->preferences#color_green"></i>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="fixed-bottom mx-3">
+    <button type="button"
+    class="btn btn-primary btn-sm"
+    data-action="click->preferences#update"
+    style="float: right;">Save</button>
+  </div>
+
+  <!--<%= link_to "room8 page", flat_path(@flat.first) %>-->
+</div>
