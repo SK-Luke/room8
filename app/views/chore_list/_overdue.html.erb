@@ -1,0 +1,66 @@
+<%# <%= render "template" %>
+<!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <% current_user.chore_lists.each do |task| %>
+    <% if task.deadline < DateTime.now %>
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-title"><%= task.chore.name %></div>
+          <div class="card-duration"><%= task.chore.duration %></div>
+          <div class="card-deadline bg-danger bg-gradient"><%= task.deadline %></div>
+          <div class="card-mark-complete">mark as complete</div>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
+
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination swiper-pagination1"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+
+  <!-- If we need scrollbar -->
+  <%# <div class="swiper-scrollbar"></div> %>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+const swiper = new Swiper(".swiper", {
+  // Optional parameters
+  direction: "horizontal",
+  loop: true,
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+  },
+
+  // If we need pagination
+  pagination: {
+    el: ".swiper-pagination1",
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  // And if we need scrollbar
+  // scrollbar: {
+  //   el: ".swiper-scrollbar",
+  // },
+});
+</script>
+</div>
