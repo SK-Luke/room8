@@ -1,6 +1,5 @@
 class Chore < ApplicationRecord
   belongs_to :flat
-  has_many :preferences, dependent: :destroy
 
   validates :name, :frequency, :repetition, :duration, presence: true
   validates :repetition, numericality: { greater_than: 0 }

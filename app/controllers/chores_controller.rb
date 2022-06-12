@@ -38,7 +38,7 @@ class ChoresController < ApplicationController
   def destroy
     @chore = Chore.find(params[:id])
     @chore.destroy
-    redirect_to "/flats/#{@flat.id}/chores"
+    #redirect_to "/flats/#{@flat.id}/chores"
     respond_to do |format|
       format.json {{status: "ok"}}
     end

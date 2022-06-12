@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get "/:username/chores", to: "chores#index"
 
       # post method for chores
-      resources :chores, only: %i[index create update destroy]
+      resources :chores
     end
   end
 
