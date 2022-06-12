@@ -1,6 +1,7 @@
 class Chore < ApplicationRecord
   belongs_to :flat
-  has_many :preferences # WX: wanted to dependent destroy but it causes problems when trying to destroy the chore if no dep i think
+  has_many :preferences, dependent: :destroy # WX: wanted to dependent destroy but it causes problems when trying to destroy the chore if no dep i think
+  has_many :chore_lists, dependent: :destroy
 
   validates :name, :frequency, :repetition, :duration, presence: true
   validates :repetition, numericality: { greater_than: 0 }

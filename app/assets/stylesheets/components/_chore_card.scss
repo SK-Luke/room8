@@ -4,7 +4,7 @@
   grid-gap: 16px;
 }
 .chore_card {
-  padding: 6px;
+  padding: 10px;
   border-radius: 4px;
   background-color: $base-highlight;
   box-shadow: 2px 4px $shadow;
@@ -16,16 +16,16 @@
 .chore_details {
   border-radius: 4px;
   background-color: $light-highlight;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 12px;
     margin: 0;
-    color: #a6a6a6;
+    color: #7f7f7f;
   }
 }
 .chore_card_selected {
-  padding: 6px;
+  padding: 10px;
   border-radius: 4px;
   background-color: $base;
   box-shadow: 2px 4px $shadow;
@@ -36,7 +36,7 @@
 .chore_details_selected {
   border-radius: 4px;
   background-color: $white;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 12px;
