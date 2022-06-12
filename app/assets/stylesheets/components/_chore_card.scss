@@ -10,7 +10,7 @@
   box-shadow: 2px 4px $shadow;
   h4 {
     font-size: 16px;
-    color: #797979;
+    color: #846d4d;
   }
 }
 .chore_details {
@@ -21,7 +21,7 @@
   p {
     font-size: 12px;
     margin: 0;
-    color: #7f7f7f;
+    color: $base-highlight;
   }
 }
 .chore_card_selected {
@@ -35,7 +35,7 @@
 }
 .chore_details_selected {
   border-radius: 4px;
-  background-color: $white;
+  background-color: $light;
   margin-bottom: 10px;
   padding: 6px;
   p {
