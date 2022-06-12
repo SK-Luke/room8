@@ -1,10 +1,11 @@
-<div class="container" data-controller="index-chores">
+<div class="container" data-controller="setup-chores">
   <h2 style="display: inline-block;"><%= @flat.name %>'s chores</h1>
-  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->index-chores#addChore">+</button>
+  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
   <div class="row">
     <% @chores.each do |chore| %>
       <%# Card %>
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2 chore_card" id="chore-<%= chore.id %>"
+      data-setup-chores-target="choreCard">
         <%= render partial: "flat_chore_card", locals: {chore: chore} %>
         <%# Edit chore %>
         <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
@@ -12,7 +13,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Edit Chore</h5>
-                <button type="button" data-action="click->index-chores#editModalClose" class="btn-close" aria-label="Close"></button>
+                <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
               </div>
               <%= render partial: "editchore", locals: {chore: chore} %>
             </div>
@@ -21,5 +22,15 @@
       </div>
     <% end %>
   </div>
-  <%= render partial: "newchore", locals: {chore: @chore} %>
+  <%# Add chore %>
+  <div id="addChoreModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Chore</h5>
+          <button type="button" data-action="click->setup-chores#modalClose" class="btn-close" aria-label="Close"></button>
+        </div>
+      <%= render partial: "newchore", locals: {chore: @chore} %>
+    </div>
+  </div>
 </div>
