@@ -1,0 +1,27 @@
+.rating_card {
+  margin-bottom: 18px;
+}
+
+.parent {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  margin: auto
+}
+.child1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  h4 {
+    margin: 0px;
+  }
+  p {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+}
+.child2 {
+  z-index: 1;
+  background: $light-gray;
+}
