@@ -1,4 +1,15 @@
-<h1>Add flatmates here</h1>
+<div class="container w-50 mx-auto" data-controller="add-flatmates">
+  <h1>Add flatmates here</h1>
+  <ul style="padding: 0px" data-add-flatmates-target="lists">
+    <% @flat_user.each do |user| %>
+      <li style="list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888">
+        <%= user.user.email %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= render 'users/form', flat: @flat, user: @roommate %>
+</div>
 
 <%# should be able to lead us add_chores page after here %>
-<%= link_to "add chores to flat", add_chores_flat_path %>
+<%= link_to "confirm", setup_chores_flat_path(@flat) %>

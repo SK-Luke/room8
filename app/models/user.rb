@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :chore_lists, dependent: :destroy
   has_many :chores, through: :preferences
 
-  validates :name, presence: true
+  validates :name, :email, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

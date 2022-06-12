@@ -12,13 +12,12 @@ Rails.application.routes.draw do
     member do
       # add flatmates to the flat
       get "/add_flatmates", to: "flats#add_flatmates", as: :add_flatmates_to
-      # validate flatmate
-      patch "add_flatmates", to: "flats#validate_flatmate"
+      # Post flatmates to /id/user
+      post "/add_flat_user", to: "users#add_flat_user"
       # set up chores page after finishing adding flatmates
       get "/setup_chores", to: "chores#setup"
       # see roommate's chores --> WX: hellu, don't think this is the right action for the route
       get "/:username/chores", to: "chores#index"
-
       # post method for chores
       resources :chores
     end
@@ -28,4 +27,4 @@ Rails.application.routes.draw do
   resources :preferences, only: %i[index update]
   # documentation to be read on devise user controller, and route updated accordingly
   resources :chore_list, only: %i[update index]
-end
+end 
