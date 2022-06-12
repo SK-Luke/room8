@@ -1,13 +1,29 @@
-<h2>Rate your Chores</h2>
+<div class="container" data-controller="preferences">
+  <h2>Rate your Chores</h2>
 
-<% @preferences.each do |preference| %>
-  <div class="rating_card">
-    <h4><%= preference.chore.name %></h4>
-    <i class="fa-light fa-face-smile fa-3x mx-1"></i>
-    <i class="fa-light fa-face-meh fa-3x mx-1"></i>
-    <i class="fa-light fa-face-frown fa-3x mx-1"></i>
-    <%= preference.rating %>
-  </div>
-<% end %>
+  <% @preferences.each do |preference| %>
+    <div class="rating_card">
+      <h4><%= preference.chore.name %></h4>
+      <!-- Unhappy - Rating = 1 -->
+      <i id="<%= preference.id %>-unhappy"
+      style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
+      class="fa-light fa-face-frown fa-3x mx-1"
+      data-action="click->preferences#color_red"
+      data-preferences-target="unhappy"></i>
+      <!-- Neutral - Rating = 2 -->
+      <i id="<%= preference.id %>-neutral"
+      style="color: <%= preference.rating == 2 ? 'orange' : 'black' %>"
+      class="fa-light fa-face-meh fa-3x mx-1"
+      data-action="click->preferences#color_orange"
+      data-preferences-target="neutral"></i>
+      <!-- Happy - Rating = 3 -->
+      <i id="<%= preference.id %>-happy"
+      style="color: <%= preference.rating == 3 ? 'green' : 'black' %>"
+      class="fa-light fa-face-smile fa-3x mx-1"
+      data-action="click->preferences#color_green"
+      data-preferences-target="happy"></i>
+    </div>
+  <% end %>
 
-<%= link_to "room8 page", flat_path(@flat.first) %>
+  <%= link_to "room8 page", flat_path(@flat.first) %>
+</div>
