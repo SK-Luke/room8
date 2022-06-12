@@ -18,7 +18,6 @@ module Room8
     config.active_job.queue_adapter = :sidekiq
     config.action_view.embed_authenticity_token_in_remote_forms = true
     # Configuration for the application, engines, and railties goes here.
-    #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
