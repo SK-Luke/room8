@@ -13,6 +13,10 @@ class Chore < ApplicationRecord
     end
   end
 
+  def pref_not_exist_for_user?(user)
+    preferences.where(user_id: user.id).empty?
+  end
+
   def self.create_defaults(flat_id)
     Chore.create(
       name: "Take out trash",

@@ -23,9 +23,9 @@ class ChoresController < ApplicationController
     respond_to do |format|
       if @chore.save
         @chore.create_pref_for_all_users
-        format.json
+        format.json # do not remove this
       else
-        format.json # Follow the classic Rails flow and look for a create.json view
+        format.json # do not remove
       end
     end
   end

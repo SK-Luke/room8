@@ -6,7 +6,7 @@
 .chore_card {
   padding: 6px;
   border-radius: 4px;
-  background-color: $primary-highlight;
+  background-color: $base-highlight;
   box-shadow: 2px 4px $shadow;
   h4 {
     font-size: 16px;
@@ -27,7 +27,7 @@
 .chore_card_selected {
   padding: 6px;
   border-radius: 4px;
-  background-color: $primary;
+  background-color: $base;
   box-shadow: 2px 4px $shadow;
   h4 {
     font-size: 16px;
