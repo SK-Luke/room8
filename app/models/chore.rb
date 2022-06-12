@@ -1,9 +1,17 @@
 class Chore < ApplicationRecord
   belongs_to :flat
+  has_many :preferences # WX: wanted to dependent destroy but it causes problems when trying to destroy the chore if no dep i think
 
   validates :name, :frequency, :repetition, :duration, presence: true
   validates :repetition, numericality: { greater_than: 0 }
   validates :frequency, inclusion: { in: %w(daily weekly monthly) }
+
+  def create_pref_for_all_users
+    flat_users = flat.flat_users.where(active: true)
+    flat_users.each do |user|
+      Preference.create(rating: 2, user_id: user.id, chore_id: id)
+    end
+  end
 
   def self.create_defaults(flat_id)
     Chore.create(

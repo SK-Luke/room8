@@ -10,4 +10,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def create_pref_for_all_chores
+    chores = flat_users.where(active: true)[0].flat.chores
+    chores.each do |chore|
+      Preference.create(rating: 2, user_id: id, chore_id: chore.id)
+    end
+  end
 end

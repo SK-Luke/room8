@@ -6,8 +6,8 @@
 .chore_card {
   padding: 6px;
   border-radius: 4px;
-  background-color: #bcbaba;
-  box-shadow: 2px 4px #cccccc;
+  background-color: $primary-highlight;
+  box-shadow: 2px 4px $shadow;
   h4 {
     font-size: 16px;
     color: #797979;
@@ -15,7 +15,7 @@
 }
 .chore_details {
   border-radius: 4px;
-  background-color: #cdcdcd;
+  background-color: $light-highlight;
   margin-bottom: 4px;
   padding: 6px;
   p {
@@ -27,15 +27,15 @@
 .chore_card_selected {
   padding: 6px;
   border-radius: 4px;
-  background-color: #eeecec;
-  box-shadow: 2px 4px #cccccc;
+  background-color: $primary;
+  box-shadow: 2px 4px $shadow;
   h4 {
     font-size: 16px;
   }
 }
 .chore_details_selected {
   border-radius: 4px;
-  background-color: #ffffff;
+  background-color: $white;
   margin-bottom: 4px;
   padding: 6px;
   p {
@@ -45,7 +45,7 @@
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: #e6a62e;
+  background-color: $orange;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
@@ -58,7 +58,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: #e6a62e;
+  background-color: $orange;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;
