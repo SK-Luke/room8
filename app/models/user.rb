@@ -13,10 +13,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def create_pref_for_all_chores!
-    chores = flat_users.where(active: true)[0].flat.chores
-    chores.each do |chore|
+    flat_chores = flat_users.where(active: true)[0].flat.chores
+    flat_chores.each do |chore|
       Preference.create(rating: 2, user_id: id, chore_id: chore.id)
     end
+  end
+
+  def list_flat_chores
+    flat_users.where(active: true)[0].flat.chores
   end
 
   def pref_not_exist_for_chore?(chore)
@@ -24,12 +28,12 @@ class User < ApplicationRecord
   end
 
   def find_chores_where_pref_not_exist
-    chores = flat_users.where(active: true)[0].flat.chores
-    chores.select { |chore| preferences.map(&:chore_id).exclude? chore.id }
+    flat_chores = flat_users.where(active: true)[0].flat.chores
+    flat_chores.select { |chore| preferences.map(&:chore_id).exclude? chore.id }
   end
 
-  def create_pref_for_chores(chores)
-    chores.each do |chore|
+  def create_pref_for_chores(chores_array)
+    chores_array.each do |chore|
       Preference.create(rating: 2, user_id: id, chore_id: chore.id)
     end
   end

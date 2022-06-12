@@ -2,28 +2,41 @@
   <h2>Rate your Chores</h2>
 
   <% @preferences.each do |preference| %>
-    <div class="rating_card">
-      <h4><%= preference.chore.name %></h4>
-      <!-- Unhappy - Rating = 1 -->
-      <i id="<%= preference.id %>-unhappy"
-      style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
-      class="fa-light fa-face-frown fa-3x mx-1"
-      data-action="click->preferences#color_red"
-      data-preferences-target="unhappy"></i>
-      <!-- Neutral - Rating = 2 -->
-      <i id="<%= preference.id %>-neutral"
-      style="color: <%= preference.rating == 2 ? 'orange' : 'black' %>"
-      class="fa-light fa-face-meh fa-3x mx-1"
-      data-action="click->preferences#color_orange"
-      data-preferences-target="neutral"></i>
-      <!-- Happy - Rating = 3 -->
-      <i id="<%= preference.id %>-happy"
-      style="color: <%= preference.rating == 3 ? 'green' : 'black' %>"
-      class="fa-light fa-face-smile fa-3x mx-1"
-      data-action="click->preferences#color_green"
-      data-preferences-target="happy"></i>
+    <div class="rating_card" data-preferences-target="prefCard">
+      <div class="parent">
+        <div class="child1">
+          <%= simple_form_for(preference, data: { preferences_target: "prefForm"}) do |f| %>
+            <%= f.input :rating %>
+          <% end %>
+        </div>
+        <div class="child1 child2">
+          <h4><%= preference.chore.name %></h4>
+          <!-- Unhappy - Rating = 1 -->
+          <i id="<%= preference.id %>-unhappy-1"
+          style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
+          class="fa-light fa-face-frown fa-3x mx-1"
+          data-action="click->preferences#color_red"></i>
+          <!-- Neutral - Rating = 2 -->
+          <i id="<%= preference.id %>-neutral-2"
+          style="color: <%= preference.rating == 2 ? 'orange' : 'black' %>"
+          class="fa-light fa-face-meh fa-3x mx-1"
+          data-action="click->preferences#color_orange"></i>
+          <!-- Happy - Rating = 3 -->
+          <i id="<%= preference.id %>-happy-3"
+          style="color: <%= preference.rating == 3 ? 'green' : 'black' %>"
+          class="fa-light fa-face-smile fa-3x mx-1"
+          data-action="click->preferences#color_green"></i>
+        </div>
+      </div>
     </div>
   <% end %>
 
-  <%= link_to "room8 page", flat_path(@flat.first) %>
+  <div class="fixed-bottom mx-3">
+    <button type="button"
+    class="btn btn-primary btn-sm"
+    data-action="click->preferences#update"
+    style="float: right;">Save</button>
+  </div>
+
+  <!--<%= link_to "room8 page", flat_path(@flat.first) %>-->
 </div>
