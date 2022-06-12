@@ -4,8 +4,11 @@
   <div class="row">
     <% @chores.each do |chore| %>
       <%# Card %>
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2 chore_card" id="chore-<%= chore.id %>"
-      data-setup-chores-target="choreCard">
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2">
+      <%
+=begin %>  <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2 chore_card" id="chore-<%= chore.id %>" data-setup-chores-target="choreCard">
+<%
+=end %>
         <%= render partial: "flat_chore_card", locals: {chore: chore} %>
         <%# Edit chore %>
         <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
