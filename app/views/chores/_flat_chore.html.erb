@@ -1,11 +1,37 @@
 <div class="flat-chores-card">
   <div class="card-main">
-    <h3><%= chore.name %></h3>
-    <div class="card-info">
-      <%= chore.duration %>
+    <div class="card-title">
+      <span><%= chore.name %></span>
     </div>
     <div class="card-info">
-      <%= chore.frequency %>
+      <span>Happens <%= chore.repetition %> <%= "time".pluralize(chore.repetition) %> in a
+        <% case chore.frequency %>
+        <% when "daily" %>
+          <%= "day" %>
+        <% when "weekly" %>
+          <%= "week" %>
+        <% when "monthly" %>
+          <%= "month" %>
+        <% end %>
+      </span>
+    </div>
+    <div class="card-info">
+      <span>
+        <% if chore.duration < 60 %>
+          <%= chore.duration %> <%= "minute".pluralize(chore.duration) %>
+        <% elsif chore.duration % 60 == 0 %>
+          <%= chore.duration / 60 %> <%= "hour".pluralize(chore.duration / 60) %>
+        <% else %>
+          <%= chore.duration / 60 %> <%= "hour".pluralize(chore.duration / 60) %> and <%= chore.duration % 60 %> <%= "minute".pluralize(chore.duration % 60) %>
+        <% end %>
+      </span>
     </div>
   </div>
+  <div class="edit-btn">
+    <i class="fa-solid fa-pen-to-square"></i>
+  </div>
 </div>
+
+<%# daily => day
+weekly => week
+monthly => month %>

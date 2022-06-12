@@ -7,7 +7,7 @@ seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“
 # DB wipeout
 puts "_______"
 puts "Cleaning up database..."
-MonthList.destro_all
+MonthList.destroy_all
 Preference.destroy_all
 ChoreList.destroy_all
 Chore.destroy_all
@@ -42,7 +42,7 @@ user3 = User.new({
 user3.save!
 user4 = User.new({
   name: "Victor",
-  email: "admin@gmail.com",
+  email: "victor.duverne@gmail.com",
   password: "123123"
 })
 user4.save!
