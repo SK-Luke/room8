@@ -1,8 +1,8 @@
 <!-- Modal portion -->
 <%= simple_form_for(chore,
                     data: {
-                    setup_chores_target: "form",
-                    action: "submit->setup-chores#send"
+                    index_chores_target: "form",
+                    action: "submit->index-chores#send"
                     }) do |f| %>
   <div class="modal-body">
     <%= f.input :name %>

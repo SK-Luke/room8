@@ -1,16 +1,18 @@
-<div class="container" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
+<div class="container" data-controller="index-chores">
   <h2 style="display: inline-block;"><%= @flat.name %>'s chores</h1>
-  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
+  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->index-chores#addChore">+</button>
   <div class="row">
     <% @chores.each do |chore| %>
-      <div class="col-6 my-2">
+      <%# Card %>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2">
         <%= render partial: "flat_chore_card", locals: {chore: chore} %>
+        <%# Edit chore %>
         <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Edit Chore</h5>
-                <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
+                <button type="button" data-action="click->index-chores#editModalClose" class="btn-close" aria-label="Close"></button>
               </div>
               <%= render partial: "editchore", locals: {chore: chore} %>
             </div>
