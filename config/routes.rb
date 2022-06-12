@@ -19,11 +19,7 @@ Rails.application.routes.draw do
       # see roommate's chores --> WX: hellu, don't think this is the right action for the route
       get "/:username/chores", to: "chores#index"
       # post method for chores
-<<<<<<< HEAD
       resources :chores, only: %i[index create update destroy]
-=======
-      resources :chores, only: %i[create index]
->>>>>>> master
     end
   end
 

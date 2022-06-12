@@ -27,7 +27,6 @@ class FlatsController < ApplicationController
   def add_flatmates
     @roommate = User.new()
     # @flat_user.user = User.where(name: "kenny")
-    # pass this. flat/id/user -> user create
     @flat = Flat.find(params[:id]) 
     # Find all users that belongs to the same flat instance
     @flat_user = FlatUser.where(flat: @flat)
