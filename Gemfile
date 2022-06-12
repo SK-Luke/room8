@@ -29,7 +29,6 @@ gem 'sidekiq-failures', '~> 1.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'letter_opener', group: :development
-gem 'dotenv-rails', groups: [:development, :test]
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
