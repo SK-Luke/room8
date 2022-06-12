@@ -16,7 +16,7 @@
       </span>
     </div>
     <div class="card-info">
-      <span>
+      <span>Takes
         <% if chore.duration < 60 %>
           <%= chore.duration %> <%= "minute".pluralize(chore.duration) %>
         <% elsif chore.duration % 60 == 0 %>
@@ -27,7 +27,7 @@
       </span>
     </div>
   </div>
-  <div class="edit-btn">
+  <div class="edit-btn" data-action="click->setup-chores#editFormAppear">
     <i class="fa-solid fa-pen-to-square"></i>
   </div>
 </div>

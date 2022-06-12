@@ -1,10 +1,23 @@
-<div class="container">
-  <h1>My flat's chore</h1>
+<div class="container" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
+  <h2 style="display: inline-block;"><%= @flat.name %>'s chores</h1>
+  <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
   <div class="row">
     <% @chores.each do |chore| %>
       <div class="col-6 my-2">
-        <%= render partial: "flat_chore", locals: {chore: chore} %>
+        <%= render partial: "flat_chore_card", locals: {chore: chore} %>
+        <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Chore</h5>
+                <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
+              </div>
+              <%= render partial: "editchore", locals: {chore: chore} %>
+            </div>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
+  <%= render partial: "newchore", locals: {chore: @chore} %>
 </div>
