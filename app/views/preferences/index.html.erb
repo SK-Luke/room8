@@ -1,4 +1,4 @@
-<div class="container" data-controller="preferences">
+<div class="container text-center" data-controller="preferences">
   <h2>Rate your Chores</h2>
 
   <% @preferences.each do |preference| %>
@@ -11,20 +11,21 @@
         </div>
         <div class="child1 child2">
           <h4><%= preference.chore.name %></h4>
+          <p>occurs <%= pluralize( preference.chore.repetition, 'time' ) %> <%= preference.chore.frequency %></p>
           <!-- Unhappy - Rating = 1 -->
           <i id="<%= preference.id %>-unhappy-1"
           style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
-          class="fa-light fa-face-frown fa-3x mx-1"
+          class="fa-light fa-face-frown fa-3x mx-3"
           data-action="click->preferences#color_red"></i>
           <!-- Neutral - Rating = 2 -->
           <i id="<%= preference.id %>-neutral-2"
           style="color: <%= preference.rating == 2 ? 'orange' : 'black' %>"
-          class="fa-light fa-face-meh fa-3x mx-1"
+          class="fa-light fa-face-meh fa-3x mx-3"
           data-action="click->preferences#color_orange"></i>
           <!-- Happy - Rating = 3 -->
           <i id="<%= preference.id %>-happy-3"
           style="color: <%= preference.rating == 3 ? 'green' : 'black' %>"
-          class="fa-light fa-face-smile fa-3x mx-1"
+          class="fa-light fa-face-smile fa-3x mx-3"
           data-action="click->preferences#color_green"></i>
         </div>
       </div>
