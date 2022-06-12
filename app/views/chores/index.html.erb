@@ -2,7 +2,7 @@
   <h1>My flat's chore</h1>
   <div class="row">
     <% @chores.each do |chore| %>
-      <div class="col-6 my-3">
+      <div class="col-6 my-2">
         <%= render partial: "flat_chore", locals: {chore: chore} %>
       </div>
     <% end %>
