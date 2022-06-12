@@ -22,6 +22,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.save
+        @chore.create_pref_for_all_users
         format.json
       else
         format.json # Follow the classic Rails flow and look for a create.json view
@@ -40,7 +41,7 @@ class ChoresController < ApplicationController
     @chore.destroy
     #redirect_to "/flats/#{@flat.id}/chores"
     respond_to do |format|
-      format.json {{status: "ok"}}
+      format.json { { status: "ok" } }
     end
   end
 
