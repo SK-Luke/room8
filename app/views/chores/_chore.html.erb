@@ -20,7 +20,7 @@ data-setup-chores-target="choreCard">
   </div>
 </div>
 <!-- Modal for edit chore -->
-<div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
+<div id="edit-chore-<%= chore.id %>-modal" class="modals" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -34,8 +34,8 @@ data-setup-chores-target="choreCard">
                           }) do |f| %>
         <div class="modal-body">
           <%= f.input :name %>
-          <%= f.input :repetition, label: "Happens", collection: (1..30).to_a %>
-          <%= f.input :frequency, collection: %w(daily weekly monthly), label: false, class: "mx-3" %>
+          <%= f.input :frequency, label: "Happens", collection: %w(daily weekly monthly), class: "mx-3" %>
+          <%= f.input :repetition, label: false %>
           <%= f.input :duration, :label => "Minutes taken to perform chore" %>
         </div>
         <div class="modal-footer">

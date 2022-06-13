@@ -65,13 +65,13 @@ export default class extends Controller {
         headers: { "Accept": "text/plain" , "X-CSRF-Token": csrfToken() },
         body: new FormData(document.getElementById(`edit_preference_${prefid}`))
       })
-        .then(response => response.text())
+        .then(response => response.redirect("/preferences"))
         .then((data) => {
           //console.log(data)
         })
     })
     //alert("your preference has been saved")
-    location.reload(true);
+    //location.reload(true);
     //this.notifTarget.style.display = "block"
   }
 
