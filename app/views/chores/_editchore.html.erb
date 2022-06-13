@@ -5,7 +5,7 @@
                   }) do |f| %>
   <div class="modal-body">
     <%= f.input :name %>
-    <%= f.input :repetition, label: "Happens", collection: (1..30).to_a %>
+    <%= f.input :repetition, label: "Happens" %>
     <%= f.input :frequency, collection: %w(daily weekly monthly), label: false, class: "mx-3" %>
     <%= f.input :duration, :label => "Minutes taken to perform chore" %>
   </div>
