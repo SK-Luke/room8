@@ -34,8 +34,8 @@ data-setup-chores-target="choreCard">
                           }) do |f| %>
         <div class="modal-body">
           <%= f.input :name %>
-          <%= f.input :repetition, label: "Happens" %>
-          <%= f.input :frequency, collection: %w(daily weekly monthly), label: false, class: "mx-3" %>
+          <%= f.input :frequency, label: "Happens", collection: %w(daily weekly monthly), class: "mx-3" %>
+          <%= f.input :repetition, label: false %>
           <%= f.input :duration, :label => "Minutes taken to perform chore" %>
         </div>
         <div class="modal-footer">
