@@ -14,7 +14,16 @@
         </div>
         <div class="child1 child2">
           <h4><%= preference.chore.name %></h4>
-          <p>occurs <%= pluralize( preference.chore.repetition, 'time' ) %> <%= preference.chore.frequency %></p>
+          <p>occurs <%= pluralize( preference.chore.repetition, 'time' ) %> <%= preference.chore.frequency %> |
+          <% if preference.chore.duration < 60 %>
+            takes <%= pluralize( preference.chore.duration, 'min' ) %>
+          <% else %>
+            takes <%= (preference.chore.duration/60).to_i %> h
+            <% if (preference.chore.duration/60.0).modulo(1) > 0 %>
+              <%= pluralize( (((preference.chore.duration/60.0).modulo(1))*60).to_i, 'min' ) %>
+            <% end %>
+          <% end %></p>
+
           <!-- Unhappy - Rating = 1 -->
           <i id="<%= preference.id %>-unhappy-1"
           style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
