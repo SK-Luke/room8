@@ -17,16 +17,16 @@ export default class extends Controller {
     //console.log(element)
     //console.log(element.className)
     const modal = document.getElementById(`edit-${element.id}-modal`);
-    if ((element.className === "chore_card") && (modal.style.display === "none"||modal.style.display === "")) {
+    if ((element.className === "chore_card chore_card_styling") && (modal.style.display === "none"||modal.style.display === "")) {
       element.className = "chore_card_selected";
       const details = element.getElementsByClassName("chore_details");
       // using array from bc foreach method does not work on html collection
       Array.from(details).forEach(detail => detail.className = "chore_details_selected");
       const edtbtn = element.querySelector(".chore_edit_button");
-      //console.log(edtbtn)
       edtbtn.className = "chore_edit_button_display";
     } else if ((element.className === "chore_card_selected") && (modal.style.display === "none"||modal.style.display === "")) {
-      element.className = "chore_card";
+      // console.log("test")
+      element.className = "chore_card chore_card_styling";
       const selected_details = element.getElementsByClassName("chore_details_selected");
       Array.from(selected_details).forEach(detail => detail.className = "chore_details");
       const edtbtn = element.querySelector(".chore_edit_button_display");
@@ -79,6 +79,7 @@ export default class extends Controller {
 
   editFormAppear(event){
     event.preventDefault();
+    console.log(element)
     const element = event.path.find(element => element.className.includes("chore_card"))
     const modal = document.getElementById(`edit-${element.id}-modal`);
     modal.style.display = "block";
@@ -110,7 +111,7 @@ export default class extends Controller {
     let selected = []
     this.choreCardTargets.forEach(chore => {
       console.log(chore.className)
-      if (chore.className === "chore_card") {
+      if (chore.className.includes("chore_card")) {
         console.log(chore)
         selected.push(chore)
       }
@@ -133,6 +134,6 @@ export default class extends Controller {
         console.log(data)
         })
       })
-    //window.location.href = `/flats/${this.flatidValue}/chores`
+    window.location.href = `/flats/${this.flatidValue}/chores`
   }
 }

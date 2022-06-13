@@ -1,0 +1,30 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Confirm
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Time to setup your flat's chore</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Would you like to select from our chore list or create all from scratch?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary">
+          <%= link_to "Create from scratch", setup_chores_flat_path(@flat) %>
+        </button>
+        <button type="button" class="btn btn-secondary">
+          <%= link_to setup_chores_flat_path(@flat) do %>
+          <% Chore.create_defaults(@flat.id) %>
+          <p>Select from list</p>
+          <% end %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

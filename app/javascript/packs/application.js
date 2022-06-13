@@ -21,3 +21,9 @@ document.addEventListener("turbolinks:load", function () {
   swiper;
   console.log(typeof swiper);
 });
+//= require jquery
+// = require jquery_ujs
+//= require turbolinks
+//= require_tree .
+//= require bootstrap/modal
+//= require bootstrap-sprockets

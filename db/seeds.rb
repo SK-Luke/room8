@@ -1,4 +1,4 @@
-chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed our dog Kenny"]
+chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed the dog"]
 frequencies_array = ["daily", "weekly", "monthly"]
 repetitions_array = [1, 2, 3]
 durations_array = [30, 60, 90, 120]
@@ -7,7 +7,7 @@ seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“
 # DB wipeout
 puts "_______"
 puts "Cleaning up database..."
-MonthList.destro_all
+MonthList.destroy_all
 Preference.destroy_all
 ChoreList.destroy_all
 Chore.destroy_all
@@ -27,25 +27,35 @@ user1 = User.new({
   email: "wanxinpua@yahoo.com.sg",
   password: "123123"
 })
+user1.photo.attach(io: URI.open("http://res.cloudinary.com/dlqa2wzkk/image/upload/v1655099375/gvurxm0tgbbmyvldmusw.jpg"), filename: 'wx.jpg', content_type: 'image/jpg')
 user1.save!
+
 user2 = User.new({
   name: "Sek Kun",
   email: "sekkun.luke@gmail.com",
   password: "123123"
 })
 user2.save!
+user2.photo.attach(io: URI.open("http://res.cloudinary.com/dlqa2wzkk/image/upload/v1655099355/e81wixyxy3nw3prd7aw8.jpg"), filename: 'sk.jpg', content_type: 'image/jpg')
+
 user3 = User.new({
   name: "Kenny",
   email: "kiansengnp@gmail.com",
   password: "123123"
 })
 user3.save!
+user3.photo.attach(io: URI.open("http://res.cloudinary.com/dlqa2wzkk/image/upload/v1655099341/odhoptuks79qb73pqqb8.jpg"), filename: 'kenny.jpg', content_type: 'image/jpg')
+
 user4 = User.new({
   name: "Victor",
-  email: "admin@gmail.com",
+  email: "victor.duverne@gmail.com",
   password: "123123"
 })
 user4.save!
+user4.photo.attach(io: URI.open("http://res.cloudinary.com/dlqa2wzkk/image/upload/v1655099362/bajbf8wf3hjqipxtkw4v.jpg"), filename: 'vic.jpg', content_type: 'image/jpg')
+
+# puts "done first part"
+
 user5 = User.new({
   name: "Ming Fu",
   email: "mingfu@gmail.com",

@@ -26,16 +26,22 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0' 
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'letter_opener', group: :development
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'autoprefixer-rails', '10.2.5'
-gem 'font-awesome-sass', '~> 5.6.1'
+gem 'font-awesome-sass', '~> 6.1.1'
 gem 'simple_form', github: 'heartcombo/simple_form'
+gem 'cloudinary', '~> 1.16.0'
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
