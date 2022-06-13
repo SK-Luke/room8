@@ -79,6 +79,7 @@ export default class extends Controller {
 
   editFormAppear(event){
     event.preventDefault();
+    console.log(element)
     const element = event.path.find(element => element.className.includes("chore_card"))
     const modal = document.getElementById(`edit-${element.id}-modal`);
     modal.style.display = "block";
