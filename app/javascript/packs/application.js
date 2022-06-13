@@ -15,3 +15,10 @@ ActiveStorage.start();
 // controllers is making my add_flatmates save twice
 import "controllers";
 import "bootstrap";
+
+//= require jquery
+// = require jquery_ujs
+//= require turbolinks
+//= require_tree .
+//= require bootstrap/modal
+//= require bootstrap-sprockets
