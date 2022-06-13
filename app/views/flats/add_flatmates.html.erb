@@ -7,11 +7,10 @@
   </ul>
 
   <%= render 'users/form', flat: @flat, user: @roommate %>
+<!-- Button trigger modal -->
   <%= render 'confirm' %>
 </div>
 
 <%# should be able to lead us add_chores page after here %>
 
-<!-- Button trigger modal -->
-  <%= link_to "confirm", setup_chores_flat_path(@flat) %>
 
