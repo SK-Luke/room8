@@ -28,13 +28,14 @@ class FlatsController < ApplicationController
     @roommate = User.new()
     # @flat_user.user = User.where(name: "kenny")
     # pass this. flat/id/user -> user create
-    @flat = Flat.find(params[:id]) 
+    @flat = Flat.find(params[:id])
     # Find all users that belongs to the same flat instance
     @flat_user = FlatUser.where(flat: @flat)
   end
 
   def show
     @users = Flat.find(params[:id]).users
+    @flat = Flat.find(params[:id])
   end
 
   def edit
@@ -45,7 +46,7 @@ class FlatsController < ApplicationController
 
   def validate_flatmate
     # @flat = current_user
-    # raise 
+    # raise
   end
 
   private

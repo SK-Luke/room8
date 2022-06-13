@@ -1,4 +1,4 @@
-chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed our dog Kenny"]
+chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed the dog"]
 frequencies_array = ["daily", "weekly", "monthly"]
 repetitions_array = [1, 2, 3]
 durations_array = [30, 60, 90, 120]
@@ -7,7 +7,7 @@ seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“
 # DB wipeout
 puts "_______"
 puts "Cleaning up database..."
-MonthList.destro_all
+MonthList.destroy_all
 Preference.destroy_all
 ChoreList.destroy_all
 Chore.destroy_all
@@ -42,7 +42,7 @@ user3 = User.new({
 user3.save!
 user4 = User.new({
   name: "Victor",
-  email: "admin@gmail.com",
+  email: "victor.duverne@gmail.com",
   password: "123123"
 })
 user4.save!
