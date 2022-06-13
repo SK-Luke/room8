@@ -19,7 +19,11 @@ Rails.application.routes.draw do
       # see roommate's chores --> WX: hellu, don't think this is the right action for the route
       get "/:username/chores", to: "chores#index"
       # post method for chores
+<<<<<<< HEAD
       resources :chores, only: %i[index create update destroy]
+=======
+      resources :chores
+>>>>>>> master
     end
   end
 
@@ -27,4 +31,4 @@ Rails.application.routes.draw do
   resources :preferences, only: %i[index update]
   # documentation to be read on devise user controller, and route updated accordingly
   resources :chore_list, only: %i[update index]
-end 
+end

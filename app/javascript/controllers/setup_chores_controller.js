@@ -79,6 +79,7 @@ export default class extends Controller {
 
   editFormAppear(event){
     event.preventDefault();
+    console.log(element)
     const element = event.path.find(element => element.className.includes("chore_card"))
     const modal = document.getElementById(`edit-${element.id}-modal`);
     modal.style.display = "block";
@@ -119,8 +120,8 @@ export default class extends Controller {
 
     selected.forEach(sel => {
       const choreid = sel.id.match(/\d+/)[0]
-      console.log(choreid)
-      fetch(`/flats/${this.flatidValue}/chores/${choreid}`, {
+      const url = `/flats/${this.flatidValue}/chores/${choreid}`
+      fetch(url, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ export default class extends Controller {
             'X-CSRF-Token': csrfToken()
         }
       })
-      .then(res => res)
+      .then(res => res.json())
       .then((data) => {
         console.log(data)
         })
