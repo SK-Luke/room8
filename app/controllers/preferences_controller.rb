@@ -9,9 +9,12 @@ class PreferencesController < ApplicationController
   def update
     @preference = Preference.find(params[:id])
     @preference.update(pref_params)
-
+    @preferences = current_user.preferences.order(:id)
+    flash[:notice] = "Your preference has been saved"
     respond_to do |format|
-      format.text #{ render partial: "chores/chore", locals: { chore: @chore }, formats: [:html] }
+      #format.text #{ render partial: "chores/chore", locals: { chore: @chore }, formats: [:html] }
+      format.html
+      format.text
       format.json
     end
   end

@@ -1,4 +1,7 @@
 <div class="container text-center" data-controller="preferences">
+  <div class="notif mb-3" data-preferences-target="notif">
+    <p style="display: inline-block;margin: auto;">Your preferences has been saved</p><button class="btn btn-danger btn-sm mx-3" data-action="click->preferences#closeNotif">X</button>
+  </div>
   <h2>Rate your Chores</h2>
 
   <% @preferences.each do |preference| %>
