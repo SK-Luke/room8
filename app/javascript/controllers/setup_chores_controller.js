@@ -134,6 +134,6 @@ export default class extends Controller {
         console.log(data)
         })
       })
-    //window.location.href = `/flats/${this.flatidValue}/chores`
+    window.location.href = `/flats/${this.flatidValue}/chores`
   }
 }
