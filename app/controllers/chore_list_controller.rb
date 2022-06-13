@@ -16,6 +16,11 @@ class ChoreListController < ApplicationController
   end
 
   def update
+    params.permit(:id)
+    task = ChoreList.find(params[:id])
+    task.complete = true
+    task.save!
+    redirect_to chore_list_index_path
   end
 
   private

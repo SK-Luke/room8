@@ -17,7 +17,6 @@ import "bootstrap";
 
 import Swiper from "swiper";
 import "swiper/swiper-bundle.css";
-import { swiper } from "../components/swiper";
 document.addEventListener("turbolinks:load", function () {
   swiper;
   console.log(typeof swiper);

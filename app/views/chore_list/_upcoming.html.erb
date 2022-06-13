@@ -4,16 +4,27 @@
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <% current_user.chore_lists.each do |task| %>
-    <% if task.deadline < DateTime.now %>
-      <div class="swiper-slide">
+    <% if @upcoming.blank? %>
+      <div class="swiper-slide"> No chores to display</div>
+    <% else %>
+    <% @upcoming.each do |task| %>
+<div class="swiper-slide">
         <div class="card">
-          <div class="card-title"><%= task.chore.name %></div>
-          <div class="card-duration"><%= task.chore.duration %></div>
-          <div class="card-deadline bg-secondary bg-gradient"><%= task.deadline %></div>
-          <div class="card-mark-complete">mark as complete</div>
+          <div class="card-title">
+            <h2><%= task.chore.name %></h2>
+          </div>
+          <div class="card-duration">
+            <p>Takes <%= task.chore.duration %>mins</p>
+          </div>
+          <div class="card-deadline bg-secondary bg-gradient">
+            <div class="timing">Complete by <br><p><%= task.deadline.strftime("%A, %d %b %Y") %></p></div>
+            <div class="edit-icon"><i class='fas fa-edit' style='font-size:36px'></i></div>
+          </div>
+          <div class="card-mark-complete">
+            <div class="tick-box"><i class="fa-thin fa-square" style="font-size:36px;"></i></div>
+            <div class="mark_message">Mark as complete</div>
+          </div>
         </div>
-      </div>
     <% end %>
     <% end %>
 
