@@ -1,7 +1,6 @@
 <div class="user-card">
   <div class="card-top d-flex">
-    <div>
-      <%= image_tag "fakeavatar.jpg", class: "avatar-large" %>
+    <div class="avatar-large" style = "background-image: url(<%= image_path "fakeavatar.jpg" %>); background-size: cover; background-position: top center;">
     </div>
     <h2 class="mb-0 pt-2"><%= user.name %></h2>
   </div>
@@ -11,6 +10,6 @@
     <p><%= user.chore_lists.where("deadline < ?", @date).count %> chores overdue</p>
   </div>
   <div class="card-bottom">
-    <p>19 days remaining till july</p>
+    <p><%= Time.days_in_month(Time.now.month, Time.now.year) - Time.now.day %> days remaining till july</p>
   </div>
 </div>
