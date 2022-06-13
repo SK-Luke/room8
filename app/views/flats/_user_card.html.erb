@@ -6,9 +6,9 @@
     <h2 class="mb-0 pt-2"><%= user.name %></h2>
   </div>
   <div class="card-info">
-    <p><%= user.chore_lists.count %> chores remaining</p>
-    <p><%= user.chore_lists.count %> chores completed</p>
-    <p><%= user.chore_lists.count %> chores overdue</p>
+    <p><%= user.chore_lists.count - user.chore_lists.where("complete = true").count %> chores remaining</p>
+    <p><%= user.chore_lists.where("complete = true").count %> chores completed</p>
+    <p><%= user.chore_lists.where("deadline < ?", @date).count %> chores overdue</p>
   </div>
   <div class="card-bottom">
     <p>19 days remaining till july</p>
