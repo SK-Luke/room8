@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import { csrfToken } from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["prefCard"]
+  static targets = ["prefCard", "notif"]
 
   connect() {
     console.log("hello from preferences_controller!")
@@ -67,8 +67,15 @@ export default class extends Controller {
       })
         .then(response => response.text())
         .then((data) => {
-          console.log(data)
+          //console.log(data)
         })
     })
+    //alert("your preference has been saved")
+    location.reload(true);
+    //this.notifTarget.style.display = "block"
+  }
+
+  closeNotif() {
+    this.notifTarget.style.display = "none"
   }
 }
