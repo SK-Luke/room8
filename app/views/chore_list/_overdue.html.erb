@@ -1,17 +1,17 @@
 <%# <%= render "template" %>
 <!-- Slider main container -->
-<div class="swiper" data-controller="mark-complete"  >
+<div class="swiper" >
   <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
+  <div class="swiper-wrapper" >
     <!-- Slides -->
     <% if @incomplete.blank? %>
       <div class="swiper-slide"> No chores to display</div>
     <% else %>
     <% @incomplete.each do |task| %>
       <div class="swiper-slide">
-        <div class="card">
+        <div class="card" data-controller="mark-complete" >
           <div class="card-title" >
-            <h2><%= task.chore.name %></h2>
+            <h2 data-mark-complete-target="chore" data-value="<%= task.chore.name %>"><%= task.chore.name %></h2>
           </div>
           <div class="card-duration">
             <p>Takes <%= task.chore.duration %>mins</p>

@@ -9,9 +9,9 @@
     <% else %>
     <% @to_do.each do |task| %>
 <div class="swiper-slide">
-        <div class="card">
+        <div class="card" data-controller="mark-complete">
           <div class="card-title">
-            <h2><%= task.chore.name %></h2>
+            <h2 data-mark-complete-target="chore" data-value="<%= task.chore.name %>"><%= task.chore.name %></h2>
           </div>
           <div class="card-duration">
             <p>Takes <%= task.chore.duration %>mins</p>
@@ -21,7 +21,7 @@
             <div class="edit-icon"><i class='fas fa-edit' style='font-size:36px'></i></div>
           </div>
           <div class="card-mark-complete">
-            <div class="tick-box"><i class="fa-thin fa-square" style="font-size:36px;"></i></div>
+            <div class="tick-box" data-mark-complete-target="tick" data-action= "click->mark-complete#mark" data-value="<%= task.id %>"><i class="fa-thin fa-square" style="font-size:36px;"></i></div>
             <div class="mark_message">Mark as complete</div>
           </div>
         </div>

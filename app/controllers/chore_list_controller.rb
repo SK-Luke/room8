@@ -17,10 +17,17 @@ class ChoreListController < ApplicationController
 
   def update
     params.permit(:id)
-    task = ChoreList.find(params[:id])
-    task.complete = true
-    task.save!
-    redirect_to chore_list_index_path
+    @task = ChoreList.find(params[:id])
+    @task.complete = true
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to chore_list_index_path }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render "chore_list" }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
+    end
   end
 
   private
