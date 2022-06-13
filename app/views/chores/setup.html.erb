@@ -5,7 +5,7 @@
   <!-- Display all chores -->
   <div class="chores" data-setup-chores-target="choresList">
     <% @chores.each do |chore| %>
-    <div class="chore_card chore_card_styling" id="chore-<%= chore.id %>"
+    <div class="chore_card" id="chore-<%= chore.id %>"
     data-action="click->setup-chores#highlight"
     data-setup-chores-target="choreCard">
       <h4><%= chore.name %></h4>
