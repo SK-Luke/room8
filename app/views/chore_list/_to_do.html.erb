@@ -5,7 +5,7 @@
   <div class="swiper-wrapper">
     <!-- Slides -->
     <% current_user.chore_lists.each do |task| %>
-    <% if task.deadline > DateTime.now %>
+    <% if task.deadline < DateTime.now %>
       <div class="swiper-slide">
         <div class="card">
           <div class="card-title"><%= task.chore.name %></div>

@@ -12,6 +12,7 @@ class ChoreListController < ApplicationController
     @completed = []
     @upcoming = []
     set_chore_listings
+    distribute_cards
   end
 
   def update
@@ -32,46 +33,25 @@ class ChoreListController < ApplicationController
     @chorelists = @chorelists.values
     @chorelists.each do |arr|
       i = 0
-      # ----------for count <3 ---------------------------
-      # Check if first item is incomplete and overdue
-      # If yes, check, overdue = incomplete, not overdue and incomplete = todo, else completed
-      # if No, check complete, if not complete, todo, and next go to upcoming. If complete, next go to do
-      if arr.length < 3
-        step_one = arr[i].chore_lists.first.deadline < DateTime.now && arr[i].chore_lists.first.complete
-        step_two = arr[i + 1].chore_lists.first.deadline < DateTime.now && arr[i + 1].chore_lists.first.complete
-        step_three = arr[i+1].chore_lists.first.deadline > DateTime.now && arr[i+1].chore_lists.first.complete == false
-
-        # Consider if it is in to do first
-        if arr[i].chore_lists.first.deadline > DateTime.now && arr[i].chore_lists.first.complete == false
-          @to_do << arr[i].chore_lists.first
-          @upcoming << arr[i + 1].chore_lists.first
-        end
-        # consider both as expired deadline first
-        if step_one
+      # Check if completed, if yes -> completed
+      # If no, check deadline, If overdued, -> incomplete
+      # if not due -> to do, the rest go upcoming
+      while i < arr.length
+        if arr[i].chore_lists.first.complete
           @completed << arr[i].chore_lists.first
-          if step_two
-            @completed << arr[i+1].chore_lists.first
-          elsif step_three
-            @to_do << arr[i+1].chore_lists.first
-          else
-            @incomplete << arr[i+1].chore_lists.first
-          end
-        else
+          i += 1
+        elsif arr[i].chore_lists.first.deadline < DateTime.now
           @incomplete << arr[i].chore_lists.first
-          if step_two
-            @completed << arr[i+1].chore_lists.first
-          elsif step_three
-            @to_do << arr[i+1].chore_lists.first
-          else
-            @incomplete << arr[i+1].chore_lists.first
+          i += 1
+        elsif arr[i].chore_lists.first.deadline > DateTime.now
+          @to_do << arr[i].chore_lists.first
+          i += 1
+          # If nested while doesn't work, use until
+          while i < arr.length
+            @upcoming << arr[i].chore_lists.first
+            i += 1
           end
         end
-      end
-      # Distribute in order from date time, then check for incomplete
-      # ----------for count >=3 ---------------------------
-      # If not beyond deadline, check completion status of i + 2
-      # If i + 2 exist and is completed, push to completed while i + 1 to todo
-      if arr.length >= 3
       end
     end
   end

@@ -1,6 +1,6 @@
 <% @chorelists %>
-<%= render "overdue" %>
-<%= render "to_do" %>
-<%= render "completed" %>
-<%= render "upcoming" %>
-<% raise %>
+<%= render "overdue", locals: {incomplete: @incomplete} %>
+<%= render "to_do", locals: {to_do: @to_do} %> %>
+<%= render "completed", locals: {completed: @completed} %> %>
+<%= render "upcoming", locals: {upcoming: @upcoming} %> %>
+<%# <% raise %> %>
