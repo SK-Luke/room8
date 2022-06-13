@@ -18,7 +18,7 @@
         <% else %>
           <p>takes <%= (chore.duration/60).to_i %> h
           <% if (chore.duration/60.0).modulo(1) > 0 %>
-            <%= pluralize( ((chore.duration/60.0).modulo(1))*60, 'min' ) %></p>
+            <%= pluralize( (((chore.duration/60.0).modulo(1))*60).to_i, 'min' ) %></p>
           <% end %>
         <% end %>
       </div>
