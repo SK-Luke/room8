@@ -18,7 +18,7 @@
         <button type="button" class="btn btn-secondary">
           <%= link_to "Create from scratch", setup_chores_flat_path(@flat) %>
         </button>
-        <button type="button" class="btn btn-primary">
+        <button type="button" class="btn btn-secondary">
           <%= link_to setup_chores_flat_path(@flat) do %>
           <% Chore.create_defaults(@flat.id) %>
           <p>Select from list</p>

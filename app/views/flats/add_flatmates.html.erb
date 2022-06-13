@@ -1,19 +1,16 @@
 <div class="container w-50 mx-auto" data-controller="add-flatmates">
   <h1>Add flatmates here</h1>
   <ul style="padding: 0px" data-add-flatmates-target="lists">
-    <% @flat_user.each do |user| %>
-      <li style="list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888">
-        <%= user.user.email %>
-      </li>
+    <% @users.each do |user| %>
+      <%= render 'email_li', user: user %>
     <% end %>
   </ul>
 
   <%= render 'users/form', flat: @flat, user: @roommate %>
+<!-- Button trigger modal -->
   <%= render 'confirm' %>
 </div>
 
 <%# should be able to lead us add_chores page after here %>
 
-<!-- Button trigger modal -->
-  <%= link_to "confirm", setup_chores_flat_path(@flat) %>
 
