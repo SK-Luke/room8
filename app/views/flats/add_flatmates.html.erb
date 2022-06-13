@@ -9,11 +9,11 @@
   </ul>
 
   <%= render 'users/form', flat: @flat, user: @roommate %>
+  <%= render 'confirm' %>
 </div>
 
 <%# should be able to lead us add_chores page after here %>
-<%= link_to "Create from scratch", setup_chores_flat_path(@flat) %>
-<%= link_to setup_chores_flat_path(@flat) do %>
-  <% Chore.create_defaults(@flat.id) %>
-  <p>Select from list</p>
-<% end %>
+
+<!-- Button trigger modal -->
+  <%= link_to "confirm", setup_chores_flat_path(@flat) %>
+

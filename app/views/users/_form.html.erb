@@ -1,11 +1,11 @@
-  <%= simple_form_for(user, url: add_flat_user_flat_path(flat),
-    data: {add_flatmates_target: "form",
-          action: "submit->add-flatmates#send" }) do |f| %>
-    <%= f.input :flat, :as => :hidden, :input_html => { :value => params[:id] } %>
-    <div class="w-100 d-flex">
-    <%= f.input :email, placeholder: "user@domain.com", label: false, input_html: {id: 'input_room' } %>
-    <%= f.input :name, placeholder: "enter name", label: false, input_html: {id: 'input_room' } %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit '+', class: "btn btn-primary h-100", id: 'btn_room'%>
-    </div>
-  <% end %>
+<%= simple_form_for(user, url: add_flat_user_flat_path(flat),
+  data: {add_flatmates_target: "form",
+        action: "submit->add-flatmates#send" }) do |f| %>
+  <%= f.input :flat, :as => :hidden, :input_html => { :value => params[:id] } %>
+  <div class="w-100 d-flex">
+  <%= f.input :email, placeholder: "user@domain.com", label: false, input_html: {id: 'input_room' } %>
+  <%= f.input :name, placeholder: "enter name", label: false, input_html: {id: 'input_room' } %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit '+', class: "btn btn-primary h-100", id: 'btn_room'%>
+  </div>
+<% end %>
