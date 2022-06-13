@@ -18,7 +18,7 @@ export default class extends Controller {
       headers: { Accept: "application/json", "X-CSRF-Token": csrfToken() },
       body: new FormData(this.formTarget),
     })
-      .then((response) => console.log(response.json()))
+      .then((response) => response.json())
       .then((data) => {
         console.log(data);
         // const htmlLi = `<li style='list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888'>${data.email}</li>`;
