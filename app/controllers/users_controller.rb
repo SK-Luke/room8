@@ -18,10 +18,11 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       if @flat_user.save
-        # Send email to flatmate
+        # Send email to Flatmate
         # UserMailer.welcome(@user).deliver_now
         format.html { redirect_to add_flatmates_to_flat_path(@flat) }
-        format.json {render json: @flat_user.user} # Follow the classic Rails flow and look for a create.json view
+        # format.json {render json: @flat_user.user} # Follow the classic Rails flow and look for a create.json view
+        format.json
       else
         @flat_user = FlatUser.where(flat: @flat)
         format.html { render "flats/add_flatmates" }
