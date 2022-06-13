@@ -10,12 +10,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.flats.count > 0 %>
           <li class="nav-item active">
             <%= link_to "My preferences", preferences_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My flat", flat_path(current_user.flats.first), class: "nav-link" %>
+            <%= link_to "My flat's chores", chores_path(current_user.flats.first), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "My roommates", flat_path(current_user.flats.first), class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "My chores", chore_list_index_path, class: "nav-link" %>
