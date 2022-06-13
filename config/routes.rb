@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       # set up chores page after finishing adding flatmates
       get "/setup_chores", to: "chores#setup"
       # see roommate's chores --> WX: hellu, don't think this is the right action for the route
-      get "/:username/chores", to: "chores#index"
+      get "/:name/chores", to: "chores#index"
       # post method for chores
       resources :chores
     end

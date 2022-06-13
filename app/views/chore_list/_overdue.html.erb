@@ -1,0 +1,78 @@
+<%# <%= render "template" %>
+<!-- Slider main container -->
+<div class="swiper" data-controller="mark-complete"  >
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <% if @incomplete.blank? %>
+      <div class="swiper-slide"> No chores to display</div>
+    <% else %>
+    <% @incomplete.each do |task| %>
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="card-title" >
+            <h2><%= task.chore.name %></h2>
+          </div>
+          <div class="card-duration">
+            <p>Takes <%= task.chore.duration %>mins</p>
+          </div>
+          <div class="card-deadline bg-danger bg-gradient">
+            <div class="timing">Dued since <br><p><%= task.deadline.strftime("%A, %d %b %Y") %></p></div>
+            <div class="edit-icon"><i class='fas fa-edit' style='font-size:36px'></i></div>
+          </div>
+          <div class="card-mark-complete">
+            <div class="tick-box"  data-mark-complete-target="tick" data-action= "click->mark-complete#mark" data-value="<%= task.id %>" ><i class="fa-thin fa-square" style="font-size:36px;"></i></div>
+            <div class="mark_message">Mark as complete</div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
+
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination swiper-pagination1"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+
+  <!-- If we need scrollbar -->
+  <%# <div class="swiper-scrollbar"></div> %>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+const swiper = new Swiper(".swiper", {
+  // Optional parameters
+  direction: "horizontal",
+  loop: true,
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 50,
+    stretch: 0,
+    depth: 100,
+    modifier: 1,
+    slideShadows: true,
+  },
+
+  // If we need pagination
+  pagination: {
+    el: ".swiper-pagination1",
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+
+  // And if we need scrollbar
+  // scrollbar: {
+  //   el: ".swiper-scrollbar",
+  // },
+});
+</script>
+</div>

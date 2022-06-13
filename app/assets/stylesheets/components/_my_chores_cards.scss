@@ -1,0 +1,111 @@
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .swiper-slide {
+    border-style: hidden;
+    border-radius: 16px;
+    box-shadow: inset 0px 0px 20px 2px #cccccc;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+  }
+}
+
+.swiper2 {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .swiper-slide {
+    border-style: hidden;
+    border-radius: 16px;
+    box-shadow: inset 0px 0px 20px 2px #cccccc;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+  }
+}
+
+.swiper3 {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .swiper-slide {
+    border-style: hidden;
+    border-radius: 16px;
+    box-shadow: inset 0px 0px 20px 2px #cccccc;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+  }
+}
+
+.swiper4 {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .swiper-slide {
+    border-style: hidden;
+    border-radius: 16px;
+    box-shadow: inset 0px 0px 20px 2px #cccccc;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 300px;
+  }
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: inset 0px 0px 20px 2px #cccccc;
+}
+
+.card-title h2 {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.card-duration p {
+  border-style: solid;
+  margin-inline: 16px;
+  padding: 8px;
+  border-radius: 24px;
+  background: #80808042;
+  text-align: center;
+}
+
+.card-deadline {
+  display: flex;
+  .timing {
+    text-align: center;
+    padding: 4px;
+    margin-top: 12px;
+  }
+  .edit-icon {
+    padding-top: 24px;
+    padding-left: 20px;
+  }
+}
+
+.card-mark-complete {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  .mark_message {
+    margin-left: 12px;
+    padding-top: 4px;
+  }
+}
