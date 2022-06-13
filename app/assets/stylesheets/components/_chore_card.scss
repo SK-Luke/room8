@@ -1,8 +1,7 @@
 .setup {
   h2 {
-  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  color: #d07b2c;
+  color: #94773e;
   margin-bottom: 1rem;
   }
 }
@@ -20,7 +19,7 @@
   text-align: center;
   h4 {
     font-size: 20px;
-    color: #e0dcce;
+    color: #aca897;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -33,7 +32,7 @@
   text-align: center;
   h4 {
     font-size: 20px;
-    color: gold;
+    color: #8e6f32;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -61,7 +60,7 @@
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: $yellow;
+  background-color: $red-pink;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
@@ -74,7 +73,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: $yellow;
+  background-color: $red-pink;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;

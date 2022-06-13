@@ -1,6 +1,6 @@
 <div class="container setup" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2 style="display: inline-block;">Setup your chores</h2>
-  <button class="btn btn-warning btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">+</button>
+  <button class="btn btn-primary btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">+</button>
 
   <!-- Display all chores -->
   <div class="chores" data-setup-chores-target="choresList">
@@ -59,8 +59,8 @@
 
   <div class="fixed-bottom mx-3">
     <button type="button"
-    class="btn btn-secondary"
+    class="btn btn-primary"
     data-action="click->setup-chores#destroy_unselected"
-    style="float: right;">Confirm</button>
+    style="float: right;color: white;">Confirm</button>
   </div>
 </div>
