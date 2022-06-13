@@ -62,6 +62,12 @@ user5 = User.new({
   password: "123123"
 })
 user5.save!
+user5 = User.new({
+  name: "Zack",
+  email: "zack@gmail.com",
+  password: "123123"
+})
+user5.save!
 
 signed_in_users = [user1, user2, user3, user4]
 
@@ -89,7 +95,7 @@ puts "🏠 Created 'Room8' flat and gave it 4 flatmates"
 # Chore creation
 puts "Creating chores..."
 Flat.all.each do |flat|
-  20.times do
+  40.times do
     chore = Chore.new({
       name: chores_array.sample,
       frequency: frequencies_array.sample,
@@ -103,9 +109,10 @@ Flat.all.each do |flat|
 
     chore_list = ChoreList.new
     chore_list.chore = chore
-    chore_list.deadline = Date.today+rand(3)
+    chore_list.deadline = Date.today+rand(-3..3)
     chore_list.user = flat.users.sample
     chore_list.month_list_id = month_list.id
+    chore_list.complete = [true, false].sample
     chore_list.save!
   end
 end
