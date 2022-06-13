@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :chore_lists, dependent: :destroy
   has_many :chores, through: :preferences
   has_many :preferences
+  has_one_attached :photo
 
   validates :name, :email, presence: true
 

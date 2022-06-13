@@ -36,6 +36,7 @@ class FlatsController < ApplicationController
   def show
     @users = Flat.find(params[:id]).users
     @flat = Flat.find(params[:id])
+    @date = Time.now
   end
 
   def edit
