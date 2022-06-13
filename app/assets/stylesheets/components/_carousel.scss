@@ -1,0 +1,22 @@
+.carousel {
+  z-index: -99;
+}
+
+#carousel-caption-first {
+  top: 20%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 767px) {
+  .carousel-inner {
+    height: 50vh;
+  }
+
+  .carousel-item,
+  .carousel-item img {
+    height: 50vh;
+    width: 100%;
+  }
+}

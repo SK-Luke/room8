@@ -1,0 +1,12 @@
+<div id="home-container" class="container">
+  <h1>Welcome to Room8</h1>
+  <div class="card">
+    <div class="card-body">
+      <h2>Create your flat</h2>
+      <%= simple_form_for @flat do |f| %>
+        <%= f.input :name%>
+        <%= f.button :submit, class: "btn-7" %>
+      <% end %>
+    </div>
+  </div>
+</div>
