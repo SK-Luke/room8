@@ -20,7 +20,9 @@ export default class extends Controller {
     })
       .then((response) => response.json())
       .then((data) => {
-        const htmlLi = `<li style='list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888'>${data.email}</li>`;
+        console.log(data);
+        // const htmlLi = `<li style='list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888'>${data.email}</li>`;
+        data.inserted_item;
         this.listsTarget.insertAdjacentHTML("beforeend", htmlLi);
         this.console.log(data.email);
       });

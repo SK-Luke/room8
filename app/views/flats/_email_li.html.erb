@@ -1,0 +1,5 @@
+<% @flat_user.each do |user| %>
+  <li style="list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888">
+    <%= user.user.email %>
+  </li>
+<% end %>
