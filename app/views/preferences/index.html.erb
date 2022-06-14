@@ -23,17 +23,17 @@
 
           <!-- Unhappy - Rating = 1 -->
           <i id="<%= preference.id %>-unhappy-1"
-          style="color: <%= preference.rating == 1 ? 'red' : 'black' %>"
+          style="color: <%= preference.rating == 1 ? 'firebrick' : 'grey' %>"
           class="fa-light fa-face-frown fa-3x mx-3"
           data-action="click->preferences#color_red"></i>
           <!-- Neutral - Rating = 2 -->
           <i id="<%= preference.id %>-neutral-2"
-          style="color: <%= preference.rating == 2 ? 'orange' : 'black' %>"
+          style="color: <%= preference.rating == 2 ? 'orange' : 'grey' %>"
           class="fa-light fa-face-meh fa-3x mx-3"
           data-action="click->preferences#color_orange"></i>
           <!-- Happy - Rating = 3 -->
           <i id="<%= preference.id %>-happy-3"
-          style="color: <%= preference.rating == 3 ? 'green' : 'black' %>"
+          style="color: <%= preference.rating == 3 ? 'forestgreen' : 'grey' %>"
           class="fa-light fa-face-smile fa-3x mx-3"
           data-action="click->preferences#color_green"></i>
         </div>

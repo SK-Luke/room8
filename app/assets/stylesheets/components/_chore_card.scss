@@ -1,7 +1,7 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: #e26547;
+  color: #c06d58;
   margin-bottom: 1rem;
   font-family: 'Inter';
   }
@@ -16,11 +16,12 @@
   padding: 10px;
   border-radius: 4px;
   background-color: $base-highlight;
-  box-shadow: 2px 4px $shadow;
+  box-shadow: 2px 4px $shadow-highlight;
   text-align: center;
+  border: 1px solid $red-pink;
   h4 {
     font-size: 20px;
-    color: #9f9c93;
+    color: #c06d58;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -31,9 +32,10 @@
   background-color: $base;
   box-shadow: 4px 4px $shadow;
   text-align: center;
+  border: 1px solid #EF2833;
   h4 {
     font-size: 20px;
-    color: #9e8044;
+    color: #92624e;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -45,7 +47,7 @@
   p {
     font-size: 14px;
     margin: 0;
-    color: $base-highlight;
+    color: white;
   }
 }
 .chore_details_selected {
@@ -82,5 +84,57 @@
     font-size: 14px;
     margin: 0;
     color: white;
+  }
+}
+
+
+
+/* CSS */
+.button-51 {
+  background-color: transparent;
+  border: 1px solid #703217;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: "Avenir Next LT W01 Bold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-51:hover,
+.button-51:active {
+  outline: 0;
+}
+
+.button-51:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-51:before {
+  background-color: #92624e;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.button-51:hover:before {
+  background-color: #6DCFF6;
+}
+
+@media (min-width: 768px) {
+  .button-51 {
+    padding: 16px 32px;
   }
 }

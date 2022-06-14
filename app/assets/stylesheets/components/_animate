@@ -15,7 +15,7 @@ svg {
 }
 .animate {
   stroke: #FFC300;
-  stroke-width: 2px;
+  stroke-width: 20px;
   stroke-dashoffset: -2000;
   stroke-dasharray: 2000;
   animation-name: animate;
