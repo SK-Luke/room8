@@ -1,4 +1,4 @@
-<div class="flat-chores-card chore_card" id="chore-<%= chore.id %>" data-setup-chores-target="choreCard">
+<div class="flat-chore-card" id="chore-<%= chore.id %>" data-setup-chores-target="choreCard">
   <div class="card-main">
     <div class="card-title">
       <span><%= chore.name %></span>
@@ -27,11 +27,7 @@
       </span>
     </div>
   </div>
-  <div class="edit-btn" data-action="click->setup-chores#editFormAppear">
+  <div class="edit-btn" data-action="click->index-chores#editFormAppear">
     <i class="fa-solid fa-pen-to-square"></i>
   </div>
 </div>
-
-<%# daily => day
-weekly => week
-monthly => month %>

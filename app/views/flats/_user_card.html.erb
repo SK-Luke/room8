@@ -1,7 +1,6 @@
 <div class="user-card">
-  <div class="card-top d-flex">
-    <div class="avatar-large" style = "background-image: url( <%= cl_image_path user.photo.key, crop: :thumb, gravity: :face %>); background-size: cover; background-position: top center;">
-    </div>
+  <div class="card-top d-flex overflow-hidden">
+    <%= render partial: "shared/avatar_large", locals: { user: user } %>
     <h2 class="mb-0 pt-2"><%= user.name %></h2>
   </div>
   <div class="card-info">
