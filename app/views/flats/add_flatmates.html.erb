@@ -1,5 +1,5 @@
-<div class="container w-50 mx-auto" data-controller="add-flatmates">
-  <h1>Add flatmates here</h1>
+<div id="flatmate-container" class="container" data-controller="add-flatmates">
+  <h1>Add your Roommate</h1>
   <ul style="padding: 0px" data-add-flatmates-target="lists">
     <% @users.each do |user| %>
       <%= render 'email_li', user: user %>
