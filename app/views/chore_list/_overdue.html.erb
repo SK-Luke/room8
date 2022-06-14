@@ -1,4 +1,6 @@
 <%# <%= render "template" %>
+<div class="cards-frame tabcontent" id = "incomplete">
+  <h1>Incompleted chores</h1>
 <!-- Slider main container -->
 <div class="swiper" >
   <!-- Additional required wrapper -->
@@ -46,7 +48,7 @@
 const swiper = new Swiper(".swiper", {
   // Optional parameters
   direction: "horizontal",
-  loop: true,
+  loop: false,
   effect: "coverflow",
   grabCursor: true,
   centeredSlides: true,
@@ -76,4 +78,5 @@ const swiper = new Swiper(".swiper", {
   // },
 });
 </script>
+</div>
 </div>
