@@ -56,6 +56,7 @@
   box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: .4);
   border-radius: 4px;
   padding-bottom: 2px;
+  transition: all .2s ease-in-out;
 
   .card-top {
     background-color: rgb(211, 211, 211);
@@ -92,4 +93,8 @@
       margin: 12px;
     }
   }
+
+  // &:hover {
+  //   transform: scale(1.05);
+  // }
 }

@@ -11,12 +11,12 @@ class UsersController < ApplicationController
     @user = User.find_by(email: user_review_params[:email])
     # @flat = Flat.find_by_name(user_review_params[:flat])
     @flat = Flat.find(user_review_params[:flat])
-    
+
     @flat_user = FlatUser.new()
     @flat_user.user = @user
     @flat_user.flat = @flat
     @flat_user.active = true
-    
+
     respond_to do |format|
       if @flat_user.save
         # Send email to Flatmate
