@@ -15,11 +15,14 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
+
+  <%= render 'shared/navbar' %>
+  <div class="container position-absolute">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render 'shared/flashes' %>
+  </div>
+  <%= yield %>
 
   </body>
 </html>
