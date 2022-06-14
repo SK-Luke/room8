@@ -1,8 +1,9 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: #94773e;
+  color: #e26547;
   margin-bottom: 1rem;
+  font-family: 'Inter';
   }
 }
 .chores {
@@ -19,7 +20,7 @@
   text-align: center;
   h4 {
     font-size: 20px;
-    color: #aca897;
+    color: #9f9c93;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -28,11 +29,11 @@
   padding: 10px;
   border-radius: 4px;
   background-color: $base;
-  box-shadow: 2px 4px $shadow;
+  box-shadow: 4px 4px $shadow;
   text-align: center;
   h4 {
     font-size: 20px;
-    color: #8e6f32;
+    color: #9e8044;
     font-family: 'Inter', sans-serif;
   }
 }
