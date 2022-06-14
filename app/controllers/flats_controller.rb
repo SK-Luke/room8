@@ -18,7 +18,8 @@ class FlatsController < ApplicationController
     if @flat.save
       redirect_to add_flatmates_to_flat_path(@flat)
       flat_user = FlatUser.new(flat: @flat, user: current_user)
-      flat_user.save
+      flat_user.active = true
+      flat_user.save!
     else
       render :home
     end

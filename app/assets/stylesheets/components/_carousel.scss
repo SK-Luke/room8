@@ -13,11 +13,16 @@
   .carousel-inner {
     height: 50vh;
   }
-
   .carousel-item,
   .carousel-item img {
     height: 50vh;
     width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #flatmate-container {
+    width: 50%;
   }
 }
 
