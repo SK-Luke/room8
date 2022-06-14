@@ -3,7 +3,7 @@ data-action="click->setup-chores#highlight"
 data-setup-chores-target="choreCard">
   <h4><%= chore.name %></h4>
   <div class="chore_details_selected">
-    <p>occurs <%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
+    <p><%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
   </div>
   <div class="chore_details_selected">
     <% if chore.duration < 60 %>

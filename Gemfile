@@ -18,16 +18,16 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+# gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "turbolinks_render"
-gem 'sidekiq'
-gem 'sidekiq-failures', '~> 1.0'
+# gem 'sidekiq'
+# gem 'sidekiq-failures', '~> 1.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'sassc-rails', '>= 2.1.0' 
+gem 'sassc-rails', '>= 2.1.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'letter_opener', group: :development
