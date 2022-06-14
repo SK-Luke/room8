@@ -18,11 +18,22 @@
     height: 50vh;
     width: 100%;
   }
+
+  .btn-orange {
+    padding: 8px;
+    box-shadow: none;
+  }
 }
 
 @media only screen and (min-width: 768px) {
   .flatmate-container {
     width: 50% !important;
+  }
+
+  .btn-orange {
+    padding: 8px 12px;
+    box-shadow: none;
+    border-style: solid;
   }
 }
 

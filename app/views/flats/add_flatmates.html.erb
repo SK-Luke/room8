@@ -1,6 +1,6 @@
-<div class="background-image d-flex flex-column align-item-center justify-content-center">
-  <h1 class="text-center text-shadow text-white">Welcome to <%= @flat.name %> </h1>
-  <div id="flatmate-container" class="container flatmate-container" data-controller="add-flatmates">
+<div class="background-image d-flex flex-column justify-content-center">
+  <h1 class="text-center text-white">Welcome to <%= @flat.name.capitalize %> </h1>
+  <div id="flatmate-container" class="container" data-controller="add-flatmates">
     <h3>Add your Roommate</h3>
     <ul style="padding: 0px" data-add-flatmates-target="lists">
       <% @users.each do |user| %>
@@ -9,10 +9,18 @@
         <% end %>
       <% end %>
     </ul>
-
+    <%# Render users form %>
     <%= render 'users/form', flat: @flat, user: @roommate %>
-  <!-- Button trigger modal -->
-    <%= render 'confirm' %>
+    <!-- Button trigger modal -->
+    <div data-add-flatmates-target="alert"></div>
+    <% if @users.count > 0 %>
+      <%= render 'confirm', status: "" %>
+    <% else %>
+      <%= render 'confirm', status: "disabled" %>
+    <% end %>
+    
+    
+    
   </div>
 </div>
 
