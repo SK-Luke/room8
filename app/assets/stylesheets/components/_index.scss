@@ -11,6 +11,14 @@
 @import "rating_card";
 @import "notice";
 
+* {
+  font-family: 'Montserrat', sans-serif;
+
+  // h1, h2, h3, h4 {
+  //   font-family: 'Bebas Neue', cursive;
+  // }
+}
+
 a {
   text-decoration: none;
   color: rgb(16, 16, 16)
