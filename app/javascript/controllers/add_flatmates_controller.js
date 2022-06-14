@@ -11,7 +11,7 @@ export default class extends Controller {
 
   send(event) {
     event.preventDefault();
-    console.log("send event triggered");
+    // console.log("send event triggered");
 
     fetch(this.formTarget.action, {
       method: "POST",
@@ -21,8 +21,6 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        // const htmlLi = `<li style='list-style-type: none; border: 1px solid grey; padding: 4px 8px; margin: 12px 0; color: #888888'>${data.email}</li>`;
-        // data.inserted_item;
         if (data.inserted_item) {
           this.listsTarget.insertAdjacentHTML("beforeend", data.inserted_item);
           document.getElementById("confirm_btn").disabled = false;
