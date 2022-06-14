@@ -33,6 +33,7 @@ export default class extends Controller {
 //       edtbtn.className = "chore_edit_button";
 //     }
 //   }
+
   addChore(event) {
     event.preventDefault();
     console.log(event)
@@ -40,11 +41,11 @@ export default class extends Controller {
     modal.style.display = "block";
   }
 
-//   modalClose(event) {
-//     event.preventDefault();
-//     const modal = document.getElementById("addChoreModal");
-//     modal.style.display = "none";
-//   }
+  modalClose(event) {
+    event.preventDefault();
+    const modal = document.getElementById("addChoreModal");
+    modal.style.display = "none";
+  }
 
   send(event) {
     event.preventDefault()
@@ -68,42 +69,43 @@ export default class extends Controller {
       })
   }
 
-//   editModalClose(event) {
-//     event.preventDefault();
-//     //console.log(event)
-//     const modal = event.path.find(element => element.id.includes("edit-chore"))
-//     //console.log(element)
-//     //const modal = document.getElementById(`edit-${element.id}-modal`);
-//     modal.style.display = "none";
-//   }
+  editModalClose(event) {
+    event.preventDefault();
+    //console.log(event)
+    const modal = event.path.find(element => element.id.includes("edit-chore"))
+    //console.log(element)
+    //const modal = document.getElementById(`edit-${element.id}-modal`);
+    modal.style.display = "none";
+  }
 
-//   editFormAppear(event){
-//     event.preventDefault();
-//     const element = event.path.find(element => element.className.includes("chore_card"))
-//     const modal = document.getElementById(`edit-${element.id}-modal`);
-//     modal.style.display = "block";
-//   }
+  editFormAppear(event){
+    event.preventDefault();
+    const element = event.path.find(element => element.className.includes("flat-chore-card"))
+    const modal = document.getElementById(`edit-${element.id}-modal`);
+    modal.style.display = "block";
+  }
 
-//   update(event) {
-//     event.preventDefault()
-//     const modal = event.path.find(element => element.id.includes("edit-chore"))
-//     let choreCard = document.getElementById(`chore-${modal.id.match(/\d+/)[0]}`)
-//     // console.log(choreCard)
-//     const form = event.path.find(element => element.id.includes("edit_chore"))
-//     const url = `/flats/${this.flatidValue}/chores/${modal.id.match(/\d+/)[0]}`
-//     // console.log(url)
-//     fetch(url, {
-//       method: "PATCH",
-//       headers: { "Accept": "text/plain" , "X-CSRF-Token": csrfToken() },
-//       body: new FormData(form)
-//     })
-//       .then(response => response.text())
-//       .then((data) => {
-//         modal.style.display = "none";
-//         //console.log(data)
-//         choreCard.outerHTML = data
-//       })
-//   }
+  update(event) {
+    event.preventDefault()
+    console.log("test")
+    const modal = event.path.find(element => element.id.includes("edit-chore"))
+    let choreCard = document.getElementById(`chore-${modal.id.match(/\d+/)[0]}`)
+    // console.log(choreCard)
+    const form = event.path.find(element => element.id.includes("edit_chore"))
+    const url = `/flats/${this.flatidValue}/chores/${modal.id.match(/\d+/)[0]}`
+    // console.log(url)
+    fetch(url, {
+      method: "PATCH",
+      headers: { "Accept": "text/plain" , "X-CSRF-Token": csrfToken() },
+      body: new FormData(form)
+    })
+      .then(response => response.text())
+      .then((data) => {
+        modal.style.display = "none";
+        //console.log(data)
+        choreCard.outerHTML = data
+      })
+  }
 
 //   destroy_unselected(event) {
 //     event.preventDefault();
