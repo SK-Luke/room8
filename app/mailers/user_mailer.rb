@@ -5,9 +5,14 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.add-Flatmates.subject
   #
-  def welcome(user)
+  def welcome(user, current_user, flat)
     @user = user
-    
-    mail(to: user.email, subject: "Welcome fellow Room8!")
+    @current_user = current_user
+    @flat = flat
+    # @flat = user.flats
+    mail(
+      to: user.email, 
+      subject: "You have been invited by #{current_user.name} to join #{@flat.name}!
+      ")
   end
 end
