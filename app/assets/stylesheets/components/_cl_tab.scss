@@ -1,8 +1,8 @@
 .chore-tab {
-  background-color: rgb(211, 211, 211);
+  background-color: #f9fcff;
   position: fixed;
   bottom: 0;
-  width: 350px;
+  width: calc(min(100vw, 400px));
   height: 70px;
   display: flex;
   justify-content: center;
@@ -14,7 +14,9 @@
 
   ul {
     display: flex;
-    width: 90%;
+    width: 100%;
+    justify-content: space-around;
+    padding-left: 0rem;
   }
 
   li {
@@ -73,7 +75,7 @@
     background: orange;
     top: -50%;
     border-radius: 50%;
-    border: 6px solid #f4f4f4;
+    border: 6px solid $body;
     transition: 0.5s;
   }
 
@@ -86,7 +88,7 @@
     height: 20px;
     background: transparent;
     border-top-right-radius: 20px;
-    box-shadow: 1px -10px 0 0 #f4f4f4;
+    box-shadow: 1px -10px 0 0 $body;
   }
   .indicator::after {
     content: "";
@@ -97,19 +99,19 @@
     height: 20px;
     background: transparent;
     border-top-left-radius: 20px;
-    box-shadow: 0px -10px 0 0 #f4f4f4;
+    box-shadow: 0px -10px 0 0 $body;
   }
 }
 
 .chore-tab > ul > li:nth-child(1).status ~ .indicator {
-  transform: translateX(calc(70px * 0));
+  transform: translateX(calc(-216% * 1));
 }
 .chore-tab > ul > li:nth-child(2).status ~ .indicator {
-  transform: translateX(calc(70px * 1));
+  transform: translateX(calc(-72% * 1));
 }
 .chore-tab > ul > li:nth-child(3).status ~ .indicator {
-  transform: translateX(calc(70px * 2));
+  transform: translateX(calc(71% * 1));
 }
 .chore-tab > ul > li:nth-child(4).status ~ .indicator {
-  transform: translateX(calc(70px * 3));
+  transform: translateX(calc(212% * 1));
 }
