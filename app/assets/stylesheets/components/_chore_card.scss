@@ -1,7 +1,7 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: $forest;
+  color: #c06d58;
   margin-bottom: 1rem;
   font-family: 'Inter';
   }
@@ -15,44 +15,40 @@
 .chore_card {
   padding: 10px;
   border-radius: 4px;
-  background-color: $base-highlight;
-  box-shadow: 4px 4px $shadow-forest;
+  background-color: #f4f2ee;
   text-align: center;
-  border: 1px solid $forest;
+  box-shadow: 2px 4px 10px #6662614a;
   h4 {
     font-size: 20px;
-    color: #9c8e77;
-    font-family: 'Inter', sans-serif;
+    color: #c7aea8;
   }
 }
 
 .chore_card_selected {
   padding: 10px;
   border-radius: 4px;
-  background-color: $base;
-  box-shadow: 4px 4px $shadow-pink;
+  background-color: white;
+  box-shadow: 2px 4px 10px #6662614a;
   text-align: center;
-  border: 1px solid #EF2833;
   h4 {
     font-size: 20px;
-    color: #f86e6a;
-    font-family: 'Inter', sans-serif;
+    color: #c06d58;
   }
 }
 .chore_details {
   border-radius: 4px;
-  background-color: $light-highlight;
+  background-color: #eae7e3;
   margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 14px;
     margin: 0;
-    color: #9c8d77;
+    color: #c0b9ae;
   }
 }
 .chore_details_selected {
   border-radius: 4px;
-  background-color: $light;
+  background-color: #f7f5f2;
   margin-bottom: 10px;
   padding: 6px;
   p {
@@ -63,7 +59,7 @@
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: $forest;
+  background-color: #C06D58;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
@@ -76,7 +72,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: $forest;
+  background-color: #C06D58;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;
