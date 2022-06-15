@@ -22,7 +22,7 @@
         </button>
         <button type="button" class="btn-orange">
           <%= link_to setup_chores_flat_path(@flat), style: 'color: white;' do %>
-          <% Chore.create_defaults(@flat.id) %>
+            <% Chore.create_defaults(@flat.id) %>
           <p>Select from list</p>
           <% end %>
         </button>
