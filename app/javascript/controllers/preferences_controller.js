@@ -12,7 +12,7 @@ export default class extends Controller {
     //console.log(event);
     const unhappy = event.target
     const id = unhappy.id.split("-")[0]
-    unhappy.style.color = "firebrick"
+    unhappy.style.color = "indianred"
     const neutral = document.getElementById(`${id}-neutral-2`)
     const happy = document.getElementById(`${id}-happy-3`)
     neutral.style.color = "grey"
