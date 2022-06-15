@@ -1,7 +1,7 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: #c06d58;
+  color: $forest;
   margin-bottom: 1rem;
   font-family: 'Inter';
   }
@@ -16,12 +16,12 @@
   padding: 10px;
   border-radius: 4px;
   background-color: $base-highlight;
-  box-shadow: 2px 4px $shadow-highlight;
+  box-shadow: 4px 4px $shadow-forest;
   text-align: center;
-  border: 1px solid $red-pink;
+  border: 1px solid $forest;
   h4 {
     font-size: 20px;
-    color: #c06d58;
+    color: #9c8e77;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -30,12 +30,12 @@
   padding: 10px;
   border-radius: 4px;
   background-color: $base;
-  box-shadow: 4px 4px $shadow;
+  box-shadow: 4px 4px $shadow-pink;
   text-align: center;
   border: 1px solid #EF2833;
   h4 {
     font-size: 20px;
-    color: #92624e;
+    color: #f86e6a;
     font-family: 'Inter', sans-serif;
   }
 }
@@ -47,7 +47,7 @@
   p {
     font-size: 14px;
     margin: 0;
-    color: white;
+    color: #9c8d77;
   }
 }
 .chore_details_selected {
@@ -63,7 +63,7 @@
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: $red-pink;
+  background-color: $forest;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
@@ -76,7 +76,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: $red-pink;
+  background-color: $forest;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;
