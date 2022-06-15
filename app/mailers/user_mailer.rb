@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
     # @flat = user.flats
     mail(
       to: user.email, 
-      subject: "You have been invited by #{current_user.name} to join #{@flat.name}!
+      subject: "You've got an invite from #{current_user.name}!
       ")
   end
 end
