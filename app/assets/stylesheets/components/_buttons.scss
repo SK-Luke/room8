@@ -70,18 +70,27 @@
 /* 7 */
 
 .btn-orange {
-  background-color: #fb723b;
+  background-color: $mandarin-orange;
   border-radius: 5px;
   color: white;
   transition-duration: 0.4s ease;
   border-style: solid;
   border-width: 1px;
-  border-color: #fb723b;
+  border-color: $mandarin-orange;
 }
 
 .btn-orange:hover {
   background-color: white;
-  color: #fb723b;
+  color: $mandarin-orange;
   border-style: solid;
   border-width: 1px;
+}
+
+a:hover {
+  color: $mandarin-orange;
+}
+
+.btn-mandarin {
+  background-color: $mandarin-orange;
+  color: white;
 }
