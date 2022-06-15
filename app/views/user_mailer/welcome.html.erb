@@ -1,10 +1,37 @@
-<h1>Hello, <%= @user.name %></h1>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <%# <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> %>
+    <style type="text/css" media="screen">
+      h3 { color: c; font-family: font-family: 'Roboto', sans-serif; }
+      p { font-family: font-family: 'Roboto', sans-serif; }
+      button { width: 100px; height: 30px; padding: 8px 12px 12px 12px; background-color: #fb723b; border-style: none; border-radius: 5px; }
+      /* box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: .4); */
+      a { color: rgb(242, 241, 241); text-decoration: none; }
+      /* .btn {width: 100px; height: 30px; padding: 8px 12px 12px 12px; background-color: #fb723b; border-style: none; border-radius: 5px;} */
+    </style>
+  </head>
+  <body>
+    <h3>Hello <%= @user.name.capitalize %>!! 👋 </h3>
+    <p>
+      You have been invited by <b><%= @current_user.name %></b> to join flat:<b> <%= @flat.name %></b>!!
+      <br><br>
+      Click on the link below to set your preferred chores to get started!
+    </p>
+    <button>
+      <%= link_to "Join Now", preferences_url %>
+    </button>
+    <p>
+      Stay Fruity,
+      <br>
+      Team Room8
+    </p>
+  </body>
+</html>
 
-<p>
-  <%= @user.name.capitalize %>, You have been invited to join Room8
-</p> 
 
-<%= link_to "Click here to get started", preferences_url %>
 
 
 

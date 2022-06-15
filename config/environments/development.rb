@@ -14,8 +14,8 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
   # Open sent email on new chrome tab
-  config.action_mailer.delivery_method = :letter_opener
-  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   # config.action_mailer.smtp_settings = {
   #   address: "smtp.gmail.com",
