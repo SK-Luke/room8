@@ -1,0 +1,115 @@
+.chore-tab {
+  background-color: rgb(211, 211, 211);
+  position: fixed;
+  bottom: 0;
+  width: 350px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-sizing: border-box;
+  z-index: 100;
+  margin: 0 auto;
+
+  ul {
+    display: flex;
+    width: 90%;
+  }
+
+  li {
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+  }
+
+  ul > li > a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  ul > li > a > .icon {
+    position: relative;
+    display: block;
+    line-height: 75px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s;
+    color: rgb(24, 24, 24);
+  }
+
+  ul > li.status > a > .icon {
+    transform: translateY(-32px);
+  }
+
+  ul > li > a > .text {
+    position: absolute;
+    color: rgb(24, 24, 24);
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    transform: translateY(20px);
+    opacity: 0.5;
+  }
+
+  ul > li.status > a > .text {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+
+  .indicator {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: orange;
+    top: -50%;
+    border-radius: 50%;
+    border: 6px solid #f4f4f4;
+    transition: 0.5s;
+  }
+
+  .indicator::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 #f4f4f4;
+  }
+  .indicator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -22px;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: 0px -10px 0 0 #f4f4f4;
+  }
+}
+
+.chore-tab > ul > li:nth-child(1).status ~ .indicator {
+  transform: translateX(calc(70px * 0));
+}
+.chore-tab > ul > li:nth-child(2).status ~ .indicator {
+  transform: translateX(calc(70px * 1));
+}
+.chore-tab > ul > li:nth-child(3).status ~ .indicator {
+  transform: translateX(calc(70px * 2));
+}
+.chore-tab > ul > li:nth-child(4).status ~ .indicator {
+  transform: translateX(calc(70px * 3));
+}
