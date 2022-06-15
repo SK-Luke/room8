@@ -1,14 +1,24 @@
-<div class="container w-50 mx-auto" data-controller="add-flatmates">
-  <h1>Add flatmates here</h1>
-  <ul style="padding: 0px" data-add-flatmates-target="lists">
-    <% @users.each do |user| %>
-      <%= render 'email_li', user: user %>
+<div class="background-image d-flex flex-column justify-content-center">
+  <h1 class="text-center text-white">Welcome to <%= @flat.name.capitalize %> </h1>
+  <div id="flatmate-container" class="container" data-controller="add-flatmates">
+    <h3>Add your Roommate</h3>
+    <ul style="padding: 0px" data-add-flatmates-target="lists">
+      <% @users.each do |user| %>
+        <% if user != current_user %>
+          <%= render 'email_li', user: user %>
+        <% end %>
+      <% end %>
+    </ul>
+    <%# Render users form %>
+    <%= render 'users/form', flat: @flat, user: @roommate %>
+    <!-- Button trigger modal -->
+    <div data-add-flatmates-target="alert"></div>
+    <% if @users.count > 0 %>
+      <%= render 'confirm', status: "" %>
+    <% else %>
+      <%= render 'confirm', status: "disabled" %>
     <% end %>
-  </ul>
-
-  <%= render 'users/form', flat: @flat, user: @roommate %>
-<!-- Button trigger modal -->
-  <%= render 'confirm' %>
+  </div>
 </div>
 
 <%# should be able to lead us add_chores page after here %>

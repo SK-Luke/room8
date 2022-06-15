@@ -1,0 +1,46 @@
+.carousel {
+  z-index: -99;
+}
+
+#carousel-caption-first {
+  top: 20%;
+  transform: translateY(-50%);
+  bottom: initial;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 767px) {
+  .carousel-inner {
+    height: 50vh;
+  }
+  .carousel-item,
+  .carousel-item img {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .btn-orange {
+    padding: 8px;
+    box-shadow: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .flatmate-container {
+    width: 50% !important;
+  }
+
+  .btn-orange {
+    padding: 8px 12px;
+    box-shadow: none;
+    border-style: solid;
+  }
+}
+
+.carousel-header {
+  text-shadow: 3px 3px #706c6c;
+}
+
+.carousel-paragraph {
+  text-shadow: 1px 1px #3d3c3c;
+}
