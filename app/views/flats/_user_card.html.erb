@@ -1,15 +1,16 @@
 <div class="user-card">
-  <div class="card-top d-flex">
-    <div class="avatar-large" style = "background-image: url( <%= cl_image_path user.photo.key, crop: :thumb, gravity: :face %>); background-size: cover; background-position: top center;">
+  <div class="d-flex justify-content-between">
+    <div class="card-left">
+      <%= render partial: "shared/avatar_xlarge", locals: { user: user } %>
     </div>
-    <h2 class="mb-0 pt-2"><%= user.name %></h2>
+    <div class="card-right">
+      <h2 class="mb-0"><%= user.name %></h2>
+      <div class="card-info">
+        <p><%= user.chore_lists.count - user.chore_lists.where("complete = true").count %> chores remaining</p>
+        <p><%= user.chore_lists.where("complete = true").count %> chores completed</p>
+        <p><%= user.chore_lists.where("deadline < ?", @date).count %> chores overdue</p>
+      </div>
+    </div>
   </div>
-  <div class="card-info">
-    <p><%= user.chore_lists.count - user.chore_lists.where("complete = true").count %> chores remaining</p>
-    <p><%= user.chore_lists.where("complete = true").count %> chores completed</p>
-    <p><%= user.chore_lists.where("deadline < ?", @date).count %> chores overdue</p>
-  </div>
-  <div class="card-bottom">
-    <p><%= Time.days_in_month(Time.now.month, Time.now.year) - Time.now.day %> days remaining till july</p>
-  </div>
+  <hr class="bottom-line">
 </div>

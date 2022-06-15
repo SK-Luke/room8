@@ -1,16 +1,39 @@
+.setup {
+  h2 {
+  font-weight: 700;
+  color: #94773e;
+  margin-bottom: 1rem;
+  }
+}
 .chores {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
+  font-family: 'Archivo', sans-serif;;
 }
-.chore_card_styling {
+.chore_card {
   padding: 10px;
   border-radius: 4px;
   background-color: $base-highlight;
   box-shadow: 2px 4px $shadow;
+  text-align: center;
   h4 {
-    font-size: 16px;
-    color: #846d4d;
+    font-size: 20px;
+    color: #aca897;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+.chore_card_selected {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: $base;
+  box-shadow: 2px 4px $shadow;
+  text-align: center;
+  h4 {
+    font-size: 20px;
+    color: #8e6f32;
+    font-family: 'Inter', sans-serif;
   }
 }
 .chore_details {
@@ -19,18 +42,9 @@
   margin-bottom: 10px;
   padding: 6px;
   p {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     color: $base-highlight;
-  }
-}
-.chore_card_selected {
-  padding: 10px;
-  border-radius: 4px;
-  background-color: $base;
-  box-shadow: 2px 4px $shadow;
-  h4 {
-    font-size: 16px;
   }
 }
 .chore_details_selected {
@@ -39,31 +53,32 @@
   margin-bottom: 10px;
   padding: 6px;
   p {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
+    color: $base-p;
   }
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: $orange;
+  background-color: $red-pink;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
   text-align: center;
   p {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     color: white;
   }
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: $orange;
+  background-color: $red-pink;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;
   p {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
     color: white;
   }
