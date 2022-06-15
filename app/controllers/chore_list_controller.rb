@@ -19,7 +19,6 @@ class ChoreListController < ApplicationController
     if params[:chore_list].blank?
       mark_chore_complete
     else
-
       params.permit(:id)
       @task = ChoreList.find(params[:id])
       @task.update(params.require(:chore_list).permit(:deadline))
