@@ -13,24 +13,19 @@
 <div class="swiper-slide">
         <div class="card">
 
+          <div class="d-flex">
           <div class="vl"></div>
 
+          <div class="card-body">
           <div class="card-title">
-            <h2><%= task.chore.name %></h2>
+            <h4><%= task.chore.name %></h4>
           </div>
           <div class="card-duration">
-            <p>Takes <%= task.chore.duration %>mins</p>
+            <p><i class="fa-solid fa-clock-rotate-left"></i> Takes <%= task.chore.duration %>mins <br>
+            By <%= task.deadline.strftime("%A, %d/%m/%y") %></p>
           </div>
-          <div class="card-deadline bg-secondary bg-gradient">
-            <div class="timing">Complete by <br><p><%= task.deadline.strftime("%A, %d %b %Y") %></p></div>
-            <div class="edit-icon"><i class='fas fa-edit' style='font-size:36px'></i></div>
           </div>
-          <div class="card-mark-complete">
-            <div class="tick-box"><i class="fa-thin fa-square" style="font-size:36px;"></i></div>
-            <div class="mark_message">Mark as complete</div>
-          </div>
-
-
+        </div>
 
         </div>
     <% end %>
@@ -41,8 +36,8 @@
   <div class="swiper-pagination4"></div>
 
   <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+  <%# <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> %>
 
 
   <!-- If we need scrollbar -->
@@ -62,10 +57,10 @@ const swiper4 = new Swiper(".swiper4", {
   },
 
   // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+  // navigation: {
+  //   nextEl: ".swiper-button-next",
+  //   prevEl: ".swiper-button-prev",
+  // },
 
   // And if we need scrollbar
   // scrollbar: {

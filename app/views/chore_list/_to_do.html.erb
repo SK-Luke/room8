@@ -12,23 +12,31 @@
     <% @to_do.each do |task| %>
 <div class="swiper-slide">
         <div class="card" data-controller="mark-complete edit-deadline">
+
+          <div class="d-flex">
+            <div class="vl"></div>
+
+          <div class="card-body">
           <div class="card-title">
             <h2 data-mark-complete-target="chore" data-value="<%= task.chore.name %>"><%= task.chore.name %></h2>
           </div>
           <div class="card-duration">
-            <p>Takes <%= task.chore.duration %>mins</p>
+            <p><i class="fa-solid fa-clock-rotate-left"></i> Takes <%= task.chore.duration %>mins <br>
+            By <%= task.deadline.strftime("%A, %d/%m/%y") %></p>
           </div>
-          <div class="card-deadline bg-warning bg-gradient">
-            <div class="timing"><p><%= task.deadline.strftime("%A, %d %b %Y") %></p></div>
-            <div class="edit-icon" data-edit-deadline-target="edit" data-action= "click->edit-deadline#openForm">
-              <i class='fas fa-edit' style='font-size:36px'></i>
-            </div>
+          <div class="btn btn-warning" data-edit-deadline-target="edit" data-action= "click->edit-deadline#openForm">Set personal deadline
           </div>
           <div class="card-mark-complete">
             <div class="btn btn-success" data-mark-complete-target="tick" data-action= "click->mark-complete#mark" data-value="<%= task.id %>">Mark as complete</div>
           </div>
         <div class="d-none" data-edit-deadline-target="form"><%= render "edit_deadline", locals: {task: @task=task} %></div>
         </div>
+
+        </div>
+        </div>
+
+
+
       </div>
     <% end %>
     <% end %>
@@ -37,8 +45,8 @@
   <div class="swiper-pagination2"></div>
 
   <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+  <%# <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> %>
 
 
   <!-- If we need scrollbar -->
@@ -58,10 +66,10 @@ const swiper2 = new Swiper(".swiper2", {
   },
 
   // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+  // navigation: {
+  //   nextEl: ".swiper-button-next",
+  //   prevEl: ".swiper-button-prev",
+  // },
 
   // And if we need scrollbar
   // scrollbar: {

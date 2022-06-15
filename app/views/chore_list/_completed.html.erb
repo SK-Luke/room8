@@ -18,14 +18,12 @@
 
           <div class="card-body">
           <div class="card-title">
-            <h2><%= task.chore.name %></h2>
+            <h4><%= task.chore.name %></h4>
           </div>
           <div class="card-duration">
-            <p>Takes <%= task.chore.duration %>mins</p>
-          </div>
-          <div class="card-deadline bg-success bg-gradient">
-            <div class="timing">Completed on <br><p><%= task.updated_at.strftime("%A, %d %b %Y") %></p></div>
-            <div class="edit-icon"><i class='fas fa-edit' style='font-size:36px'></i></div>
+            <p><i class="fa-solid fa-clock-rotate-left"></i> Takes <%= task.chore.duration %>mins <br>
+            </p>
+            <p>Completed on <br><%= task.updated_at.strftime("%A, %d %b %Y") %></p>
           </div>
           </div>
 
@@ -41,8 +39,8 @@
   <div class="swiper-pagination3"></div>
 
   <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+  <%# <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> %>
 
 
   <!-- If we need scrollbar -->
@@ -62,10 +60,10 @@ const swiper3 = new Swiper(".swiper3", {
   },
 
   // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+  // navigation: {
+  //   nextEl: ".swiper-button-next",
+  //   prevEl: ".swiper-button-prev",
+  // },
 
   // And if we need scrollbar
   // scrollbar: {
