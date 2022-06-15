@@ -12,6 +12,9 @@
     <% @upcoming.each do |task| %>
 <div class="swiper-slide">
         <div class="card">
+
+          <div class="vl"></div>
+
           <div class="card-title">
             <h2><%= task.chore.name %></h2>
           </div>
@@ -26,6 +29,9 @@
             <div class="tick-box"><i class="fa-thin fa-square" style="font-size:36px;"></i></div>
             <div class="mark_message">Mark as complete</div>
           </div>
+
+
+
         </div>
     <% end %>
     <% end %>
@@ -47,18 +53,8 @@
 const swiper4 = new Swiper(".swiper4", {
   // Optional parameters
   direction: "horizontal",
-  loop: false,
-  effect: "coverflow",
+  effect: "cards",
   grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  coverflowEffect: {
-    rotate: 50,
-    stretch: 0,
-    depth: 100,
-    modifier: 1,
-    slideShadows: true,
-  },
 
   // If we need pagination
   pagination: {
