@@ -18,6 +18,13 @@
   background-color: #f4f2ee;
   text-align: center;
   box-shadow: 2px 4px 8px $shadow;
+  display: flex;
+  flex-direction: column;
+  .chore-top {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
   h4 {
     font-size: 20px;
     color: #c7aea8;
@@ -32,17 +39,14 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-
   .chore-top {
     flex-grow: 1;
     align-items: center;
     justify-content: center;
   }
-
   h4 {
     font-size: 20px;
     color: $coral;
-    vertical-align: middle;
   }
 }
 .chore_details {
