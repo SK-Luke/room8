@@ -4,13 +4,12 @@
       <%= image_tag "logocolor.png" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? && current_user.flats.count == 0 %>
+
+    <div class="collapse navbar-collapse flex-grow-1 justify-content-between" id="navbarSupportedContent">
+      <% if user_signed_in? && current_user.flats.count == 0 %>
+        <%# Navbar if logged but have no flat yet %>
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <li class="nav-item dropdown">
             <div class="dropdown-toggle" id ="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -20,34 +19,45 @@
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
-        <% elsif user_signed_in? && current_user.flats.count > 0 %>
-          <li class="nav-item active">
-            <%= link_to "My preferences", preferences_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My flat's chores", chores_path(current_user.flats.first), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My roommates", flat_path(current_user.flats.first), class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My chores", chore_list_index_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <div class="dropdown-toggle" id ="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= render partial: "shared/avatar_small", locals: { user: current_user } %>
-            </div>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
+        </ul>
+      <% elsif user_signed_in? && current_user.flats.count > 0 %>
+        <%# Navbar if logged in and have flat %>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item active">
+              <%= link_to "My preferences", preferences_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "My flat's chores", chores_path(current_user.flats.first), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "My roommates", flat_path(current_user.flats.first), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "My chores", chore_list_index_path, class: "nav-link" %>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          </ul>
+        <%# Navbar if not logged in yet %>
+      <% else %>
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     </div>
+
+    <%# toggle %>
+    <div data-bs-toggle="collapse" type="button" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <%= render partial: "shared/avatar_small", locals: { user: current_user } %>
+    </div>
+
   </div>
 </div>
