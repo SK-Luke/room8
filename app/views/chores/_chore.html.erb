@@ -1,15 +1,15 @@
 <div class="chore_card_selected" id="chore-<%= chore.id %>"
 data-action="click->setup-chores#highlight"
 data-setup-chores-target="choreCard">
-  <h4><%= chore.name %></h4>
-  <div class="chore_details_selected">
-    <p><%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
+  <div class="chore-top d-flex">
+    <h4><%= chore.name %></h4>
   </div>
   <div class="chore_details_selected">
+    <p><i class="fa-solid fa-calendar"></i> <%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
     <% if chore.duration < 60 %>
-      <p>takes <%= pluralize( chore.duration, 'min' ) %></p>
+      <p><i class="fa-solid fa-clock-rotate-left"></i> takes <%= pluralize( chore.duration, 'min' ) %></p>
     <% else %>
-      <p>takes <%= (chore.duration/60).to_i %> h
+      <p><i class="fa-solid fa-clock-rotate-left"></i> takes <%= (chore.duration/60).to_i %> h
       <% if (chore.duration/60.0).modulo(1) > 0 %>
         <%= pluralize( (((chore.duration/60.0).modulo(1))*60).to_i, 'min' ) %></p>
       <% end %>
@@ -24,7 +24,7 @@ data-setup-chores-target="choreCard">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Chore</h5>
+        <h5 class="modal-title" style="color: #fb723b;">Edit Chore</h5>
         <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
       </div>
       <%= simple_form_for(chore,
@@ -32,7 +32,7 @@ data-setup-chores-target="choreCard">
                           setup_chores_target: "editForm",
                           action: "submit->setup-chores#update"
                           }) do |f| %>
-        <div class="modal-body">
+        <div class="modal-body" style="color: #7e6b6b">
           <%= f.input :name %>
           <%= f.input :frequency, label: "Happens", collection: %w(daily weekly monthly), class: "mx-3" %>
           <%= f.input :repetition, label: false %>
@@ -40,7 +40,7 @@ data-setup-chores-target="choreCard">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-action="click->setup-chores#editModalClose">Close</button>
-          <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
+          <%= f.button :submit, "Submit", class: 'btn btn-info', style: "color: white" %>
         </div>
       <% end %>
     </div>

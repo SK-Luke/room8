@@ -4,7 +4,7 @@
                     setup_chores_target: "form",
                     action: "submit->setup-chores#send"
                     }) do |f| %>
-  <div class="modal-body">
+  <div class="modal-body" style="color: #7e6b6b">
     <%= f.input :name %>
     <%= f.input :frequency, label: "Happens", collection: %w(daily weekly monthly), class: "mx-3" %>
     <%= f.input :repetition, label: false %>
@@ -12,7 +12,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-action="click->setup-chores#modalClose">Close</button>
-    <%= f.button :submit, "Submit", class: 'btn btn-primary' %>
+    <%= f.button :submit, "Add", class: 'btn btn-info', style: "color: white" %>
   </div>
 <% end %>
 <!-- End of Modal -->

@@ -1,7 +1,7 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: $coral;
+  color: $orange;
   margin-bottom: 1rem;
   font-family: 'Inter';
   }
@@ -10,14 +10,20 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  font-family: 'Archivo', sans-serif;;
 }
 .chore_card {
   padding: 10px;
   border-radius: 4px;
   background-color: #f4f2ee;
   text-align: center;
-  box-shadow: 2px 4px 10px $shadow;
+  box-shadow: 2px 4px 8px $shadow;
+  display: flex;
+  flex-direction: column;
+  .chore-top {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
   h4 {
     font-size: 20px;
     color: #c7aea8;
@@ -30,6 +36,13 @@
   background-color: white;
   box-shadow: 2px 4px 10px $shadow;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  .chore-top {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
   h4 {
     font-size: 20px;
     color: $coral;
