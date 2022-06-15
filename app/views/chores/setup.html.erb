@@ -23,8 +23,6 @@
               <%= pluralize( (((chore.duration/60.0).modulo(1))*60).to_i, 'min' ) %></p>
             <% end %>
           <% end %>
-<<<<<<< HEAD
-        <% end %>
       </div>
       <div class="chore_edit_button" data-action="click->setup-chores#editFormAppear">
         <p>Edit</p>
@@ -39,23 +37,6 @@
             <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
           </div>
           <%= render 'editchore', chore: chore %>
-=======
-        </div>
-        <div class="chore_edit_button" data-action="click->setup-chores#editFormAppear">
-          <p>Edit</p>
-        </div>
-      </div>
-      <!-- Modal for edit chore -->
-      <div id="edit-chore-<%= chore.id %>-modal" class="modals" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Edit Chore</h5>
-              <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
-            </div>
-            <%= render 'editchore', chore: chore %>
-          </div>
->>>>>>> master
         </div>
       </div>
     <!-- End of Modal -->

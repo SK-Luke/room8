@@ -65,14 +65,26 @@ export default class extends Controller {
         headers: { "Accept": "text/plain" , "X-CSRF-Token": csrfToken() },
         body: new FormData(document.getElementById(`edit_preference_${prefid}`))
       })
-        .then(response => response.redirect("/preferences"))
-        .then((data) => {
-          //console.log(data)
-        })
+      .then(response => response.redirect("/preferences"))
+      .then((data) => {
+        //console.log(data)
+      })
     })
     //alert("your preference has been saved")
     //location.reload(true);
     //this.notifTarget.style.display = "block"
+    const body = document.getElementById('preferences')
+    const notice = `<div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+                  Your preference has been saved 📂
+                  <a data-bs-dismiss="alert" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                  </a>
+                </div>`
+
+    body.insertAdjacentHTML("afterbegin", notice)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.setTimeout(function(){document.querySelector(".flash").remove()},3000)
+    //window.setTimeout(function(){location.reload()},3000)
   }
 
   closeNotif() {

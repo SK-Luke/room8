@@ -1,11 +1,11 @@
-.alert {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1000;
-}
+// .alert {
+//   position: fixed;
+//   bottom: 16px;
+//   right: 16px;
+//   z-index: 1000;
+// }
 .flash {
-  padding: 16px 24px;
+  padding: 6px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,8 +21,12 @@
 
 .flash-warning {
   border: 2px solid #FFC65A;
+  color: #b68e41;
+  font-size: 14px;
 }
 
 .flash-danger {
   border: 2px solid #FD1015;
+  color: #7e1618;
+  font-size: 14px;
 }
