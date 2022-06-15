@@ -1,16 +1,15 @@
-<div class="box">
-  <h1>Incomplete Chores</h1>
-    <%= render "overdue", locals: {incomplete: @incomplete} %>
-</div>
-<div class="box">
-  <h1>Chores to do now</h1>
-    <%= render "to_do", locals: {to_do: @to_do} %>
-</div>
-<div class="box">
-  <h1>Completed chores</h1>
-    <%= render "completed", locals: {completed: @completed} %>
-</div>
-<div class="box">
-  <h1>Upcoming chores</h1>
-    <%= render "upcoming", locals: {upcoming: @upcoming} %>
+<div class="card-wrapper">
+  <div class="box">
+      <%= render "overdue", locals: {incomplete: @incomplete} %>
+  </div>
+  <div class="box">
+      <%= render "to_do", locals: {to_do: @to_do} %>
+  </div>
+  <div class="box">
+      <%= render "completed", locals: {completed: @completed} %>
+  </div>
+  <div class="box">
+      <%= render "upcoming", locals: {upcoming: @upcoming} %>
+  </div>
+  <%= render "cl_tabs" %>
 </div>

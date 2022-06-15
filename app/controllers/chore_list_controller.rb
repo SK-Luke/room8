@@ -16,11 +16,17 @@ class ChoreListController < ApplicationController
   end
 
   def update
-    params.permit(:id)
-    task = ChoreList.find(params[:id])
-    task.complete = true
-    task.save!
-    redirect_to chore_list_index_path
+    if params[:chore_list].blank?
+      mark_chore_complete
+    else
+      params.permit(:id)
+      @task = ChoreList.find(params[:id])
+      @task.update(params.require(:chore_list).permit(:deadline))
+      respond_to do |format|
+        format.text { render partial: "chore_list/edit_deadline", locals: { task: @task }, formats: [:html] }
+        format.json
+      end
+    end
   end
 
   private
@@ -57,6 +63,21 @@ class ChoreListController < ApplicationController
             i += 1
           end
         end
+      end
+    end
+  end
+
+  def mark_chore_complete
+    params.permit(:id)
+    @task = ChoreList.find(params[:id])
+    @task.complete = true
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to chore_list_index_path }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render "chore_list" }
+        format.json # Follow the classic Rails flow and look for a create.json view
       end
     end
   end
