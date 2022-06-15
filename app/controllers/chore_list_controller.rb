@@ -67,6 +67,48 @@ class ChoreListController < ApplicationController
     end
   end
 
+  def get_days(y, m, d)
+    # this should return us days remaining to end of month
+    # check if is created < 7 to end of month
+    # total_days && days_to_eom returns an integer
+    @days_to_eom = Date.new(y , m, -1).day - DateTime.now.day
+    if days_to_eom <= 7
+      # get next month days
+      @total_days = Date.new(y, m + 1, -1).day if m < 12
+      @total_days = Date.new(y + 1, 1, -1).day if m == 12
+    else
+      # get this month remaining days
+      @total_days = Date.new(y, m, -1).day - DateTime.now.day
+    end
+  end
+
+  def total_flats_chores
+    # Get array of total chores
+    total_chores = current_user.flat_users.find_by(active: true).flat.chores
+    # For each chore, calculate the gap (freq / rate)
+    total_chores.each do |c|
+      # If daily, is within hours
+      # If weekly/monthly, is within days
+      if c.frequency == "daily"
+        # This will return gap in terms of hours
+        gap = (24 / c.repetition).hours
+      elsif c.frequency == "weekly"
+        # This will return a float value in days
+        gap = 7.fdiv(c.repetition).days
+      elsif c.frequency == "monthly"
+        # Need check if is current month distributing or next month,
+        # as we may have months of different dates
+        # Take reference from days
+        # This should return gap in days
+        gap = @total_days.fdiv(c.repetition).days if @days_to_eom <= 7
+        gap = Date.new(Date.today.year, Date.today.mon, -1).day.days if @days_to_eom > 7
+      end
+    end
+    # Find last occurence of chore
+    # offset gap
+  end
+
+
   def mark_chore_complete
     params.permit(:id)
     @task = ChoreList.find(params[:id])
