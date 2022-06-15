@@ -15,13 +15,18 @@
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
     <link rel="icon" href="<%= image_path("logocolorsm.png") %>">
+
   </head>
 
-  <body>
+  <body data-controller="user-guide">
 
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
   <%= yield %>
+  <!-- Development version -->
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
 
+<!-- Production version -->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
   </body>
 </html>
