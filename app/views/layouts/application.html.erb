@@ -20,11 +20,7 @@
   <body>
 
   <%= render 'shared/navbar' %>
-  <div class="container position-absolute">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= render 'shared/flashes' %>
-  </div>
+  <%= render 'shared/flashes' %>
   <%= yield %>
 
   </body>

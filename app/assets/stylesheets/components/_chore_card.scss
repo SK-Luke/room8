@@ -1,66 +1,78 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: #94773e;
+  color: $orange;
   margin-bottom: 1rem;
+  font-family: 'Inter';
   }
 }
 .chores {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  font-family: 'Archivo', sans-serif;;
 }
 .chore_card {
   padding: 10px;
   border-radius: 4px;
-  background-color: $base-highlight;
-  box-shadow: 2px 4px $shadow;
+  background-color: #f4f2ee;
   text-align: center;
+  box-shadow: 2px 4px 8px $shadow;
+  display: flex;
+  flex-direction: column;
+  .chore-top {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
   h4 {
     font-size: 20px;
-    color: #aca897;
-    font-family: 'Inter', sans-serif;
+    color: #c7aea8;
   }
 }
 
 .chore_card_selected {
   padding: 10px;
   border-radius: 4px;
-  background-color: $base;
-  box-shadow: 2px 4px $shadow;
+  background-color: white;
+  box-shadow: 2px 4px 10px $shadow;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  .chore-top {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
   h4 {
     font-size: 20px;
-    color: #8e6f32;
-    font-family: 'Inter', sans-serif;
+    color: $coral;
   }
 }
 .chore_details {
   border-radius: 4px;
-  background-color: $light-highlight;
+  background-color: $card-highlight;
   margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 14px;
     margin: 0;
-    color: $base-highlight;
+    color: $card-p-highlight;
   }
 }
 .chore_details_selected {
   border-radius: 4px;
-  background-color: $light;
+  background-color: $tinted-coral;
   margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 14px;
     margin: 0;
-    color: $base-p;
+    color: $card-p;
   }
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: $red-pink;
+  background-color: $coral;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
@@ -73,7 +85,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: $red-pink;
+  background-color: $coral;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;
@@ -81,5 +93,57 @@
     font-size: 14px;
     margin: 0;
     color: white;
+  }
+}
+
+
+
+/* CSS */
+.button-51 {
+  background-color: transparent;
+  border: 1px solid #703217;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: "Avenir Next LT W01 Bold",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-51:hover,
+.button-51:active {
+  outline: 0;
+}
+
+.button-51:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-51:before {
+  background-color: #92624e;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.button-51:hover:before {
+  background-color: #6DCFF6;
+}
+
+@media (min-width: 768px) {
+  .button-51 {
+    padding: 16px 32px;
   }
 }
