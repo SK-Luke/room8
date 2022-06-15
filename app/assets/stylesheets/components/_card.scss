@@ -1,4 +1,4 @@
-.flat-chores-card {
+.flat-chore-card {
   .card-main {
     background-color: white;
     box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: .4);
@@ -56,10 +56,12 @@
   box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: .4);
   border-radius: 4px;
   padding-bottom: 2px;
+  transition: all .2s ease-in-out;
 
   .card-top {
     background-color: rgb(211, 211, 211);
     padding: 8px;
+    border-radius: 4px 4px 0 0;
 
     h2 {
       font-weight: 700;
@@ -91,4 +93,8 @@
       margin: 12px;
     }
   }
+
+  // &:hover {
+  //   transform: scale(1.05);
+  // }
 }
