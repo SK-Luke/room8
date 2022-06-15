@@ -135,6 +135,7 @@
 h1 {
   text-align: center;
   margin-bottom: 10%;
+  margin-top: 10%;
 }
 
 .box {
@@ -144,5 +145,10 @@ h1 {
 
 .card-wrapper {
   text-align: center;
+  justify-content: center;
+}
+
+.cl-tab-bar {
+  display: flex;
   justify-content: center;
 }
