@@ -1,6 +1,6 @@
 <div class="container setup" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2 style="display: inline-block;">Setup your chores</h2>
-  <button class="btn btn-primary btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">+</button>
+  <button class="btn btn-warning btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">+</button>
 
   <!-- Display all chores -->
   <div class="chores" data-setup-chores-target="choresList">
@@ -11,8 +11,6 @@
       <h4><%= chore.name %></h4>
       <div class="chore_details">
         <p><i class="fa-solid fa-calendar"></i> <%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
-      </div>
-      <div class="chore_details">
         <% if chore.duration < 60 %>
           <p><i class="fa-solid fa-clock-rotate-left"></i> takes <%= pluralize( chore.duration, 'min' ) %></p>
         <% else %>
@@ -59,7 +57,8 @@
 
   <div class="fixed-bottom mx-3">
     <button type="button"
-    class="btn btn-primary"
+    class="btn btn-warning"
+    role="button"
     data-action="click->setup-chores#destroy_unselected"
     style="float: right;color: white;">Confirm</button>
   </div>
