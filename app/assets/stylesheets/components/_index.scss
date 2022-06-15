@@ -10,6 +10,8 @@
 @import "modal";
 @import "rating_card";
 @import "notice";
+@import "carousel";
+@import "buttons";
 
 * {
   font-family: 'Montserrat', sans-serif;
@@ -21,5 +23,5 @@
 
 a {
   text-decoration: none;
-  color: rgb(16, 16, 16)
+  color: rgb(16, 16, 16);
 }
