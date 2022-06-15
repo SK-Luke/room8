@@ -34,6 +34,6 @@ class UsersController < ApplicationController
   private
 
   def user_review_params
-    params.require(:user).permit(:email, :flat)
+    params.require(:user).permit(:email, :flat, :name, :photo)
   end
 end

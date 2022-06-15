@@ -12,19 +12,21 @@
         <h5 class="modal-title" id="exampleModalLabel">Time to setup your flat's chore</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        Would you like to select from our chore list or create all from scratch?
-      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary">
-          <%= link_to "Create from scratch", setup_chores_flat_path(@flat) %>
+        <span>
+          Would you like to select from our chore list or create all from scratch?
+        </span>
+      <div class="btn-container d-flex gap-3 mt-3">
+        <button type="button" class="btn-orange">
+          <%= link_to "Create from scratch", setup_chores_flat_path(@flat), style: 'color: white;' %>
         </button>
-        <button type="button" class="btn btn-secondary">
-          <%= link_to setup_chores_flat_path(@flat) do %>
-          <% Chore.create_defaults(@flat.id) %>
+        <button type="button" class="btn-orange">
+          <%= link_to setup_chores_flat_path(@flat), style: 'color: white;' do %>
+            <% Chore.create_defaults(@flat.id) %>
           <p>Select from list</p>
           <% end %>
         </button>
+      </div>
       </div>
     </div>
   </div>

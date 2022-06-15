@@ -11,12 +11,13 @@
     </ul>
     <%# Render users form %>
     <%= render 'users/form', flat: @flat, user: @roommate %>
-    <!-- Button trigger modal -->
     <div data-add-flatmates-target="alert"></div>
-    <% if @users.count > 0 %>
+    <!-- Button trigger modal -->
+    <% if @users.count > 1 %>
       <%= render 'confirm', status: "" %>
     <% else %>
       <%= render 'confirm', status: "disabled" %>
+      
     <% end %>
   </div>
 </div>
