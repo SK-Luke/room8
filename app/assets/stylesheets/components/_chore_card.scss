@@ -1,7 +1,7 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: #c06d58;
+  color: $coral;
   margin-bottom: 1rem;
   font-family: 'Inter';
   }
@@ -17,7 +17,7 @@
   border-radius: 4px;
   background-color: #f4f2ee;
   text-align: center;
-  box-shadow: 2px 4px 10px #6662614a;
+  box-shadow: 2px 4px 10px $shadow;
   h4 {
     font-size: 20px;
     color: #c7aea8;
@@ -28,38 +28,38 @@
   padding: 10px;
   border-radius: 4px;
   background-color: white;
-  box-shadow: 2px 4px 10px #6662614a;
+  box-shadow: 2px 4px 10px $shadow;
   text-align: center;
   h4 {
     font-size: 20px;
-    color: #c06d58;
+    color: $coral;
   }
 }
 .chore_details {
   border-radius: 4px;
-  background-color: #eae7e3;
+  background-color: $card-highlight;
   margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 14px;
     margin: 0;
-    color: #c0b9ae;
+    color: $card-p-highlight;
   }
 }
 .chore_details_selected {
   border-radius: 4px;
-  background-color: #f7f5f2;
+  background-color: $tinted-coral;
   margin-bottom: 10px;
   padding: 6px;
   p {
     font-size: 14px;
     margin: 0;
-    color: $base-p;
+    color: $card-p;
   }
 }
 .chore_edit_button {
   border-radius: 4px;
-  background-color: #C06D58;
+  background-color: $coral;
   margin-bottom: 4px;
   padding: 6px;
   display: none;
@@ -72,7 +72,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
-  background-color: #C06D58;
+  background-color: $coral;
   margin-bottom: 4px;
   padding: 6px;
   text-align: center;
