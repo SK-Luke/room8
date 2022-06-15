@@ -1,15 +1,15 @@
 <div class="chore_card_selected" id="chore-<%= chore.id %>"
 data-action="click->setup-chores#highlight"
 data-setup-chores-target="choreCard">
-  <h4><%= chore.name %></h4>
-  <div class="chore_details_selected">
-    <p><%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
+  <div class="chore-top d-flex">
+    <h4><%= chore.name %></h4>
   </div>
   <div class="chore_details_selected">
+    <p><i class="fa-solid fa-calendar"></i> <%= pluralize( chore.repetition, 'time' ) %> <%= chore.frequency %></p>
     <% if chore.duration < 60 %>
-      <p>takes <%= pluralize( chore.duration, 'min' ) %></p>
+      <p><i class="fa-solid fa-clock-rotate-left"></i> takes <%= pluralize( chore.duration, 'min' ) %></p>
     <% else %>
-      <p>takes <%= (chore.duration/60).to_i %> h
+      <p><i class="fa-solid fa-clock-rotate-left"></i> takes <%= (chore.duration/60).to_i %> h
       <% if (chore.duration/60.0).modulo(1) > 0 %>
         <%= pluralize( (((chore.duration/60.0).modulo(1))*60).to_i, 'min' ) %></p>
       <% end %>
