@@ -1,26 +1,24 @@
-<div class="container" data-controller="index-chores">
+<div class="container" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2><%= @flat.name %>'s chores</h2>
-  <div class="d-flex justify-content-between">
-    <%= link_to preferences_path(current_user) do %>
-      <span class="btn btn-success btn-sm mb-2">Edit preferences</span>
-    <% end %>
-    <button class="btn btn-success btn-sm" style="float: right;color: white;" data-action="click->index-chores#addChore">+</button>
+
+  <div class="d-flex justify-content-between mb-3">
+    <button class="btn btn-warning" style="color: white;"><%= link_to "Edit my preferences", preferences_path(current_user) %></button>
+    <button class="btn btn-warning" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
   </div>
-  <div class="row">
+
+  <div class="chores" data-setup-chores-target="choresList">
     <% @chores.each do |chore| %>
       <%# Card %>
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2 my-2 flat-chore-card" id="chore-<%= chore.id %>" data-index-chores-target="choreCard">
-        <%= render partial: "flat_chore_card", locals: {chore: chore} %>
-        <%# Edit chore %>
-        <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Edit Chore</h5>
-                <button type="button" data-action="click->index-chores#editModalClose" class="btn-close" aria-label="Close"></button>
-              </div>
-              <%= render partial: "editchore", locals: {chore: chore} %>
+      <%= render partial: "chore", locals: {chore: chore} %>
+      <%# Edit chore %>
+      <div id="edit-chore-<%= chore.id %>-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Chore</h5>
+              <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
             </div>
+            <%= render partial: "editchore", locals: {chore: chore} %>
           </div>
         </div>
       </div>
@@ -33,7 +31,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Add Chore</h5>
-          <button type="button" data-action="click->index-chores#modalClose" class="btn-close" aria-label="Close"></button>
+          <button type="button" data-action="click->setup-chores#modalClose" class="btn-close" aria-label="Close"></button>
         </div>
       <%= render partial: "newchore", locals: {chore: @chore} %>
     </div>

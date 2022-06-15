@@ -52,6 +52,9 @@
 }
 
 .user-card {
+  a {
+    text-decoration: none;
+  }
   background-color: white;
   box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: .2);
   border-radius: 12px;
@@ -99,7 +102,7 @@
   }
   .bottom-line {
     margin: -22px 0 0 0;
-    background-color: #FB723B;
+    background-color: #C06D58;
     height: 24px;
     border-radius: 0 0 12px 12px;
     opacity: 1;
