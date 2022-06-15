@@ -1,4 +1,4 @@
-<div class="container preferences text-center" data-controller="preferences">
+<div class="container preferences text-center" id="preferences" data-controller="preferences">
   <h2>Rate your Chores</h2>
 
   <% @preferences.each do |preference| %>
@@ -23,7 +23,7 @@
 
           <!-- Unhappy - Rating = 1 -->
           <i id="<%= preference.id %>-unhappy-1"
-          style="color: <%= preference.rating == 1 ? 'firebrick' : 'grey' %>"
+          style="color: <%= preference.rating == 1 ? 'indianred' : 'grey' %>"
           class="fa-light fa-face-frown fa-3x mx-3"
           data-action="click->preferences#color_red"></i>
           <!-- Neutral - Rating = 2 -->
@@ -43,7 +43,8 @@
 
   <div class="fixed-bottom mx-3">
     <button type="button"
-    class="btn btn-primary btn-sm"
+    class="btn btn-warning mb-3"
+    style="color: white; float: right"
     data-action="click->preferences#update"
     style="float: right;">Save</button>
   </div>

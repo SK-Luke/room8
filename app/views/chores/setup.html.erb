@@ -1,6 +1,8 @@
 <div class="container setup" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2 style="display: inline-block;">Setup your chores</h2>
-  <button class="btn btn-warning btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">+</button>
+  <button class="btn btn-warning btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">
+  <i class="fa-solid fa-plus-large"></i>
+  </button>
 
   <!-- Display all chores -->
   <div class="chores" data-setup-chores-target="choresList">
@@ -31,7 +33,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Edit Chore</h5>
+              <h5 class="modal-title" style="color: #fb723b;">Edit Chore</h5>
               <button type="button" data-action="click->setup-chores#editModalClose" class="btn-close" aria-label="Close"></button>
             </div>
             <%= render 'editchore', chore: chore %>
@@ -47,7 +49,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add Chore</h5>
+          <h5 class="modal-title" style="color: #fb723b;">Add Chore</h5>
           <button type="button" data-action="click->setup-chores#modalClose" class="btn-close" aria-label="Close"></button>
         </div>
         <%= render 'newchore', chore: @chore %>
@@ -59,7 +61,7 @@
 
   <div class="fixed-bottom mx-3">
     <button type="button"
-    class="btn btn-warning"
+    class="btn btn-warning mb-3"
     role="button"
     data-action="click->setup-chores#destroy_unselected"
     style="float: right;color: white;">Confirm</button>

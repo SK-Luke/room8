@@ -1,7 +1,7 @@
 .setup {
   h2 {
   font-weight: 700;
-  color: $coral;
+  color: $orange;
   margin-bottom: 1rem;
   font-family: 'Inter';
   }
@@ -10,7 +10,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  font-family: 'Archivo', sans-serif;;
 }
 .chore_card {
   padding: 10px;

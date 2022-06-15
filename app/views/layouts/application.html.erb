@@ -18,15 +18,10 @@
   </head>
 
   <body>
-    <div class="shadow-sm">
-      <%= render 'shared/navbar'%>
-    </div>
-    <div class="container position-absolute">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= render 'shared/flashes' %>
-    </div>
-    <%= yield %>
+
+  <%= render 'shared/navbar' %>
+  <%= render 'shared/flashes' %>
+  <%= yield %>
 
   </body>
 </html>
