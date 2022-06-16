@@ -1,5 +1,8 @@
 class ChoreListController < ApplicationController
   def index
+    if params[:assign_chores].present?
+      demonalgo
+    end
     # see if user is looking at himself or other people's chore``
     if params[:name].nil?
       @user = current_user
@@ -38,7 +41,6 @@ class ChoreListController < ApplicationController
       @chorelists << item.chore
     end
     @chorelists = @chorelists.group_by(&:name)
-    raise
   end
 
   def distribute_cards
@@ -74,6 +76,7 @@ class ChoreListController < ApplicationController
     d = Date.today.day
     get_days(y, m, d)
     total_flats_chores(y, m)
+    assign_chores
   end
 
   def get_days(y, m, d)
@@ -82,7 +85,7 @@ class ChoreListController < ApplicationController
     # total_days && days_to_eom returns an integer
     # @total_days = integer
     @days_to_eom = Date.new(y , m, -1).day - DateTime.now.day
-    if days_to_eom <= 7
+    if @days_to_eom <= 7
       # get next month days
       @total_days = Date.new(y, m + 1, -1).day if m < 12
       @total_days = Date.new(y + 1, 1, -1).day if m == 12
@@ -103,59 +106,33 @@ class ChoreListController < ApplicationController
     # If eom < 7 days, start_date is last_date + offset gap
     # If not, we just do today date + 1 as start date
     # The following takes into account of both offset gap and eom
+    @chore_lists_to_assign = []
     total_chores.each do |c|
       # Create an array to store the lists of chores
-      @chore_lists_to_assign = []
       # Use total days / gap to get number of instance to create
       gap = @gap.find { |g| g[c.name] }
       # num = number of instances to create
-      num = @total_days / gap
+      num = @total_days.days.fdiv(gap.values[0]).round
       # d = start_date
-      last_chore = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: Chore.first.name).chore_lists.last
+      last_chore = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: c.name).chore_lists.last
       if last_chore.present?
         # This gives date of last chore
-        d = last_chore.deadline
+        deadline = last_chore.deadline
       else
         # this gives date of new chore, but we minus gap so the algo can apply the += gap
-        d = DateTime.new(y, m + 1, 1) - gap if m < 12
-        d = DateTime.new(y + 1, 1, 1) - gap if m == 12
+        deadline = DateTime.new(y, m + 1, 1) - gap.values[0] if m < 12
+        deadline = DateTime.new(y + 1, 1, 1) - gap.values[0] if m == 12
       end
       # This will give us a new start_date, assuming changes will only be implemented next month
       for d in 1..num do
         # Create and assign chore, deadline, month, except for user
-        @chore_lists_to_assign << ChoreList.new(deadline: deadline += gap, chore: c, month_list: MonthList.create(month:Date.today.next_month))
+        @chore_lists_to_assign << ChoreList.new(deadline: deadline += gap.values[0], chore: c, month_list: MonthList.create(month:Date.today.next_month))
         # ChoreList.new(deadline: DateTime.now + 2.days, chore: Chore.first, month_list: MonthList.create(month: Date.today.next_month))
+        # raise
       end
     end
     # End of this method, I should get an array of total chore_lists
     # @chore_lists_to_assign = [cl_instance, cl_instance, cl_instance]
-  end
-
-  def assign_chores
-    # From the array of hashes of chore_lists from total_flat chores, iterate through the algo
-    # Has a preference converter method, for the above keys(chores), get user preference and add in like gap [done]
-    # Has chore_today? [done]
-    users = current_user.flat_users.find_by(active: true).flat.users
-    # Remember to add the above code when running the algo in case the user got no chores today.
-    # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC [done]
-    # Repeat the above for user specific, follow by flat, and div, rounded to 0.01 (up)
-    # Rpeat the above 2 lines for total hours
-
-    @chore_lists_to_assign.each do |c|
-      user_value = 0
-      user_to_assign = users.first
-      users.each do |u|
-        v = 1 + calc_user_preferences(u, c.name) - chores_today(u, c.name) - user_chores_count(u, c.name).fdiv(total_chores_count(c.name)).round(2) -
-        user_chores_hours(u, c.name).fdiv(total_chores_hours(c.name)).round(2)
-        if v > user_value
-          user_value = v
-          user_to_assign = u
-        end
-      end
-      c.user = user_to_assign
-      c.save
-    end
-
   end
 
   def calc_gap(chores_array)
@@ -188,8 +165,36 @@ class ChoreListController < ApplicationController
     end
   end
 
+  def assign_chores
+    # From the array of hashes of chore_lists from total_flat chores, iterate through the algo
+    # Has a preference converter method, for the above keys(chores), get user preference and add in like gap [done]
+    # Has chore_today? [done]
+    users = current_user.flat_users.find_by(active: true).flat.users
+    # Remember to add the above code when running the algo in case the user got no chores today.
+    # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC [done]
+    # Repeat the above for user specific, follow by flat, and div, rounded to 0.01 (up)
+    # Rpeat the above 2 lines for total hours
+
+    @chore_lists_to_assign.each do |c|
+      user_value = 0
+      user_to_assign = users.first
+      users.each do |u|
+        v = 1 + calc_user_preferences(u, c.chore.name) - chores_today(u, c.chore.name) - user_chores_count(u, c.chore.name).fdiv(total_chores_count(c.chore.name)).round(2) - user_chores_hours(u, c.chore.name).fdiv(total_chores_hours(c.chore.name)).round(2)
+        if v > user_value
+          user_value = v
+          user_to_assign = u
+        end
+      end
+      c.user = user_to_assign
+      c.save
+      # raise
+    end
+  end
+
+
+
   def calc_user_preferences(select_user, chore_name_query)
-    flat_user_pref = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).pref.find_by(user: select_user)
+    flat_user_pref = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).preferences.find_by(user: select_user)
       r = 0.15 if flat_user_pref.rating == 3
       r = 0 if flat_user_pref.rating == 2
       r = -0.15 if flat_user_pref.rating == 1
