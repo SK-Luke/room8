@@ -1,15 +1,20 @@
-<div class="card-wrapper">
-  <div class="box">
-      <%= render "overdue", locals: {incomplete: @incomplete} %>
-  </div>
-  <div class="box">
-      <%= render "to_do", locals: {to_do: @to_do} %>
-  </div>
-  <div class="box">
-      <%= render "completed", locals: {completed: @completed} %>
-  </div>
-  <div class="box">
-      <%= render "upcoming", locals: {upcoming: @upcoming} %>
+<div class="frame">
+  <div class="card-wrapper">
+    <div class="box">
+        <%= render "overdue", locals: {incomplete: @incomplete} %>
+    </div>
+    <div class="box">
+        <%= render "to_do", locals: {to_do: @to_do} %>
+    </div>
+    <div class="box">
+        <%= render "completed", locals: {completed: @completed} %>
+    </div>
+    <div class="box">
+        <%= render "upcoming", locals: {upcoming: @upcoming} %>
+    </div>
+    <div class="cl-tab-bar">
+      <%= render "cl_tabs" %>
+    </div>
   </div>
 </div>
   <%= render "cl_tabs" %>
