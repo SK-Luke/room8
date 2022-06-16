@@ -1,5 +1,5 @@
 <div class="background-image d-flex flex-column justify-content-center">
-  <h1 class="text-center text-white">Welcome to <%= @flat.name.capitalize %> </h1>
+  <h1 class="text-center text-white mb-1" style="margin-top: 0">Welcome to <%= @flat.name.capitalize %> </h1>
   <div id="flatmate-container" class="container" data-controller="add-flatmates" data-add-flatmates-flatid-value="<%= params[:id] %>">
     <h3>Add your Roommate</h3>
     <ul style="padding: 0px" data-add-flatmates-target="lists">
@@ -17,7 +17,6 @@
       <%= render 'confirm', status: "" %>
     <% else %>
       <%= render 'confirm', status: "disabled" %>
-
     <% end %>
   </div>
 </div>
