@@ -13,6 +13,7 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   border-radius: 4px;
   margin: 8px;
+  animation: hide 0.1s linear 2.5s 1 forwards;
 }
 
 .flash-success {
@@ -29,4 +30,11 @@
   border: 2px solid #FD1015;
   color: #fc1115;
   font-size: 14px;
+}
+
+@keyframes hide {
+  to {
+      opacity: 0;
+      display: none;
+  }
 }
