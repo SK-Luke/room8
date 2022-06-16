@@ -110,18 +110,22 @@ class ChoreListController < ApplicationController
   end
 
   def calc_gap(chores_array)
+    @gap = []
     # After getting it, we should store it to a hash with key as title of chore / chore_id / instance
     # Value will be the gap
-    # Maybe we can group_by like @chorelists, then in its value which is an array of instance, we add in gap as an element, that way we can add in stuff like offset gaps/other elements
+    # Create an array @gap to store hashes where key is chore name / instance, then gap is value
     chores_array.each do |c|
       # If daily, is within hours
       # If weekly/monthly, is within days
       if c.frequency == "daily"
         # This will return gap in terms of hours
+        # store it in a hash
         gap = (24 / c.repetition).hours
+        @gap << { c.name.to_s => gap }
       elsif c.frequency == "weekly"
         # This will return a float value in days
         gap = 7.fdiv(c.repetition).days
+        @gap << { c.name.to_s => gap }
       elsif c.frequency == "monthly"
         # Need check if is current month distributing or next month,
         # as we may have months of different dates
@@ -129,6 +133,7 @@ class ChoreListController < ApplicationController
         # This should return gap in days
         gap = @total_days.fdiv(c.repetition).days if @days_to_eom <= 7
         gap = Date.new(Date.today.year, Date.today.mon, -1).day.days if @days_to_eom > 7
+        @gap << { c.name.to_s => gap }
       end
     end
   end
