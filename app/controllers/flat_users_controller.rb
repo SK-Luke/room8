@@ -5,6 +5,11 @@ class FlatUsersController < ApplicationController
   def create
   end
 
+  def index
+    @user = User.find(params[:id])
+    @chores = @user.chore_lists
+  end
+
   private
 
   def flat_user_review_params
