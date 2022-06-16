@@ -118,28 +118,22 @@ class ChoreListController < ApplicationController
         @chore_lists_to_assign << ChoreList.new(deadline: deadline += gap, chore: c, month_list: MonthList.create(month:Date.today.next_month))
         # ChoreList.new(deadline: DateTime.now + 2.days, chore: Chore.first, month_list: MonthList.create(month: Date.today.next_month))
       end
-
     end
-
-
-    # Start_date of first chore_list, and start_date of last occurence
-    # Refer to calc_gap method, we can add gap and offset gap value inside the hash
-    # Have a method to check if offset gap exist / 0 etc.
-    # Conditional, if its just created mid of month, start_date = today + 1
-    # If it is for next month schedule, start_date = first_day of next_month + offset gap
-    # Since gap an all are calculated, everytime user edit and assign chores, it will auto tabulate, scalable
-    # End of this method, I should get an array of total chore_lists that is group_by name
-
+    # End of this method, I should get an array of total chore_lists
+    # @chore_lists_to_assign = [cl_instance, cl_instance, cl_instance]
   end
 
   def assign_chores
     # From the array of hashes of chore_lists from total_flat chores, iterate through the algo
-    # Has a preference converter method, for the above keys(chores), get user preference and add in like gap
-    # Has chore_today? Actually does it matter now?
+    # Has a preference converter method, for the above keys(chores), get user preference and add in like gap [done]
+    # Has chore_today? [done]
+    users = current_user.flat_users.find_by(active: true).flat.users
+    calc_user_preferences(chore_name_query) # Later need to add in the variable
+    # chores_today(select_user) = 0 if chores_today(select_user).nil?
+    # Remember to add the above code when running the algo in case the user got no chores today.
     # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC
     # Repeat the above for user specific, follow by flat, and div, rounded to 0.01 (up)
     # Rpeat the above 2 lines for total hours
-    # Actually, do we even need this month value? Since theoretically this month clean slate everyone is equal, is only last month data that affects the distribution
   end
 
   def calc_gap(chores_array)
@@ -172,6 +166,32 @@ class ChoreListController < ApplicationController
     end
   end
 
+  def calc_user_preferences(chore_name_query)
+    @users_pref = []
+    flat_users_preferences = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).preferences
+    flat_users_preferences.each do |p|
+      r = 0.15 if p.rating == 3
+      r = 0 if p.rating == 2
+      r = -0.15 if p.rating == 1
+      @users_pref << [p.user, r]
+    end
+    # This will return an array of array of user pref, @user_pref = [ [user, rating], []]
+  end
+
+  def chores_today(select_user)
+    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: Chore.first.name).chore_lists
+    cl.each do |c|
+      return 0.3 if c.deadline.day == Date.today.day
+    end
+  end
+
+  def total_chores_count(chore_name_query)
+    arr = []
+    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query)
+    cl.each do |c|
+
+    end
+  end
 
   def mark_chore_complete
     params.permit(:id)
