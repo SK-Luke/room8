@@ -1,3 +1,10 @@
+.caret-off::before {
+  display: none;
+}
+.caret-off::after {
+  display: none;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -8,5 +15,37 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 140px;
+  width: 40px;
+}
+
+.navbar .container-fluid button {
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.nav-active {
+  background-color: $tinted-coral;
+  border-radius: 20px;
+}
+.nav-active-menu {
+  background-color: $tinted-coral;
+}
+
+.navbar-brand>img {
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.08);
+  }
+  &:active {
+    transform: scale(1.08);
+  }
+}
+img.avatar {
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.15);
+  }
+  &:active {
+    transform: scale(1.15);
+  }
 }

@@ -33,6 +33,7 @@ class ChoresController < ApplicationController
 
   def setup
     @flat = Flat.find(params[:id])
+    # @chores = Chore.defaults
     @chores = @flat.chores
     @chore = Chore.new
   end

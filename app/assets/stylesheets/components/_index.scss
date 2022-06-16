@@ -14,13 +14,7 @@
 @import "cl_tab";
 @import "carousel";
 @import "buttons";
-
-* {
-  font-family: "Montserrat", sans-serif;
-  // h1, h2, h3, h4 {
-  //   font-family: 'Bebas Neue', cursive;
-  // }
-}
+@import "tooltip";
 
 a {
   text-decoration: none;

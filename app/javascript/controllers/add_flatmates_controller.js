@@ -3,6 +3,9 @@ import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
   static targets = ["lists", "form", "alert"];
+  static values = {
+    flatid: String
+  }
 
   connect() {
     console.log("Yay!! add_flatmates controller is connected!");
@@ -31,5 +34,28 @@ export default class extends Controller {
         }
         this.formTarget.outerHTML = data.form;
       });
+  }
+
+  async destroyPreset(event) {
+    event.preventDefault();
+    console.log(event)
+    console.log(event.target.id)
+    const chores_to_delete = event.target.id.split(" ")
+
+    await Promise.all(
+      chores_to_delete.map(async id => {
+        const url = `/flats/${this.flatidValue}/chores/${id}`
+
+        await fetch(url, {
+          method: "DELETE",
+          headers: {
+              'Content-Type': 'application/json',
+              // 'Accept': 'application/json',
+              'X-CSRF-Token': csrfToken()
+          }
+        })
+      })
+    )
+    window.location.href = `/flats/${this.flatidValue}/setup_chores`
   }
 }
