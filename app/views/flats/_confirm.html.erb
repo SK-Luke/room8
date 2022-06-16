@@ -3,7 +3,6 @@
   Confirm
 </button>
 
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <%= Chore.create_defaults(@flat.id) %>
@@ -21,8 +20,15 @@
         <button type="button" class="btn btn-warning" id="<%= Chore.last(7).map {|chore| chore.id}.join(" ") %>" data-action="click->add-flatmates#destroyPreset">
           <%= link_to "Create from scratch", setup_chores_flat_path(@flat), style: 'color: white; font-size:14px;' %>
         </button>
+<<<<<<< HEAD
+        <button type="button" class="btn-orange">
+          <%= link_to setup_chores_flat_path(@flat), style: 'color: white;' do %>
+            <p style="font-size: 14px; margin: 0" >Select from list</p>
+          <% end %>
+=======
         <button type="button" class="btn btn-warning">
           <%= link_to "Select from preset list" ,setup_chores_flat_path(@flat), style: 'color: white; font-size:14px;' %>
+>>>>>>> master
         </button>
       </div>
       </div>
