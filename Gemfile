@@ -28,7 +28,7 @@ gem "turbolinks_render"
 # gem 'image_processing', '~> 1.2'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
-
+gem 'popper_js', '~> 2.9.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'letter_opener', group: :development
 gem 'bootsnap', '>= 1.4.4', require: false
