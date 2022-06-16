@@ -38,7 +38,7 @@ class ChoreListController < ApplicationController
       @chorelists << item.chore
     end
     @chorelists = @chorelists.group_by(&:name)
-    # raise
+    raise
   end
 
   def distribute_cards
@@ -131,9 +131,14 @@ class ChoreListController < ApplicationController
     calc_user_preferences(chore_name_query) # Later need to add in the variable
     # chores_today(select_user) = 0 if chores_today(select_user).nil?
     # Remember to add the above code when running the algo in case the user got no chores today.
-    # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC
+    # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC [done]
     # Repeat the above for user specific, follow by flat, and div, rounded to 0.01 (up)
     # Rpeat the above 2 lines for total hours
+    total_chores_count(chore_name_query)
+    # The above returns total chores count, now need find user chore count
+    user_chores_count(select_user, chore_name_query)
+    # The above returns user count of that chore, divide by total_chores = done
+
   end
 
   def calc_gap(chores_array)
@@ -178,8 +183,9 @@ class ChoreListController < ApplicationController
     # This will return an array of array of user pref, @user_pref = [ [user, rating], []]
   end
 
-  def chores_today(select_user)
-    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: Chore.first.name).chore_lists
+  def chores_today(select_user, chore_name_query)
+    # Might need to relook this
+    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
     cl.each do |c|
       return 0.3 if c.deadline.day == Date.today.day
     end
@@ -187,10 +193,22 @@ class ChoreListController < ApplicationController
 
   def total_chores_count(chore_name_query)
     arr = []
-    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query)
+    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists
     cl.each do |c|
-
+      arr << c if c.deadline.mon == Date.today.mon
+      arr << c if c.deadline.mon == Date.today.mon - 1
     end
+    arr.count
+  end
+
+  def user_chores_count(select_user, chore_name_query)
+    arr = []
+    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
+    cl.each do |c|
+      arr << c if c.deadline.mon == Date.today.mon
+      arr << c if c.deadline.mon == Date.today.mon - 1
+    end
+    arr.count
   end
 
   def mark_chore_complete
