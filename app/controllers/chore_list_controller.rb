@@ -68,6 +68,14 @@ class ChoreListController < ApplicationController
     end
   end
 
+  def demonalgo
+    y = Date.today.year
+    m = Date.today.mon
+    d = Date.today.day
+    get_days(y, m, d)
+    total_flats_chores(y, m)
+  end
+
   def get_days(y, m, d)
     # this should return us days remaining to end of month
     # check if is created < 7 to end of month
@@ -84,7 +92,7 @@ class ChoreListController < ApplicationController
     end
   end
 
-  def total_flats_chores
+  def total_flats_chores(y, m)
     # Get array of total chores
     total_chores = current_user.flat_users.find_by(active: true).flat.chores
     # For each chore, calculate the gap (freq / rate)
@@ -128,16 +136,25 @@ class ChoreListController < ApplicationController
     # Has a preference converter method, for the above keys(chores), get user preference and add in like gap [done]
     # Has chore_today? [done]
     users = current_user.flat_users.find_by(active: true).flat.users
-    calc_user_preferences(chore_name_query) # Later need to add in the variable
-    # chores_today(select_user) = 0 if chores_today(select_user).nil?
     # Remember to add the above code when running the algo in case the user got no chores today.
     # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC [done]
     # Repeat the above for user specific, follow by flat, and div, rounded to 0.01 (up)
     # Rpeat the above 2 lines for total hours
-    total_chores_count(chore_name_query)
-    # The above returns total chores count, now need find user chore count
-    user_chores_count(select_user, chore_name_query)
-    # The above returns user count of that chore, divide by total_chores = done
+
+    @chore_lists_to_assign.each do |c|
+      user_value = 0
+      user_to_assign = users.first
+      users.each do |u|
+        v = 1 + calc_user_preferences(u, c.name) - chores_today(u, c.name) - user_chores_count(u, c.name).fdiv(total_chores_count(c.name)).round(2) -
+        user_chores_hours(u, c.name).fdiv(total_chores_hours(c.name)).round(2)
+        if v > user_value
+          user_value = v
+          user_to_assign = u
+        end
+      end
+      c.user = user_to_assign
+      c.save
+    end
 
   end
 
@@ -171,24 +188,22 @@ class ChoreListController < ApplicationController
     end
   end
 
-  def calc_user_preferences(chore_name_query)
-    @users_pref = []
-    flat_users_preferences = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).preferences
-    flat_users_preferences.each do |p|
-      r = 0.15 if p.rating == 3
-      r = 0 if p.rating == 2
-      r = -0.15 if p.rating == 1
-      @users_pref << [p.user, r]
-    end
-    # This will return an array of array of user pref, @user_pref = [ [user, rating], []]
+  def calc_user_preferences(select_user, chore_name_query)
+    flat_user_pref = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).pref.find_by(user: select_user)
+      r = 0.15 if flat_user_pref.rating == 3
+      r = 0 if flat_user_pref.rating == 2
+      r = -0.15 if flat_user_pref.rating == 1
+    return r
   end
 
   def chores_today(select_user, chore_name_query)
     # Might need to relook this
     cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
+    v = 0
     cl.each do |c|
-      return 0.3 if c.deadline.day == Date.today.day
+      return v = 0.3 if c.deadline.day == Date.today.day
     end
+    v
   end
 
   def total_chores_count(chore_name_query)
@@ -209,6 +224,25 @@ class ChoreListController < ApplicationController
       arr << c if c.deadline.mon == Date.today.mon - 1
     end
     arr.count
+  end
+
+  def total_chores_hours(chore_name_query)
+    # Duration is an integer
+    sum = 0
+    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists
+    cl.each do |c|
+      sum += c.chore.duration
+    end
+    sum
+  end
+
+  def user_chores_hours(select_user, chore_name_query)
+    sum = 0
+    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user).where(complete: true)
+    cl.each do |c|
+      sum += c.chore.duration
+    end
+    sum
   end
 
   def mark_chore_complete
