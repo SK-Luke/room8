@@ -11,7 +11,7 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
     <link rel="icon" href="<%= image_path("logocolorsm.png") %>">
@@ -23,7 +23,9 @@
       <%= render 'shared/navbar' %>
     </div>
     <div class="my-3">
-      <%= render 'shared/flashes' %>
+      <div style="position: absolute; top: 58px">
+        <%= render 'shared/flashes' %>
+      </div>
       <%= yield %>
     </div>
   </body>
