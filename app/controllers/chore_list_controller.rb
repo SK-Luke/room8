@@ -2,7 +2,6 @@ class ChoreListController < ApplicationController
 
 
   def index
-    # raise
     if params[:assign_chores].present?
       demonalgo
     end
@@ -118,10 +117,11 @@ class ChoreListController < ApplicationController
       # num = number of instances to create
       num = @total_days.days.fdiv(gap.values[0]).round
       # d = start_date
-      last_chore = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: c.name).chore_lists.last
-      if last_chore.present?
+
+      @last_chore = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: c.name).chore_lists.last
+      if @last_chore.present?
         # This gives date of last chore
-        deadline = last_chore.deadline
+        deadline = @last_chore.deadline
       else
         # this gives date of new chore, but we minus gap so the algo can apply the += gap
         deadline = DateTime.new(y, m + 1, 1) - gap.values[0] if m < 12
@@ -178,21 +178,27 @@ class ChoreListController < ApplicationController
     # Total count of completed chores last month (from chore_listing methods), + this month chore_lists count, this is also CHORE TYPE SPECIFIC [done]
     # Repeat the above for user specific, follow by flat, and div, rounded to 0.01 (up)
     # Rpeat the above 2 lines for total hours
-
     @chore_lists_to_assign.each do |c|
-      user_value = 0
-      user_to_assign = users.first
+      @th = total_chores_hours(c.chore.name)
+      @th = 1 if total_chores_hours(c.chore.name).zero?
+      @tcc = total_chores_count(c.chore.name)
+      @tcc = 1 if total_chores_count(c.chore.name).zero?
+      @user_to_assign = {}
       users.each do |u|
-        v = 1 + calc_user_preferences(u, c.chore.name) - chores_today(u, c.chore.name) - user_chores_count(u, c.chore.name).fdiv(total_chores_count(c.chore.name)).round(2) - user_chores_hours(u, c.chore.name).fdiv(total_chores_hours(c.chore.name)).round(2)
-        if v > user_value
-          user_value = v
-          user_to_assign = u
+        if @last_chore.present?
+          v = 1.to_f + calc_user_preferences(u, c.chore.name) - chores_today(u, c.chore.name).to_f - user_chores_count(u, c.chore.name).fdiv(@tcc).round(2) - user_chores_hours(u, c.chore.name).fdiv(@th).round(2)
+          @user_to_assign.store(v.to_f, u)
+        else
+          @user_to_assign
         end
-        # raise
       end
-      c.user = user_to_assign
+      k = @user_to_assign.keys.sort.reverse.first
+      u = @user_to_assign[k]
+      c.user = u
+      c.user = users.sample if @user_to_assign.blank?
       c.save
     end
+    raise
   end
 
 
@@ -209,8 +215,10 @@ class ChoreListController < ApplicationController
     # Might need to relook this
     cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
     v = 0
+    if @last_chore.present? && @last_chore.complete
     cl.each do |c|
       return v = 0.3 if c.deadline.day == Date.today.day
+    end
     end
     v
   end
@@ -219,8 +227,13 @@ class ChoreListController < ApplicationController
     arr = []
     cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists
     cl.each do |c|
-      arr << c if c.deadline.mon == Date.today.mon
-      arr << c if c.deadline.mon == Date.today.mon - 1
+      # if @last_chore.present? && @last_chore.complete
+        arr << c if c.deadline.mon == Date.today.mon
+        arr << c if c.deadline.mon == Date.today.mon - 1
+      # else
+      #   arr << c if c.deadline.mon == Date.today.mon
+      #   arr << c if c.deadline.mon == Date.today.mon + 1
+      # end
     end
     arr.count
   end
@@ -229,8 +242,13 @@ class ChoreListController < ApplicationController
     arr = []
     cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
     cl.each do |c|
-      arr << c if c.deadline.mon == Date.today.mon
-      arr << c if c.deadline.mon == Date.today.mon - 1
+      # if @last_chore.present? && @last_chore.complete
+        arr << c if c.deadline.mon == Date.today.mon
+        arr << c if c.deadline.mon == Date.today.mon - 1
+      # else
+      #   arr << c if c.deadline.mon == Date.today.mon
+      #   arr << c if c.deadline.mon == Date.today.mon + 1
+      # end
     end
     arr.count
   end
@@ -238,7 +256,7 @@ class ChoreListController < ApplicationController
   def total_chores_hours(chore_name_query)
     # Duration is an integer
     sum = 0
-    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists
+    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(complete: true)
     cl.each do |c|
       sum += c.chore.duration
     end
