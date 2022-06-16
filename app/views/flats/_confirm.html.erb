@@ -9,22 +9,20 @@
   <%= Chore.create_defaults(@flat.id) %>
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="color: #fb723b;">
         <h5 class="modal-title" id="exampleModalLabel">Time to setup your flat's chore</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="color: grey;">
         <span>
           Would you like to select from our chore list or create all from scratch?
         </span>
       <div class="btn-container d-flex gap-3 mt-3">
-        <button type="button" class="btn-orange" style="width: 100%" id="<%= Chore.last(7).map {|chore| chore.id}.join(" ") %>" data-action="click->add-flatmates#destroyPreset">
+        <button type="button" class="btn btn-warning" id="<%= Chore.last(7).map {|chore| chore.id}.join(" ") %>" data-action="click->add-flatmates#destroyPreset">
           <%= link_to "Create from scratch", setup_chores_flat_path(@flat), style: 'color: white; font-size:14px;' %>
         </button>
-        <button type="button" class="btn-orange">
-          <%= link_to setup_chores_flat_path(@flat), style: 'color: white;' do %>
-            <p>Select from list</p>
-          <% end %>
+        <button type="button" class="btn btn-warning">
+          <%= link_to "Select from preset list" ,setup_chores_flat_path(@flat), style: 'color: white; font-size:14px;' %>
         </button>
       </div>
       </div>
