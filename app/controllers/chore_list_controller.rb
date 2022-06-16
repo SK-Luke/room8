@@ -1,5 +1,8 @@
 class ChoreListController < ApplicationController
+
+
   def index
+    # raise
     if params[:assign_chores].present?
       demonalgo
     end
