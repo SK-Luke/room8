@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :flat_users, only: %i[update create]
+  resources :flat_users, only: %i[update create] do
+    resources :chore_list, only: :index
+  end
   resources :preferences, only: %i[index update]
   # documentation to be read on devise user controller, and route updated accordingly
   resources :chore_list, only: %i[update index]
