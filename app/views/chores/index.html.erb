@@ -1,8 +1,8 @@
 <div class="container mt-3" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
-  <h2><%= @flat.name %>'s chores</h2>
+  <h2><%= @flat.name %>'s chores 🧹</h2>
 
   <div class="d-flex justify-content-between mb-3">
-    <button class="btn btn-warning" style="color: white; font-weight: bolder;"><%= link_to "Edit my preferences", preferences_path(current_user) %></button>
+    <button class="btn btn-warning" style="color: white; font-weight: bolder; border-radius: 5px;"><%= link_to "Edit my preferences", preferences_path(current_user) %></button>
     <button class="btn btn-info" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
   </div>
 
