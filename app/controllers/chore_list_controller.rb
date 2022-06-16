@@ -18,7 +18,6 @@ class ChoreListController < ApplicationController
     @upcoming = []
     set_chore_listings
     distribute_cards
-    # raise
   end
 
   def update
@@ -65,12 +64,13 @@ class ChoreListController < ApplicationController
           i += 1
           # If nested while doesn't work, use until
           while i < arr.length
-            @upcoming << arr[i].chore_lists.first
+            @upcoming << arr[i].chore_lists.first.chore
             i += 1
           end
         end
       end
     end
+    @upcoming = @upcoming.group_by(&:name)
   end
 
   def demonalgo
@@ -198,7 +198,6 @@ class ChoreListController < ApplicationController
       c.user = users.sample if @user_to_assign.blank?
       c.save
     end
-    raise
   end
 
 
