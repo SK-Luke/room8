@@ -72,6 +72,7 @@ class ChoreListController < ApplicationController
     # this should return us days remaining to end of month
     # check if is created < 7 to end of month
     # total_days && days_to_eom returns an integer
+    # @total_days = integer
     @days_to_eom = Date.new(y , m, -1).day - DateTime.now.day
     if days_to_eom <= 7
       # get next month days
@@ -89,6 +90,38 @@ class ChoreListController < ApplicationController
     # For each chore, calculate the gap (freq / rate)
     calc_gap(total_chores)
     # Here we will need to from gap, calculate the number of chore_list instance to create
+    # Either I create a cl instance to iterate thru, or combine creation and iterate thru later.
+    # Attempt to create first and store
+    # If eom < 7 days, start_date is last_date + offset gap
+    # If not, we just do today date + 1 as start date
+    # The following takes into account of both offset gap and eom
+    total_chores.each do |c|
+      # Create an array to store the lists of chores
+      @chore_lists_to_assign = []
+      # Use total days / gap to get number of instance to create
+      gap = @gap.find { |g| g[c.name] }
+      # num = number of instances to create
+      num = @total_days / gap
+      # d = start_date
+      last_chore = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: Chore.first.name).chore_lists.last
+      if last_chore.present?
+        # This gives date of last chore
+        d = last_chore.deadline
+      else
+        # this gives date of new chore, but we minus gap so the algo can apply the += gap
+        d = DateTime.new(y, m + 1, 1) - gap if m < 12
+        d = DateTime.new(y + 1, 1, 1) - gap if m == 12
+      end
+      # This will give us a new start_date, assuming changes will only be implemented next month
+      for d in 1..num do
+        # Create and assign chore, deadline, month, except for user
+        @chore_lists_to_assign << ChoreList.new(deadline: deadline += gap, chore: c, month_list: MonthList.create(month:Date.today.next_month))
+        # ChoreList.new(deadline: DateTime.now + 2.days, chore: Chore.first, month_list: MonthList.create(month: Date.today.next_month))
+      end
+
+    end
+
+
     # Start_date of first chore_list, and start_date of last occurence
     # Refer to calc_gap method, we can add gap and offset gap value inside the hash
     # Have a method to check if offset gap exist / 0 etc.
@@ -117,6 +150,7 @@ class ChoreListController < ApplicationController
     chores_array.each do |c|
       # If daily, is within hours
       # If weekly/monthly, is within days
+      # @gaps = [{"chore.name" => number.days}, {}]
       if c.frequency == "daily"
         # This will return gap in terms of hours
         # store it in a hash
