@@ -1,5 +1,4 @@
 <div class="container setup"
-data-action="load@window->user-guide#tourStart"
 data-controller="setup-chores"
 data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2 style="display: inline-block;" aria-describedby="tooltip">Setup your chores</h2>
@@ -17,8 +16,7 @@ data-setup-chores-flatid-value="<%= params[:id] %>">
 
   <div id="clickCard" class="tooltip" role="tooltip">
     <p>Tap on a chore to select/unselect them.</p>
-    <p>Selected chores will be added to your flat's chores after you press the confirm button.</p>
-    <div class="py-1" data-action="click->user-guide#stopTour">Stop Tour</div>
+    <div class="py-1 links" data-action="click->user-guide#stopTour">Stop Tour</div>
     <div id="arrow" data-popper-arrow></div>
   </div>
   <!-- Display all chores -->
@@ -26,6 +24,7 @@ data-setup-chores-flatid-value="<%= params[:id] %>">
     <% @chores.each do |chore| %>
       <div class="chore_card" id="chore-<%= chore.id %>"
     data-action="click->setup-chores#highlight"
+    data-action="click->user-guide#"
     data-setup-chores-target="choreCard">
         <div class="chore-top d-flex">
           <h4><%= chore.name %></h4>

@@ -9,11 +9,13 @@ export default class extends Controller {
     console.log("hello from user_guide_controller!")
   }
 
-  tourStart() {
-    const guide1 = document.getElementById('guide1')
-    guide1.style.transition = "left 1.0s linear 0s";
-    guide1.style.left = "10px";
-  }
+  // tourStart(event) {
+  //   event.preventDefault()
+  //   console.log(event)
+  //   const guide1 = document.getElementById('guide1')
+  //   // guide1.style.transition = "left 1.0s linear 0s";
+  //   // guide1.style.left = "10px";
+  // }
 
   clickCard() {
     const guide1 = document.getElementById('guide1')

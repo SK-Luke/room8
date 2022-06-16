@@ -106,35 +106,35 @@ export default class extends Controller {
       })
   }
 
-  destroy_unselected(event) {
+
+  async destroy_unselected(event) {
     event.preventDefault();
-    let selected = []
+
+    let chores_to_delete = []
+
     this.choreCardTargets.forEach(chore => {
-      console.log(chore.className)
       if (chore.className === "chore_card") {
-        console.log(chore)
-        selected.push(chore)
+        chores_to_delete.push(chore)
       }
     })
-    console.log(selected)
 
-    selected.forEach(sel => {
-      const choreid = sel.id.match(/\d+/)[0]
-      const url = `/flats/${this.flatidValue}/chores/${choreid}`
-      fetch(url, {
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRF-Token': csrfToken()
-        }
-      })
-      .then(res => res.json())
-      .then((data) => {
-        console.log(data)
+     await Promise.all(
+      chores_to_delete.map(async chore => {
+        const choreid = chore.id.match(/\d+/)[0]
+        const url = `/flats/${this.flatidValue}/chores/${choreid}`
+
+        await fetch(url, {
+          method: "DELETE",
+          headers: {
+              'Content-Type': 'application/json',
+              // 'Accept': 'application/json',
+              'X-CSRF-Token': csrfToken()
+          }
         })
       })
-      location.reload();
-      window.location.href = `/flats/${this.flatidValue}/chores`
+    )
+
+    // redirect after all promises resolved
+    window.location.href = `/flats/${this.flatidValue}/chores`
   }
 }

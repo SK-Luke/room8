@@ -1,12 +1,12 @@
 #guide1 {
   position: fixed;
-  left: -100%;
   width: 180px;
   padding: 6px 10px;
   font-size: 12px;
   background: #6ab149;
   color: white;
   border-radius: 6px;
+  display:none;
   p {
     margin: 4px;
     color: beige;
@@ -32,6 +32,7 @@
   border-radius: 6px;
   display: none;
   opacity: 1;
+  width: 180px;
   p {
     margin: 4px;
     color: beige;
