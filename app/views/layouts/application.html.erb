@@ -19,9 +19,12 @@
   </head>
 
   <body data-controller="user-guide">
-
-  <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
-  <%= yield %>
+    <div class="shadow">
+      <%= render 'shared/navbar' %>
+    </div>
+    <div class="my-3">
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
