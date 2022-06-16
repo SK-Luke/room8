@@ -32,7 +32,7 @@ gem 'popper_js', '~> 2.9.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'letter_opener', group: :development
 gem 'bootsnap', '>= 1.4.4', require: false
-
+gem 'toastr-rails'
 gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
