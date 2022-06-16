@@ -1,6 +1,8 @@
 <div class="container mt-3">
   <h2 style="display: inline-block;">My roommates</h1>
-  <p><%= Time.days_in_month(Time.now.month, Time.now.year) - Time.now.day %> days remaining till july</p>
+  <p style="background-color: rgba(0,0,0,.1); padding: 8px; border-radius: 12px; display: inline-block">
+    ⏱️ <%= Time.days_in_month(Time.now.month, Time.now.year) - Time.now.day %> days remaining until <%= Date.today.next_month.strftime("%B") %>
+  </p>
   <div class="row">
     <% @flat.users.each do |user| %>
       <div class="col-12 col-sm-9 col-md-6 col-lg-4 mx-auto my-2">
