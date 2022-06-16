@@ -16,6 +16,7 @@ class ChoreListController < ApplicationController
     @upcoming = []
     set_chore_listings
     distribute_cards
+    # raise
   end
 
   def update
@@ -126,7 +127,7 @@ class ChoreListController < ApplicationController
       # This will give us a new start_date, assuming changes will only be implemented next month
       for d in 1..num do
         # Create and assign chore, deadline, month, except for user
-        @chore_lists_to_assign << ChoreList.new(deadline: deadline += gap.values[0], chore: c, month_list: MonthList.create(month:Date.today.next_month))
+        @chore_lists_to_assign << ChoreList.new(deadline: deadline += (gap.values[0] - 1.seconds), chore: c, month_list: MonthList.create(month:Date.today.next_month))
         # ChoreList.new(deadline: DateTime.now + 2.days, chore: Chore.first, month_list: MonthList.create(month: Date.today.next_month))
         # raise
       end
@@ -184,10 +185,10 @@ class ChoreListController < ApplicationController
           user_value = v
           user_to_assign = u
         end
+        # raise
       end
       c.user = user_to_assign
       c.save
-      # raise
     end
   end
 
