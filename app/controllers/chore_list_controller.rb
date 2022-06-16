@@ -38,7 +38,6 @@ class ChoreListController < ApplicationController
       @chorelists << item.chore
     end
     @chorelists = @chorelists.group_by(&:name)
-    raise
   end
 
   def distribute_cards
