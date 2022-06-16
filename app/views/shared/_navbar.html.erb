@@ -33,10 +33,10 @@
       <div class="d-flex align-items-center">
         <!-- Avatar -->
         <div class="dropdown">
-            <a class="dropdown-toggle d-flex align-items-center caret-off" href="#" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= render partial: "shared/avatar_small", locals: { user: current_user } %>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+          <a class="dropdown-toggle d-flex align-items-center caret-off" href="#" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= render partial: "shared/avatar_small", locals: { user: current_user } %>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
             <li class="nav-item <%= "nav-active-menu" if current_page?(preferences_path) %>">
               <%= link_to "My preferences", preferences_path, class: "dropdown-item" %>
             </li>
