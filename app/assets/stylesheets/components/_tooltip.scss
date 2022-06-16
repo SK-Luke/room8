@@ -1,0 +1,78 @@
+#guide1 {
+  position: fixed;
+  width: 180px;
+  padding: 6px 10px;
+  font-size: 12px;
+  background: #6ab149;
+  color: white;
+  border-radius: 6px;
+  display:none;
+  p {
+    margin: 4px;
+    color: beige;
+  };
+  h4 {
+    font-size: 14px;
+    margin: 4px;
+    color: #214d17;
+  }
+}
+.links {
+  text-decoration: underline;
+  color: green;
+  p {
+    color: green;
+  }
+}
+.tooltip {
+  background: #6ab149;
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  display: none;
+  opacity: 1;
+  width: 180px;
+  p {
+    margin: 4px;
+    color: beige;
+  };
+}
+.tooltip[data-show] {
+  display: block;
+}
+.tooltip[aria-hidden="false"]{
+  opacity:1;
+}
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+
+#arrow {
+  visibility: hidden;
+}
+
+#arrow::before {
+  visibility: visible;
+  content: '';
+  transform: rotate(45deg);
+}
+.tooltip[data-popper-placement^='top'] > #arrow {
+  bottom: -4px;
+}
+
+.tooltip[data-popper-placement^='bottom'] > #arrow {
+  top: -4px;
+}
+
+.tooltip[data-popper-placement^='left'] > #arrow {
+  right: -4px;
+}
+
+.tooltip[data-popper-placement^='right'] > #arrow {
+  left: -4px;
+}
