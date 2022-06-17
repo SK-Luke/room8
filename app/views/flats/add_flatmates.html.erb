@@ -1,7 +1,7 @@
 <div class="background-image d-flex flex-column justify-content-center">
   <h1 class="text-center text-white mb-1" style="margin-top: 0">Welcome to <span id="house"><%= @flat.name.capitalize %></span></h1>
   <div id="flatmate-container" class="container" data-controller="add-flatmates" data-add-flatmates-flatid-value="<%= params[:id] %>">
-    <h3>Add your Roommate</h3>
+    <h3>Add your roommates</h3>
     <ul style="padding: 0px" data-add-flatmates-target="lists">
       <% @users.each do |user| %>
         <% if user != current_user %>

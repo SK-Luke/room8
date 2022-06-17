@@ -1,8 +1,8 @@
-chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed the dog"]
+chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed Kenny", "Buy some beers", "Vacuum", "Clean the windows"]
 frequencies_array = ["daily", "weekly", "monthly"]
 repetitions_array = [1, 2, 3]
 durations_array = [30, 60, 90, 120]
-seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“A seed has a few friends, but a tree has many enemies.”', '“All memories carry the seeds of suffering.”', '“Show me your seed and I ll show you your harvest.”']
+seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“A seed has a few friends, but a tree has many enemies.”', '“All memories carry the seeds of suffering.”', '“Show me your seed and I\'ll show you your harvest.”']
 
 # DB wipeout
 puts "_______"
@@ -57,27 +57,27 @@ user4.photo.attach(io: URI.open("http://res.cloudinary.com/dlqa2wzkk/image/uploa
 # puts "done first part"
 
 user5 = User.new({
-  name: "Ming Fu",
-  email: "mingfu@gmail.com",
+  name: "Sek Kun",
+  email: "sk@gmail.com",
   password: "123123"
 })
 user5.save!
 user5 = User.new({
-  name: "Zack",
-  email: "zack@gmail.com",
+  name: "Victor",
+  email: "victor@gmail.com",
   password: "123123"
 })
 user5.save!
 
 signed_in_users = [user1, user2, user3, user4]
 
-puts "👤 Created 5 users"
+puts "👤 Created 6 users"
 
 
 # Flat creation (for now the creating one)
 puts "Creating a flat..."
 flat = Flat.new({
-  name: "Room8",
+  name: "Big Fish Pond",
   token: "abc123qeytc"
 })
 flat.save!
@@ -89,15 +89,15 @@ signed_in_users.each do |user|
   flat_user.active = true
   flat_user.save!
 end
-puts "🏠 Created 'Room8' flat and gave it 4 flatmates"
+puts "🏠 Created 'Big Fish Pond' flat and gave it 4 flatmates"
 
 
 # Chore creation
 puts "Creating chores..."
 Flat.all.each do |flat|
-  40.times do
+  chores_array.each do |chore_name|
     chore = Chore.new({
-      name: chores_array.sample,
+      name: chore_name,
       frequency: frequencies_array.sample,
       repetition: repetitions_array.sample,
       duration: durations_array.sample
@@ -109,14 +109,16 @@ Flat.all.each do |flat|
 
     chore_list = ChoreList.new
     chore_list.chore = chore
-    chore_list.deadline = Date.today+rand(-3..3)
+    chore_list.deadline = Date.today+rand(-10..-1)
+    # chore_list.deadline = Date.today+rand(-3..3)
     chore_list.user = flat.users.sample
     chore_list.month_list_id = month_list.id
-    chore_list.complete = [true, false].sample
+    chore_list.complete = true
+    # chore_list.complete = [true, false].sample
     chore_list.save!
   end
 end
-puts "🧹 Created 8 chores for 'Room8' flat, and assigned them to random user"
+puts "🧹 Created #{chores_array.count} chores for 'Big Fish Pond' flat, and assigned them to random users"
 
 
 # Preference creation

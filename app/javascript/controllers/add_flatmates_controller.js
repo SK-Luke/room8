@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ["lists", "form", "alert"];
+  static targets = ["lists", "form", "alert", "li"];
   static values = {
     flatid: String,
   };
@@ -34,6 +34,15 @@ export default class extends Controller {
         }
         this.formTarget.outerHTML = data.form;
       });
+  }
+
+  remove(event) {
+    event.preventDefault();
+    console.log("x event triggered");
+
+    const li = this.liTarget;
+    console.log(li);
+    li.parentNode.removeChild(li);
   }
 
   async destroyPreset(event) {
