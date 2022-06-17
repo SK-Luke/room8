@@ -40,6 +40,7 @@ gem 'font-awesome-sass', '~> 6.1.1'
 gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'cloudinary', '~> 1.16.0'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'animate.css-rails', '~> 3.2'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

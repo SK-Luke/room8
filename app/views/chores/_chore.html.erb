@@ -1,7 +1,7 @@
 <div class="chore_card_selected" id="chore-<%= chore.id %>"
 <% if @highlight %>
-  data-action="click->setup-chores#highlight"
-<% end %>
+        data-action="click->setup-chores#highlight"
+      <% end %>
 data-setup-chores-target="choreCard">
   <div class="chore-top d-flex">
     <h4><%= chore.name %></h4>
