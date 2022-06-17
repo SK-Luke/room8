@@ -6,8 +6,8 @@ Rails.application.configure do
   # allow herokuapp to send mail
   config.action_mailer.default_url_options = { host: "the-room-8.herokuapp.com" }
   config.action_mailer.perform_deliveries = true
-  config.action_controller.asset_host = 'the-room-8.herokuapp.com'
-  config.action_mailer.asset_host = config.action_controller.asset_host
+  # config.action_controller.asset_host = 'the-room-8.herokuapp.com'
+  # config.action_mailer.asset_host = config.action_controller.asset_host
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
