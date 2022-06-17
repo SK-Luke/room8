@@ -1,6 +1,8 @@
 <%# <%= render "template" %>
 <div class="cards-frame tabcontent" id="incomplete">
-  <h1>Incompleted chores</h1>
+  <div class="chore-list-header">
+    <h1 class="chore-list-title">Incompleted chores</h1>
+  </div>
   <!-- Slider main container -->
   <div class="swiper1" data-controller="swiper">
     <!-- Additional required wrapper -->
@@ -16,12 +18,12 @@
 
             <div class="card-body">
               <div class="card-title">
-                <h2
+                <h4
                   data-mark-complete-target="chore"
                   data-value="<%= task.chore.name %>"
                 >
-                  <%= task.chore.name %>
-                </h2>
+                  <%= task.chore.name.capitalize %>
+                </h4>
               </div>
               <div class="card-duration">
                 <p>
@@ -35,7 +37,7 @@
               </div>
               <div class="card-mark-complete">
                 <div
-                  class="btn btn-success"
+                  class="btn btn-success green-mark"
                   data-mark-complete-target="tick"
                   data-action="click->mark-complete#mark"
                   data-value="<%= task.id %>"
