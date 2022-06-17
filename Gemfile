@@ -33,13 +33,14 @@ gem 'popper_js', '~> 2.9.3'
 gem 'letter_opener', group: :development
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'toastr-rails'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 6.1.1'
 gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'cloudinary', '~> 1.16.0'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'animate.css-rails', '~> 3.2'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

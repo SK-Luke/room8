@@ -1,4 +1,4 @@
-.notification {
+#notification {
   background-color: $body;
   color: black;
   border-radius: 8px;
@@ -8,8 +8,9 @@
   margin-bottom: 10px;
   font-size: 12px;
   border: 2px solid #f02d34;
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
   p {
     margin-bottom: 0px;
   }
-
 }

@@ -74,7 +74,7 @@ export default class extends Controller {
     //location.reload(true);
     //this.notifTarget.style.display = "block"
     const body = document.getElementById('preferences')
-    const notice = `<div class="flash flash-warning alert alert-dismissible fade show" role="alert">
+    const notice = `<div class="flash-warning pref alert alert-dismissible fade show" role="alert">
                   Your preference has been saved 📂
                   <a data-bs-dismiss="alert" aria-label="Close">
                     <i class="fas fa-times"></i>
@@ -83,7 +83,7 @@ export default class extends Controller {
 
     body.insertAdjacentHTML("afterbegin", notice)
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    window.setTimeout(function(){document.querySelector(".flash").remove()},3000)
+    window.setTimeout(function(){document.querySelector(".pref").remove()},3000)
     //window.setTimeout(function(){location.reload()},3000)
   }
 

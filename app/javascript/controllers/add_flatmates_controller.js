@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 import { csrfToken } from "@rails/ujs";
 
 export default class extends Controller {
-  static targets = ["lists", "form", "alert"];
+  static targets = ["lists", "form", "alert", "li"];
   static values = {
     flatid: String,
   };
@@ -28,12 +28,21 @@ export default class extends Controller {
           this.listsTarget.insertAdjacentHTML("beforeend", data.inserted_item);
           document.getElementById("confirm_btn").disabled = false;
           this.alertTarget.innerHTML = "";
-          this.formTarget.outerHTML = data.form;
         } else {
           this.alertTarget.innerHTML =
             "<span class='text-danger'>User email not found</span>";
         }
+        this.formTarget.outerHTML = data.form;
       });
+  }
+
+  remove(event) {
+    event.preventDefault();
+    console.log("x event triggered");
+
+    const li = this.liTarget;
+    console.log(li);
+    li.parentNode.removeChild(li);
   }
 
   async destroyPreset(event) {
