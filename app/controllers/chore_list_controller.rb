@@ -6,10 +6,10 @@ class ChoreListController < ApplicationController
       demonalgo
     end
     # see if user is looking at himself or other people's chore``
-    if params[:name].nil?
+    if params[:flat_user_id].nil?
       @user = current_user
     else
-      @user = User.find_by_name(params[:name])
+      @user = User.find_by_name(params[:flat_user_id].gsub("-", " "))
     end
     @chorelists = []
     @incomplete = []
