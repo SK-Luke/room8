@@ -20,3 +20,31 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+h1, h2, h3, h4, h5 {
+  color: #8c8370;
+}
+
+@keyframes line-in {
+  0%{
+    transform: translate(-50px);
+    opacity: 0;
+    background-size: 0% 5px;
+  }
+  100%{
+    transform: translate(0);
+    opacity: 1;
+    background-size: 90% 5px;
+  }
+}
+
+.header {
+  font-weight: 700;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(#fb723b, #fb723b);
+  background-size: 0% 5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  animation: 500ms line-in 200ms forwards ease-in;
+}

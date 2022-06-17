@@ -4,6 +4,7 @@ class ChoresController < ApplicationController
     @flat = Flat.find(params[:id])
     @chores = @flat.chores
     @chore = Chore.new()
+    @highlight = false
   end
 
   def update
@@ -36,6 +37,7 @@ class ChoresController < ApplicationController
     # @chores = Chore.defaults
     @chores = @flat.chores
     @chore = Chore.new
+    @highlight = true
   end
 
   def destroy
