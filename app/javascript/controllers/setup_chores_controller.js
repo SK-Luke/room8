@@ -11,6 +11,11 @@ export default class extends Controller {
     console.log("hello from setup_chores_controller!")
   }
 
+  close() {
+    const notif = document.getElementById("notification")
+    notif.classList.add("d-none")
+  }
+
   highlight(event) {
     event.preventDefault();
     const element = event.path.find(element => element.className.includes("chore_card"))

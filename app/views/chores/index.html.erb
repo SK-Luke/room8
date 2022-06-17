@@ -3,14 +3,16 @@
     <h2 class="header"><%= @flat.name %>'s chores</h2>
   </div>
 
-  <div class="d-flex justify-content-between notification">
-  <div style="width: 300px;">
-    <p>You have not rated your chore preferences. <br><span style="text-decoration: underline;"><%= link_to "Go to my chore preferences", preferences_path %></span></p>
-  </div>
-  <div class="align-self-center">
-    <i class="fa-solid fa-xmark-large"></i>
-  </div>
-  </div>
+  <% if current_user.preferences.nil? %>
+    <div class="animate__animated animate__fadeIn d-flex justify-content-between" id="notification">
+      <div style="width: 300px;">
+        <p>You have not rated your chore preferences. <br><span style="text-decoration: underline;color: #f02d34;"><%= link_to "Go to my chore preferences", preferences_path %></span></p>
+      </div>
+      <div class="align-self-center" data-action="click->setup-chores#close">
+        <i class="fa-solid fa-xmark-large"></i>
+      </div>
+    </div>
+  <% end %>
 
   <div class="d-flex justify-content-between mb-3">
     <button class="btn btn-warning" style="color: white;font-weight: bolder;border-radius: 18px;font-size: 12px;"><%= link_to "Go to my chore preferences", preferences_path %></button>
