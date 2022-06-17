@@ -2,7 +2,7 @@
 <div class="cards-frame tabcontent" id="upcoming">
   <h1>Upcoming chores</h1>
   <!-- Slider main container -->
-  <div class="swiper4">
+  <div class="swiper4" data-controller='swiper'>
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
@@ -36,7 +36,7 @@
       <% end %>
     </div>
     <!-- If we need pagination -->
-    <div class="swiper-pagination4"></div>
+    <div class="pagination-swiper4"></div>
 
     <!-- If we need navigation buttons -->
     <%#
@@ -48,33 +48,8 @@
     <%#
     <div class="swiper-scrollbar"></div>
     %>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-    />
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script>
-      const swiper4 = new Swiper(".swiper4", {
-        // Optional parameters
-        direction: "horizontal",
-        effect: "cards",
-        grabCursor: true,
-        // If we need pagination
-        pagination: {
-          el: ".swiper-pagination4",
-        },
 
-        // Navigation arrows
-        // navigation: {
-        //   nextEl: ".swiper-button-next",
-        //   prevEl: ".swiper-button-prev",
-        // },
 
-        // And if we need scrollbar
-        // scrollbar: {
-        //   el: ".swiper-scrollbar",
-        // },
-      });
-    </script>
+
   </div>
 </div>

@@ -2,15 +2,16 @@
 <div class="cards-frame tabcontent" id = "to-do">
   <h1>Chores to do now</h1>
 <!-- Slider main container -->
-<div class="swiper2" >
+<div class="swiper2" data-controller='swiper'>
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
     <% if @to_do.blank? %>
       <div class="swiper-slide"> No chores to display</div>
     <% else %>
+
     <% @to_do.each do |task| %>
-<div class="swiper-slide">
+      <div class="swiper-slide">
         <div class="card" data-controller="mark-complete edit-deadline">
 
           <div class="d-flex">
@@ -41,41 +42,17 @@
     <% end %>
     <% end %>
   </div>
-  <!-- If we need pagination -->
-  <div class="swiper-pagination2"></div>
-
-  <!-- If we need navigation buttons -->
-  <%# <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div> %>
-
-
-  <!-- If we need scrollbar -->
-  <%# <div class="swiper-scrollbar"></div> %>
-<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <div class="pagination-swiper2"></div>
 <script>
-const swiper2 = new Swiper(".swiper2", {
-  // Optional parameters
-  direction: "horizontal",
-  effect: "cards",
-  grabCursor: true,
-  overflow: false,
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination2",
-  },
-
-  // Navigation arrows
-  // navigation: {
-  //   nextEl: ".swiper-button-next",
-  //   prevEl: ".swiper-button-prev",
-  // },
-
-  // And if we need scrollbar
-  // scrollbar: {
-  //   el: ".swiper-scrollbar",
-  // },
-});
+  // const swiper2 = new Swiper(".swiper2", {
+  //   direction: "horizontal",
+  //   effect: "cards",
+  //   grabCursor: true,
+  //   overflow: false,
+  //   pagination: {
+  //     el: ".swiper-pagination2",
+  //   },
+  // });
 </script>
 </div>
 </div>
