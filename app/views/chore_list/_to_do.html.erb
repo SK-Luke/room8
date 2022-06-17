@@ -25,9 +25,14 @@
               </div>
               <div class="card-duration">
                 <p>
-                  <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
-                  task.chore.duration %>mins <br />
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                   Takes <%=task.chore.duration %>mins <br />
+
+                   <% if task.chore.frequency == "daily" %>
+                    <%= task.deadline.strftime("%A, %d/%m/%y, %H:%M") %>
+                  <% else %>
                   By <%= task.deadline.strftime("%A, %d/%m/%y") %>
+                  <% end %>
                 </p>
               </div>
               <div

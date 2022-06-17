@@ -217,21 +217,29 @@ class ChoreListController < ApplicationController
 
 
   def calc_user_preferences(select_user, chore_name_query)
+    if select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).nil?
+      r = 0
+    else
     flat_user_pref = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).preferences.find_by(user: select_user)
       r = 0.15 if flat_user_pref.rating == 3
       r = 0 if flat_user_pref.rating == 2
       r = -0.15 if flat_user_pref.rating == 1
+    end
     return r
   end
 
   def chores_today(select_user, chore_name_query)
     # Might need to relook this
-    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
-    v = 0
-    if @last_chore.present? && @last_chore.complete
-    cl.each do |c|
-      return v = 0.3 if c.deadline.day == Date.today.day
-    end
+    if select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).nil?
+      v = 0
+    else
+      cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
+      v = 0
+      if @last_chore.present? && @last_chore.complete
+      cl.each do |c|
+        return v = 0.3 if c.deadline.day == Date.today.day
+      end
+      end
     end
     v
   end
@@ -253,15 +261,19 @@ class ChoreListController < ApplicationController
 
   def user_chores_count(select_user, chore_name_query)
     arr = []
-    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
-    cl.each do |c|
-      # if @last_chore.present? && @last_chore.complete
-        arr << c if c.deadline.mon == Date.today.mon
-        arr << c if c.deadline.mon == Date.today.mon - 1
-      # else
-      #   arr << c if c.deadline.mon == Date.today.mon
-      #   arr << c if c.deadline.mon == Date.today.mon + 1
-      # end
+    if select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).nil?
+      arr.count
+    else
+      cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
+      cl.each do |c|
+        # if @last_chore.present? && @last_chore.complete
+          arr << c if c.deadline.mon == Date.today.mon
+          arr << c if c.deadline.mon == Date.today.mon - 1
+        # else
+        #   arr << c if c.deadline.mon == Date.today.mon
+        #   arr << c if c.deadline.mon == Date.today.mon + 1
+        # end
+    end
     end
     arr.count
   end
@@ -278,9 +290,13 @@ class ChoreListController < ApplicationController
 
   def user_chores_hours(select_user, chore_name_query)
     sum = 0
-    cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user).where(complete: true)
-    cl.each do |c|
-      sum += c.chore.duration
+    if select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).nil?
+      sum
+    else
+      cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user).where(complete: true)
+      cl.each do |c|
+        sum += c.chore.duration
+      end
     end
     sum
   end
