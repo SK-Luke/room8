@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import { csrfToken } from "@rails/ujs";
+import { initFlatpickr } from "../plugins/flatpickr";
 
 export default class extends Controller {
   static targets = ["edit", "form", "formDets"];
@@ -42,11 +43,12 @@ export default class extends Controller {
       .then((res) => res.json())
       .then((data) => {
         const form = document.querySelector("#edit-form");
-
+        console.log(data.form);
         form.innerHTML = data.form;
         form
           .querySelector("#edit-close")
           .addEventListener("click", this.closeForm);
+        initFlatpickr();
 
         this.openForm();
       });
