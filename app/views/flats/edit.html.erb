@@ -1,0 +1,25 @@
+<div class="container my-3">
+  <h2>Edit <%= @flat.name %></h2>
+  <%= simple_form_for(@flat, remote: true) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Update", class: "btn btn-warning", style: "color: white;" %>
+  <% end %>
+
+  <div class="container mt-3" data-controller="add-flatmates" data-add-flatmates-flatid-value="<%= params[:id] %>">
+    <h3>Add or remove roommates</h3>
+    <ul style="padding: 0px" data-add-flatmates-target="lists">
+      <% @users.each do |user| %>
+        <% if user != current_user %>
+          <div class="d-flex" data-add-flatmates-target="li">
+            <div class="flex-grow-1"><%= render 'email_li', user: user %></div>
+            <button type="button" data-action="click->add-flatmates#remove" class="btn-close flatmate-li ms-2 mt-3" aria-label="Close"></button>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+    <%# Render users form %>
+    <%= render 'users/form', flat: @flat, user: @roommate %>
+    <div data-add-flatmates-target="alert"></div>
+  </div>
+
+</div>

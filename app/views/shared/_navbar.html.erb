@@ -51,6 +51,10 @@
             </li>
             <hr class="my-1">
             <li class="nav-item <%= "nav-active-menu" if current_page?(edit_user_registration_path) %>">
+              <%= link_to "Edit flat", edit_flat_path(current_user.flats.first), class: "dropdown-item" %>
+            </li>
+            <hr class="my-1">
+            <li class="nav-item <%= "nav-active-menu" if current_page?(edit_user_registration_path) %>">
               <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
             </li>
             <li class="nav-item <%= "nav-active-menu" if current_page?(destroy_user_session_path) %>">
