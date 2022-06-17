@@ -1,41 +1,55 @@
 <%# <%= render "template" %>
-<div class="cards-frame tabcontent" id = "incomplete">
+<div class="cards-frame tabcontent" id="incomplete">
   <h1>Incompleted chores</h1>
-<!-- Slider main container -->
-<div class="swiper1" data-controller='swiper'>
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper" >
-    <!-- Slides -->
-    <% if @incomplete.blank? %>
-      <div class="swiper-slide"> No chores to display</div>
-    <% else %>
-    <% @incomplete.each do |task| %>
+  <!-- Slider main container -->
+  <div class="swiper1" data-controller="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <% if @incomplete.blank? %>
+      <div class="swiper-slide">No chores to display</div>
+      <% else %> <% @incomplete.each do |task| %>
       <div class="swiper-slide">
-        <div class="card" data-controller="mark-complete" >
+        <div class="card" data-controller="mark-complete">
+          <div class="d-flex">
+            <div class="vl"></div>
 
-        <div class="d-flex">
-          <div class="vl"></div>
-
-          <div class="card-body">
-          <div class="card-title" >
-            <h2 data-mark-complete-target="chore" data-value="<%= task.chore.name %>"><%= task.chore.name %></h2>
+            <div class="card-body">
+              <div class="card-title">
+                <h2
+                  data-mark-complete-target="chore"
+                  data-value="<%= task.chore.name %>"
+                >
+                  <%= task.chore.name %>
+                </h2>
+              </div>
+              <div class="card-duration">
+                <p>
+                  <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
+                  task.chore.duration %>mins <br />
+                </p>
+                <p>
+                  Dued since <br />
+                  <%= task.deadline.strftime("%A, %d/%m/%y") %>
+                </p>
+              </div>
+              <div class="card-mark-complete">
+                <div
+                  class="btn btn-success"
+                  data-mark-complete-target="tick"
+                  data-action="click->mark-complete#mark"
+                  data-value="<%= task.id %>"
+                >
+                  Mark complete
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-duration">
-            <p><i class="fa-solid fa-clock-rotate-left"></i> Takes <%= task.chore.duration %>mins <br></p>
-            <p>Dued since <br> <%= task.deadline.strftime("%A, %d/%m/%y") %></p>
-          </div>
-          <div class="card-mark-complete">
-            <div class="btn btn-success"  data-mark-complete-target="tick" data-action= "click->mark-complete#mark" data-value="<%= task.id %>" >Mark complete</div>
-          </div>
-          </div>
-        </div>
         </div>
       </div>
-    <% end %>
-    <% end %>
-
+      <% end %> <% end %>
+    </div>
+    <!-- If we need pagination -->
+    <div class=".pagination-swiper1"></div>
   </div>
-  <!-- If we need pagination -->
-  <div class=".pagination-swiper1"></div>
-</div>
 </div>

@@ -1,9 +1,7 @@
-<%= simple_form_for([ @task],
-                      data: { edit_deadline_target: "formDets",
-                      action: "submit->edit-deadline#send"
-                      }) do |f| %>
-  <div class="eded">
-    <%= f.input :deadline, label: "Preferred deadline"%>
-    <%= f.button :submit, "Set Deadline", value: "Set Deadline" %>
-  </div>
+<%= simple_form_for([ @task], data: { edit_deadline_target: "formDets", action:
+"submit->edit-deadline#send" }) do |f| %>
+<div class="eded">
+  <%= f.input :deadline, label: "Preferred deadline"%> <%= f.button :submit,
+  "Set Deadline", value: "Set Deadline" %>
+</div>
 <% end %>

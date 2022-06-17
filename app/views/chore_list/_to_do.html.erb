@@ -1,47 +1,61 @@
 <%# <%= render "template" %>
-<div class="cards-frame tabcontent" id = "to-do">
+<div class="cards-frame tabcontent" id="to-do">
   <h1>Chores to do now</h1>
-<!-- Slider main container -->
-<div class="swiper2" data-controller='swiper'>
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    <% if @to_do.blank? %>
-      <div class="swiper-slide"> No chores to display</div>
-    <% else %>
-
-    <% @to_do.each do |task| %>
+  <!-- Slider main container -->
+  <div class="swiper2" data-controller="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <% if @to_do.blank? %>
+      <div class="swiper-slide">No chores to display</div>
+      <% else %> <% @to_do.each do |task| %>
       <div class="swiper-slide">
         <div class="card" data-controller="mark-complete edit-deadline">
-
           <div class="d-flex">
             <div class="vl"></div>
 
-          <div class="card-body">
-          <div class="card-title">
-            <h2 data-mark-complete-target="chore" data-value="<%= task.chore.name %>"><%= task.chore.name %></h2>
+            <div class="card-body">
+              <div class="card-title">
+                <h2
+                  data-mark-complete-target="chore"
+                  data-value="<%= task.chore.name %>"
+                >
+                  <%= task.chore.name %>
+                </h2>
+              </div>
+              <div class="card-duration">
+                <p>
+                  <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
+                  task.chore.duration %>mins <br />
+                  By <%= task.deadline.strftime("%A, %d/%m/%y") %>
+                </p>
+              </div>
+              <div
+                class="btn btn-warning"
+                data-edit-deadline-target="edit"
+                data-action="click->edit-deadline#openForm"
+              >
+                Set personal deadline
+              </div>
+              <div class="card-mark-complete">
+                <div
+                  class="btn btn-success"
+                  data-mark-complete-target="tick"
+                  data-action="click->mark-complete#mark"
+                  data-value="<%= task.id %>"
+                >
+                  Mark as complete
+                </div>
+              </div>
+              <div class="d-none" data-edit-deadline-target="form">
+                <%= render "edit_deadline", locals: {task: @task=task} %>
+              </div>
+            </div>
           </div>
-          <div class="card-duration">
-            <p><i class="fa-solid fa-clock-rotate-left"></i> Takes <%= task.chore.duration %>mins <br>
-            By <%= task.deadline.strftime("%A, %d/%m/%y") %></p>
-          </div>
-          <div class="btn btn-warning" data-edit-deadline-target="edit" data-action= "click->edit-deadline#openForm">Set personal deadline
-          </div>
-          <div class="card-mark-complete">
-            <div class="btn btn-success" data-mark-complete-target="tick" data-action= "click->mark-complete#mark" data-value="<%= task.id %>">Mark as complete</div>
-          </div>
-        <div class="d-none" data-edit-deadline-target="form"><%= render "edit_deadline", locals: {task: @task=task} %></div>
         </div>
-
-        </div>
-        </div>
-
-
-
       </div>
-    <% end %>
-    <% end %>
+      <% end %> <% end %>
+    </div>
+    <div class="pagination-swiper2"></div>
   </div>
-  <div class="pagination-swiper2"></div>
-</div>
 </div>

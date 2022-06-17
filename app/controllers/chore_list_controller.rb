@@ -54,7 +54,7 @@ class ChoreListController < ApplicationController
       # if not due -> to do, the rest go upcoming
       while i < arr.length
         if arr[i].chore_lists.first.complete
-          @completed << arr[i].chore_lists.first
+          @completed << arr[i].chore_lists.first.chore
           i += 1
         elsif arr[i].chore_lists.first.deadline < DateTime.now
           @incomplete << arr[i].chore_lists.first
@@ -71,6 +71,7 @@ class ChoreListController < ApplicationController
       end
     end
     @upcoming = @upcoming.group_by(&:name)
+    @completed = @completed.group_by(&:name)
   end
 
   def demonalgo
