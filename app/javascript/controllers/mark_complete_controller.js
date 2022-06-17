@@ -7,12 +7,12 @@ export default class extends Controller {
     taskid: String,
   };
 
-  connect() {
-    console.log("connected");
-    console.log(this.tickTarget);
-    console.log(this.tickTarget.dataset.value);
-    console.log(this.choreTarget.dataset.value);
-  }
+  // connect() {
+  //   console.log("connected");
+  //   console.log(this.tickTarget);
+  //   console.log(this.tickTarget.dataset.value);
+  //   console.log(this.choreTarget.dataset.value);
+  // }
 
   mark(event) {
     event.preventDefault();

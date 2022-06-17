@@ -25,12 +25,22 @@ class ChoreListController < ApplicationController
       mark_chore_complete
     else
       params.permit(:id)
+      d = params.require(:chore_list).permit(:deadline)
       @task = ChoreList.find(params[:id])
-      @task.update(params.require(:chore_list).permit(:deadline))
-      respond_to do |format|
-        format.text { render partial: "chore_list/edit_deadline", locals: { task: @task }, formats: [:html] }
-        format.json
-      end
+      @task.update(d)
+      redirect_to chore_list_index_path
+
+      # respond_to do |format|
+      #   format.text { render partial: "chore_list/edit_deadline", locals: { task: @task }, formats: [:html] }
+      #   format.json
+      # end
+    end
+  end
+
+  def task
+    @task = ChoreList.find(params[:id])
+    respond_to do |format|
+      format.json
     end
   end
 
@@ -54,7 +64,7 @@ class ChoreListController < ApplicationController
       # if not due -> to do, the rest go upcoming
       while i < arr.length
         if arr[i].chore_lists.first.complete
-          @completed << arr[i].chore_lists.first
+          @completed << arr[i].chore_lists.first.chore
           i += 1
         elsif arr[i].chore_lists.first.deadline < DateTime.now
           @incomplete << arr[i].chore_lists.first
@@ -71,6 +81,7 @@ class ChoreListController < ApplicationController
       end
     end
     @upcoming = @upcoming.group_by(&:name)
+    @completed = @completed.group_by(&:name)
   end
 
   def demonalgo

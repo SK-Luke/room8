@@ -1,27 +1,50 @@
 <div class="chore-tab">
   <ul>
-    <li class="my-chore-list status tablinks" onclick="openCards(event, 'incomplete')" >
+    <li
+      class="my-chore-list tablinks"
+      onclick="openCards(event, 'incomplete')"
+    >
       <a>
-        <span class="icon" style="padding-right:9px;"><i class="fa-regular fa-triangle-exclamation"></i></span>
-        <span class="text" style="font-weight: bold; margin-bottom: 4px">Incomplete</span>
+        <span class="icon" style="padding-right: 9px"
+          ><i class="fa-regular fa-triangle-exclamation"></i
+        ></span>
+        <span class="text" style="font-weight: bold; margin-bottom: 4px"
+          >Incomplete</span
+        >
       </a>
     </li>
-    <li class="my-chore-list tablinks" onclick="openCards(event, 'to-do')" id="defaultOpen" >
-      <a >
-        <span class="icon" style="padding: 2px 3px 0 0;"><i class="fa-regular fa-timer"></i></span>
-        <span class="text" style="font-weight: bold; margin-bottom: 4px">To do</span>
+    <li
+      class="my-chore-list status tablinks"
+      onclick="openCards(event, 'to-do')"
+      id="defaultOpen"
+    >
+      <a>
+        <span class="icon" style="padding: 2px 3px 0 0"
+          ><i class="fa-regular fa-timer"></i
+        ></span>
+        <span class="text" style="font-weight: bold; margin-bottom: 4px"
+          >To do</span
+        >
       </a>
     </li>
     <li class="my-chore-list tablinks" onclick="openCards(event, 'completed')">
-      <a >
-        <span class="icon" style="padding: 2px 0 0 2px;"><i class="fa-regular fa-box-check"></i></span>
-        <span class="text" style="font-weight: bold; margin-bottom: 4px">Completed</span>
+      <a>
+        <span class="icon" style="padding: 2px 0 0 2px"
+          ><i class="fa-regular fa-box-check"></i
+        ></span>
+        <span class="text" style="font-weight: bold; margin-bottom: 4px"
+          >Completed</span
+        >
       </a>
     </li>
     <li class="my-chore-list tablinks" onclick="openCards(event, 'upcoming')">
-      <a >
-        <span class="icon" style="padding: 2px 0 0 4px;"><i class="fa-regular fa-hourglass"></i></span>
-        <span class="text" style="font-weight: bold; margin-bottom: 4px">Upcoming</span>
+      <a>
+        <span class="icon" style="padding: 2px 0 0 4px"
+          ><i class="fa-regular fa-hourglass"></i
+        ></span>
+        <span class="text" style="font-weight: bold; margin-bottom: 4px"
+          >Upcoming</span
+        >
       </a>
     </li>
     <div class="indicator"></div>
@@ -29,34 +52,34 @@
 </div>
 
 <script>
-// const list = document.querySelectorAll(".my-chore-list");
-// function activeLink() {
-//   list.forEach((item) => {
-//     item.classList.remove("status");
-//     this.classList.add("status");
-//   });
-// }
+  // const list = document.querySelectorAll(".my-chore-list");
+  // function activeLink() {
+  //   list.forEach((item) => {
+  //     item.classList.remove("status");
+  //     this.classList.add("status");
+  //   });
+  // }
 
-// list.forEach((item) => {
-//   item.addEventListener("click", activeLink);
-//   console.log("test");
-// });
+  // list.forEach((item) => {
+  //   item.addEventListener("click", activeLink);
+  //   console.log("test");
+  // });
 </script>
 
 <script>
-function openCards(evt, cardName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+  function openCards(evt, cardName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cardName).style.display = "block";
+    evt.currentTarget.className += " active";
   }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(cardName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
 
-document.getElementById("defaultOpen").click();
+  document.getElementById("defaultOpen").click();
 </script>

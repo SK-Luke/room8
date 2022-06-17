@@ -1,40 +1,56 @@
 import { Controller } from "@hotwired/stimulus";
 import { csrfToken } from "@rails/ujs";
+import { initFlatpickr } from "../plugins/flatpickr";
 
 export default class extends Controller {
   static targets = ["edit", "form", "formDets"];
 
   // connect() {
-  //   console.log("connected");
-  //   // console.log(this.formTarget.getElementsByClassName("d-flex")[0].classList);
-  //   console.log(this.formDetsTarget);
-  //   console.log(this.element.outerHTML);
+  //   console.log(document.querySelector("#edit-form"));
+  //   document
+  //     .querySelector(".edit-close")
+  //     .addEventListener("click", (e) => console.log("clicked"));
   // }
 
-  openForm(event) {
+  openForm() {
+    console.log(document.querySelector("#edit-close"));
+    document
+      .querySelector("#edit-close")
+      .addEventListener("click", (e) => console.log(e));
+
+    console.log(document.querySelector("#edit-form"));
+    document.querySelector("#edit-form").classList.add("open");
+  }
+
+  closeForm(event) {
     event.preventDefault();
-    // console.log(event)
-    this.formTarget.classList.remove("d-none");
-    this.formTarget
-      .getElementsByClassName("d-flex")[0]
-      .classList.remove("d-flex");
-    // this.formTarget
-    //   .getElementsByClassName("d-flex")[0]
-    //   .classList.add("d-flex.flex-column");
+
+    document
+      .querySelector("#edit-close")
+      .removeEventListener("click", this.closeForm);
+
+    console.log("close form");
+    document.querySelector("#edit-form").classList.remove("open");
   }
 
   send(event) {
     event.preventDefault();
+    const url = `task/${event.currentTarget.dataset.taskId}`;
 
-    fetch(this.formDetsTarget.action, {
-      method: "POST",
+    fetch(url, {
       headers: { Accept: "application/json", "X-CSRF-Token": csrfToken() },
-      body: new FormData(this.formDetsTarget),
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        location.reload();
+        const form = document.querySelector("#edit-form");
+        console.log(data.form);
+        form.innerHTML = data.form;
+        form
+          .querySelector("#edit-close")
+          .addEventListener("click", this.closeForm);
+        initFlatpickr();
+
+        this.openForm();
       });
   }
 }
