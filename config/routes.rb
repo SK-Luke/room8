@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   resources :preferences, only: %i[index update]
   # documentation to be read on devise user controller, and route updated accordingly
   resources :chore_list, only: %i[update index]
+
+  get '/task/:id', to: 'chore_list#task'
 end

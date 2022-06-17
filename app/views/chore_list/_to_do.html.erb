@@ -32,8 +32,8 @@
               </div>
               <div
                 class="btn btn-warning"
-                data-edit-deadline-target="edit"
-                data-action="click->edit-deadline#openForm"
+                data-task-id="<%= task.id %>"
+                data-action="click->edit-deadline#send"
               >
                 Set personal deadline
               </div>
@@ -59,6 +59,4 @@
     <div class="pagination-swiper2"></div>
   </div>
 </div>
-<div id = "edit-form" class = "d-none">
-  <%= render "edit_deadline" if @to_do.present? %>
-</div>
+<div id="edit-form"></div>

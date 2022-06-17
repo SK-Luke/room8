@@ -37,6 +37,14 @@ class ChoreListController < ApplicationController
     end
   end
 
+  def task
+    id = params.permit(:id)
+    @task = ChoreList.find(id)
+    respond_to do |format|
+      format.json
+    end
+  end
+
   private
 
   def set_chore_listings

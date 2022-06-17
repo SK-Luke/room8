@@ -10,7 +10,10 @@
 
 <div class="container">
   <div class="form-wrapper" style="width: 300px; margin: 0 auto;">
-    <h2>Flatpickr Demo</h2>
+  <div class="edit-close">
+    <i class="fa fa-times"></i>
+  </div>
+    <h2><%= @task.chore.name %></h2>
 
     <%= simple_form_for([@task],
                       data: { edit_deadline_target: "formDets",
