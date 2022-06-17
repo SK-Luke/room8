@@ -3,6 +3,10 @@
   <head>
     <title>Room8</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <%= render 'shared/ios_pwa_links' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
-    <link rel="icon" href="<%= image_path("logocolorsm.png") %>">
+    <link rel="icon" href="<%= image_path("icons/favicon-96x96.png") %>">
 
   </head>
 
