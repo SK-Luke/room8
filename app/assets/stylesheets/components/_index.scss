@@ -10,7 +10,6 @@
 @import "modal";
 @import "rating_card";
 @import "notice";
-@import "animate";
 @import "cl_tab";
 @import "carousel";
 @import "buttons";
@@ -42,9 +41,13 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
   padding-bottom: 0.3rem;
   margin-bottom: 1rem;
+  width: fit-content;
+  text-align: left;
   background: linear-gradient(#fb723b, #fb723b);
   background-size: 0% 5px;
   background-repeat: no-repeat;
   background-position: left bottom;
-  animation: 500ms line-in 200ms forwards ease-in;
+  transform: translate(-50px);
+  opacity: 0;
+  animation: 500ms line-in 800ms forwards ease-in;
 }
