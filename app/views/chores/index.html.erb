@@ -3,7 +3,7 @@
     <h2 class="header"><%= @flat.name %>'s chores</h2>
   </div>
 
-  <% if current_user.preferences.nil? %>
+  <% if current_user.preferences.all? { |pref| pref.rating == 2 } || current_user.preferences.nil? %>
     <div class="animate__animated animate__fadeIn d-flex justify-content-between" id="notification">
       <div style="width: 300px;">
         <p>You have not rated your chore preferences. <br><span style="text-decoration: underline;color: #f02d34;"><%= link_to "Go to my chore preferences", preferences_path %></span></p>
