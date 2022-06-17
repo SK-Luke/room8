@@ -22,11 +22,9 @@
     <div class="shadow">
       <%= render 'shared/navbar' %>
     </div>
-    <div>
-      <div style="position: absolute; top: 58px; display: flex; justify-content: center; width: 100%;">
-        <%= render 'shared/flashes' %>
-      </div>
-      <%= yield %>
+    <div style="position: absolute; top: 58px; display: flex; justify-content: center; width: 100%;">
+      <%= render 'shared/flashes' %>
     </div>
+    <%= yield %>
   </body>
 </html>
