@@ -1,8 +1,16 @@
-.notif {
-  background-color: $red;
-  color: white;
+#notification {
+  background-color: $body;
+  color: black;
   border-radius: 8px;
   text-align: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  display: none;
+  padding: 4px 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  border: 2px solid #f02d34;
+  animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
+  p {
+    margin-bottom: 0px;
+  }
 }

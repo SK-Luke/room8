@@ -1,8 +1,18 @@
+@keyframes slide-up {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .chore-tab {
+  transform: translateY(150%);
   background-color: $tinted-coral;
   position: fixed;
   bottom: 0;
-  width: calc(min(100vw, 400px));
+  width: calc(min(100vw, 390px));
   height: 70px;
   display: flex;
   justify-content: center;
@@ -11,8 +21,9 @@
   box-sizing: border-box;
   z-index: 100;
   margin: 0 auto;
-  // box-shadow: -1px -1px 2px rgba(0,0,0,.2)
+  animation: 300ms slide-up 500ms forwards ease-in;
 
+  // box-shadow: -1px -1px 2px rgba(0,0,0,.2)
   ul {
     display: flex;
     width: 100%;
