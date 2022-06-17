@@ -109,11 +109,11 @@ Flat.all.each do |flat|
 
     chore_list = ChoreList.new
     chore_list.chore = chore
-    chore_list.deadline = Date.today+rand(-10..-1)
+    chore_list.deadline = Date.today+rand(-10..10)
     # chore_list.deadline = Date.today+rand(-3..3)
     chore_list.user = flat.users.sample
     chore_list.month_list_id = month_list.id
-    chore_list.complete = true
+    chore_list.complete = [true, false].sample
     # chore_list.complete = [true, false].sample
     chore_list.save!
   end
