@@ -4,6 +4,7 @@
   grid-gap: 16px;
 }
 .chore_card {
+  cursor: pointer;
   padding: 14px;
   border-radius: 4px;
   background-color: #f4f2ee;
@@ -23,6 +24,7 @@
 }
 
 .chore_card_selected {
+  cursor: pointer;
   padding: 14px;
   border-radius: 4px;
   background-color: white;
@@ -65,6 +67,7 @@
 }
 .chore_edit_button {
   border-radius: 4px;
+  cursor: pointer;
   background-color: $coral;
   margin-bottom: 4px;
   padding: 6px;
@@ -78,6 +81,7 @@
 }
 .chore_edit_button_display {
   border-radius: 4px;
+  cursor: pointer;
   background-color: $coral;
   margin-bottom: 4px;
   padding: 6px;
