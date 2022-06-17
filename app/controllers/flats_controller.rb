@@ -45,15 +45,9 @@ class FlatsController < ApplicationController
   end
 
   def edit
-    @flat = Flat.find(params[:id])
-    @roommate = User.new()
-    @users = @flat.users
   end
 
   def update
-    @flat = Flat.find(params[:id])
-    @flat.update(flat_params)
-    redirect_to edit_flat_path
   end
 
   def validate_flatmate

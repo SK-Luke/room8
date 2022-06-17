@@ -33,10 +33,10 @@
       <div class="d-flex align-items-center">
         <!-- Avatar -->
         <div class="dropdown">
-          <a class="dropdown-toggle d-flex align-items-center caret-off" href="#" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= render partial: "shared/avatar_small", locals: { user: current_user } %>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+            <a class="dropdown-toggle d-flex align-items-center caret-off" href="#" id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= render partial: "shared/avatar_small", locals: { user: current_user } %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
             <li class="nav-item <%= "nav-active-menu" if current_page?(preferences_path) %>">
               <%= link_to "My preferences", preferences_path, class: "dropdown-item" %>
             </li>
@@ -50,15 +50,11 @@
               <%= link_to "My chores", chore_list_index_path, class: "dropdown-item" %>
             </li>
             <hr class="my-1">
-            <li class="nav-item <%= "nav-active-menu" if current_page?(edit_flat_path(current_user.flats.first)) %>">
-              <%= link_to "Edit flat", edit_flat_path(current_user.flats.first), class: "dropdown-item" %>
-            </li>
-            <hr class="my-1">
             <li class="nav-item <%= "nav-active-menu" if current_page?(edit_user_registration_path) %>">
               <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
             </li>
             <li class="nav-item <%= "nav-active-menu" if current_page?(destroy_user_session_path) %>">
-              <%= link_to "Logout 👋", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </li>
           </ul>
         </div>
@@ -77,7 +73,7 @@
                 <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
               </li>
               <li class="nav-item <%= "nav-active-menu" if current_page?(destroy_user_session_path) %>">
-                <%= link_to "Logout 👋", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </li>
             </ul>
         </div>

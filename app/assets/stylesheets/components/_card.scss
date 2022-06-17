@@ -52,17 +52,15 @@
 }
 
 .user-card {
+  a {
+    text-decoration: none;
+  }
   background-color: white;
   box-shadow: 1px 3px 5px rgba($color: #000000, $alpha: .2);
   border-radius: 12px;
   transition: all .2s ease-in-out;
   position: relative;
   margin-top: 28px;
-  transition: all .2s ease-in-out;
-
-  a {
-    text-decoration: none;
-  }
 
   .card-left {
     width: 40%;
@@ -102,18 +100,12 @@
     }
 
   }
-
   .bottom-line {
     margin: -22px 0 0 0;
     background-color: #C06D58;
     height: 24px;
     border-radius: 0 0 12px 12px;
     opacity: 1;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-
   }
 
   // &:hover {
