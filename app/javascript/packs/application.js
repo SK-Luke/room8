@@ -15,12 +15,12 @@ ActiveStorage.start();
 import "controllers";
 import "bootstrap";
 
-import Swiper from "swiper";
-import "swiper/swiper-bundle.css";
-document.addEventListener("turbolinks:load", function () {
-  swiper;
-  console.log(typeof swiper);
-});
+// import Swiper from "swiper";
+// import "swiper/swiper-bundle.css";
+// document.addEventListener("turbolinks:load", function () {
+//   swiper;
+//   console.log(typeof swiper);
+// });
 //= require jquery
 // = require jquery_ujs
 //= require turbolinks
