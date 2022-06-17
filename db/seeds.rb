@@ -32,7 +32,7 @@ user1.save!
 
 user2 = User.new({
   name: "Sek Kun",
-  email: "sekkun.luke@gmail.com",
+  email: "sk@gmail.com",
   password: "123123"
 })
 user2.save!
@@ -58,7 +58,7 @@ user4.photo.attach(io: URI.open("http://res.cloudinary.com/dlqa2wzkk/image/uploa
 
 user5 = User.new({
   name: "Sek Kun",
-  email: "sk@gmail.com",
+  email: "sekkun.luke@gmail.com",
   password: "123123"
 })
 user5.save!
