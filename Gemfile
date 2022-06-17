@@ -33,6 +33,7 @@ gem 'popper_js', '~> 2.9.3'
 gem 'letter_opener', group: :development
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
+gem 'toastr-rails'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 6.1.1'
