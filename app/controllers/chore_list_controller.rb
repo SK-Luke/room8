@@ -133,10 +133,13 @@ class ChoreListController < ApplicationController
       if @last_chore.present?
         # This gives date of last chore
         deadline = @last_chore.deadline
-      else
+      elsif @days_to_eom <= 7
         # this gives date of new chore, but we minus gap so the algo can apply the += gap
+        # HERE IS WHERE WE SET DEADLINE, NEED CORRECT HERE FOR CHORE DISTRIBUTION AFTER CREATION
         deadline = DateTime.new(y, m + 1, 1) - gap.values[0] if m < 12
         deadline = DateTime.new(y + 1, 1, 1) - gap.values[0] if m == 12
+      else
+        deadline = DateTime.new(y, m, Date.today.day + 1) - gap.values[0]
       end
       # This will give us a new start_date, assuming changes will only be implemented next month
       for d in 1..num do
