@@ -1,15 +1,7 @@
 <div class="container mt-3 setup"
 data-controller="setup-chores"
 data-setup-chores-flatid-value="<%= params[:id] %>">
-  <h2 style="display: inline-block;" aria-describedby="tooltip">Setup your chores</h2>
-  <div id="guide1" class="tour">
-    <h4>Welcome to Room8!</h4>
-    <p>Would you like a tour of the app?</p>
-    <div class="d-flex justify-content-between links">
-      <div class="py-1" data-action="click->user-guide#stopTour">No thanks</div>
-      <div class="py-1" data-action="click->user-guide#clickCard">Yes please!</div>
-    </div>
-  </div>
+  <h2 class="header" style="display: inline-block;">Setup your chores</h2>
   <button class="btn btn-warning btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">
   <i class="fa-solid fa-plus-large"></i>
   </button>
@@ -23,9 +15,10 @@ data-setup-chores-flatid-value="<%= params[:id] %>">
   <div class="chores" data-setup-chores-target="choresList">
     <% @chores.each do |chore| %>
       <div class="chore_card" id="chore-<%= chore.id %>"
-    data-action="click->setup-chores#highlight"
-    data-action="click->user-guide#"
-    data-setup-chores-target="choreCard">
+      <% if @highlight %>
+        data-action="click->setup-chores#highlight"
+      <% end %>
+      data-setup-chores-target="choreCard">
         <div class="chore-top d-flex">
           <h4><%= chore.name %></h4>
         </div>

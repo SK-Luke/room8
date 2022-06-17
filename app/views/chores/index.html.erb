@@ -1,11 +1,13 @@
 <div class="container my-3" data-controller="setup-chores" data-setup-chores-flatid-value="<%= params[:id] %>">
   <div class="d-flex">
-    <h2><%= @flat.name %>'s chores</h2>
+    <h2 class="header"><%= @flat.name %>'s chores</h2>
   </div>
 
   <div class="d-flex justify-content-between mb-3">
-    <button class="btn btn-warning" style="color: white; font-weight: bolder;"><%= link_to "Edit my preferences", preferences_path %></button>
-    <button class="btn btn-info" style="float: right;color: white;" data-action="click->setup-chores#addChore">+</button>
+    <button class="btn btn-warning" style="color: white;font-weight: bolder;border-radius: 18px;font-size: 12px;""><%= link_to "Go to my chore preferences", preferences_path %></button>
+    <button class="btn btn-warning btn-sm" style="float: right;color: white;width: 35px;" data-action="click->setup-chores#addChore">
+    <i class="fa-solid fa-plus-large"></i>
+    </button>
   </div>
 
   <div class="chores" data-setup-chores-target="choresList">
