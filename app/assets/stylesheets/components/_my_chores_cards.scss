@@ -1,4 +1,4 @@
-.swiper1 {
+.swiper {
   width: 240px;
   height: 320px;
   margin: 0 auto;
@@ -133,7 +133,7 @@
   text-align: -webkit-center;
 }
 
-// .pagination {
+// .swiper-pagination3 {
 //   margin-top: 32px;
 //   padding-left: 112px;
 // }
@@ -169,4 +169,34 @@ h1 {
 .cards-frame {
   overflow: hidden;
   height: 500px;
+}
+
+#edit-form {
+  position: fixed;
+  top: 50%;
+  background: white;
+  width: 90%;
+  /* margin: 0 auto; */
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: 300ms;
+  pointer-events: none;
+
+  &.open {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.edit-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: $red;
+  width: 50px;
+  height: 50px;
 }

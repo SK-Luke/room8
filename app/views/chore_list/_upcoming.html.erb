@@ -2,38 +2,36 @@
 <div class="cards-frame tabcontent" id="upcoming">
   <h1>Upcoming chores</h1>
   <!-- Slider main container -->
-  <div class="swiper4" data-controller='swiper'>
+  <div class="swiper4" data-controller="swiper">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @upcoming.blank? %>
-        <div class="swiper-slide">No chores to display</div>
-      <% else %>
-      <% @upcoming.keys.each do |task| %>
-          <div class="swiper-slide">
-            <div class="card">
-              <div class="d-flex">
-                      <div class="vl"></div>
+      <div class="swiper-slide">No chores to display</div>
+      <% else %> <% @upcoming.keys.each do |task| %>
+      <div class="swiper-slide">
+        <div class="card">
+          <div class="d-flex">
+            <div class="vl"></div>
 
-                      <div class="card-body">
-                        <div class="card-title">
-                          <h4><%= task %></h4>
-                        </div>
-                        <div class="card-duration">
-                          <p>
-                            <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
-                            @upcoming[task].first.duration %>mins
-                          </p>
-                        </div>
-                        <div class="card-instances">
-                          <p><%= @upcoming[task].count  %> X left</p>
-                        </div>
-                      </div>
+            <div class="card-body">
+              <div class="card-title">
+                <h4><%= task %></h4>
+              </div>
+              <div class="card-duration">
+                <p>
+                  <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
+                  @upcoming[task].first.duration %>mins
+                </p>
+              </div>
+              <div class="card-instances">
+                <p><%= @upcoming[task].count %> X left</p>
               </div>
             </div>
           </div>
-      <% end %>
-      <% end %>
+        </div>
+      </div>
+      <% end %> <% end %>
     </div>
     <!-- If we need pagination -->
     <div class="pagination-swiper4"></div>
@@ -48,8 +46,5 @@
     <%#
     <div class="swiper-scrollbar"></div>
     %>
-
-
-
   </div>
 </div>

@@ -15,15 +15,6 @@ ActiveStorage.start();
 import "controllers";
 import "bootstrap";
 
-// import Swiper from "swiper";
-// import "swiper/swiper-bundle.css";
-// document.addEventListener("turbolinks:load", function () {
-//   swiper;
-//   console.log(typeof swiper);
-// });
-//= require jquery
-// = require jquery_ujs
-//= require turbolinks
-//= require_tree .
-//= require bootstrap/modal
-//= require bootstrap-sprockets
+import { initFlatpickr } from "../plugins/flatpickr";
+
+initFlatpickr();
