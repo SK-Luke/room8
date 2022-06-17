@@ -33,6 +33,14 @@
   font-size: 14px;
 }
 
+.pref {
+  padding: 6px 24px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  animation: hide 0.1s linear 2.5s 1 forwards;
+}
+
 @keyframes hide {
   to {
       opacity: 0;
