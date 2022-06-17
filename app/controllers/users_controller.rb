@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @flat_user.user = @user
     @flat_user.flat = @flat
     @flat_user.active = true
-
+    # raise
     respond_to do |format|
       if @flat_user.save
         # Send email to Flatmate

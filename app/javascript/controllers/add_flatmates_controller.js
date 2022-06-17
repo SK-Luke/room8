@@ -28,11 +28,11 @@ export default class extends Controller {
           this.listsTarget.insertAdjacentHTML("beforeend", data.inserted_item);
           document.getElementById("confirm_btn").disabled = false;
           this.alertTarget.innerHTML = "";
-          this.formTarget.outerHTML = data.form;
         } else {
           this.alertTarget.innerHTML =
             "<span class='text-danger'>User email not found</span>";
         }
+        this.formTarget.outerHTML = data.form;
       });
   }
 
