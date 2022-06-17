@@ -71,7 +71,7 @@ user5.save!
 
 signed_in_users = [user1, user2, user3, user4]
 
-puts "👤 Created 5 users"
+puts "👤 Created 6 users"
 
 
 # Flat creation (for now the creating one)
@@ -95,9 +95,9 @@ puts "🏠 Created 'Big Fish Pond' flat and gave it 4 flatmates"
 # Chore creation
 puts "Creating chores..."
 Flat.all.each do |flat|
-  chores_array.each do |chore|
+  chores_array.each do |chore_name|
     chore = Chore.new({
-      name: chore,
+      name: chore_name,
       frequency: frequencies_array.sample,
       repetition: repetitions_array.sample,
       duration: durations_array.sample
