@@ -10,9 +10,9 @@
 
 <div class="container">
   <div class="form-wrapper" style="width: 300px; margin: 0 auto;">
-  <div class="edit-close">
+  <%# <div class="edit-close">
     <i class="fa fa-times"></i>
-  </div>
+  </div> %>
     <h2><%= @task.chore.name %></h2>
 
     <%= simple_form_for([@task],
@@ -20,7 +20,11 @@
                       action: "submit->edit-deadline#send"
                       }) do |f| %>
       <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+      <%# <div class="d-flex w-100 justify-content-around"> %>
+        <%= f.button :submit, "Go", class: "btn btn-primary" %>
+        <a class="btn btn-danger" id="edit-close">Close</a>
+      <%# </div> %>
+
     <% end %>
   </div>
 </div>

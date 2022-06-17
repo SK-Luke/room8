@@ -12,18 +12,22 @@ export default class extends Controller {
   // }
 
   openForm() {
+    console.log(document.querySelector("#edit-close"));
     document
-      .querySelector(".edit-close")
-      .addEventListener("click", this.closeForm);
+      .querySelector("#edit-close")
+      .addEventListener("click", (e) => console.log(e));
 
     console.log(document.querySelector("#edit-form"));
     document.querySelector("#edit-form").classList.add("open");
   }
 
-  closeForm() {
+  closeForm(event) {
+    event.preventDefault();
+
     document
-      .querySelector("#edit-form")
+      .querySelector("#edit-close")
       .removeEventListener("click", this.closeForm);
+
     console.log("close form");
     document.querySelector("#edit-form").classList.remove("open");
   }
@@ -36,6 +40,15 @@ export default class extends Controller {
       headers: { Accept: "application/json", "X-CSRF-Token": csrfToken() },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        const form = document.querySelector("#edit-form");
+
+        form.innerHTML = data.form;
+        form
+          .querySelector("#edit-close")
+          .addEventListener("click", this.closeForm);
+
+        this.openForm();
+      });
   }
 }

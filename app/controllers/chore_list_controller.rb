@@ -38,8 +38,7 @@ class ChoreListController < ApplicationController
   end
 
   def task
-    id = params.permit(:id)
-    @task = ChoreList.find(id)
+    @task = ChoreList.find(params[:id])
     respond_to do |format|
       format.json
     end
