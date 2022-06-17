@@ -14,13 +14,8 @@ export default class extends Controller {
   openForm(event) {
     event.preventDefault();
     // console.log(event)
-    this.formTarget.classList.remove("d-none");
-    this.formTarget
-      .getElementsByClassName("d-flex")[0]
-      .classList.remove("d-flex");
-    // this.formTarget
-    //   .getElementsByClassName("d-flex")[0]
-    //   .classList.add("d-flex.flex-column");
+    console.log(document.querySelector("#edit-form"));
+    document.querySelector("#edit-form").classList.remove("d-none");
   }
 
   send(event) {

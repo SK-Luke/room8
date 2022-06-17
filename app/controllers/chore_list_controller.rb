@@ -25,12 +25,15 @@ class ChoreListController < ApplicationController
       mark_chore_complete
     else
       params.permit(:id)
+      d = params.require(:chore_list).permit(:deadline)
       @task = ChoreList.find(params[:id])
-      @task.update(params.require(:chore_list).permit(:deadline))
-      respond_to do |format|
-        format.text { render partial: "chore_list/edit_deadline", locals: { task: @task }, formats: [:html] }
-        format.json
-      end
+      @task.update(d)
+      redirect_to chore_list_index_path
+
+      # respond_to do |format|
+      #   format.text { render partial: "chore_list/edit_deadline", locals: { task: @task }, formats: [:html] }
+      #   format.json
+      # end
     end
   end
 
