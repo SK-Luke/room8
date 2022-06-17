@@ -50,7 +50,7 @@
               <%= link_to "My chores", chore_list_index_path, class: "dropdown-item" %>
             </li>
             <hr class="my-1">
-            <li class="nav-item <%= "nav-active-menu" if current_page?(edit_user_registration_path) %>">
+            <li class="nav-item <%= "nav-active-menu" if current_page?(edit_flat_path(current_user.flats.first)) %>">
               <%= link_to "Edit flat", edit_flat_path(current_user.flats.first), class: "dropdown-item" %>
             </li>
             <hr class="my-1">
