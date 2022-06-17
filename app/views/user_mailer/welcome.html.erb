@@ -20,9 +20,9 @@
       <br><br>
       Click on the link below to set your preferred chores to get started!
     </p>
-    <button style="background-color: #fb723b;">
-      <%= link_to "Join Now", preferences_url, style:"text-decoration:none; color: rgb(242, 241, 241); background-color: #fb723b;" %>
-    </button>
+    <%# <button style="background-color: #fb723b;"> %>
+    <%= button_to "Join Now", preferences_url, style:"text-decoration:none; color: rgb(242, 241, 241); background-color: #fb723b; padding:8px; border-radius: 5px; border-style:none; cursor:pointer;", method: :get, form:{ target: '_blank'} %>
+    <%# </button> %>
     <br><br><br>
     <p>
       Stay Fruity,
