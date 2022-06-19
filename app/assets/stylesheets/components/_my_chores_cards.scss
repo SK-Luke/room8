@@ -184,6 +184,7 @@ h1 {
   border-radius: 8px;
   transition: 300ms;
   pointer-events: none;
+  border: 1px solid #fb723b;
 
   &.open {
     transform: translate(-50%, -50%) scale(1);
@@ -283,4 +284,13 @@ h1 {
   color: wheat;
   font-weight: 700;
   font-size: larger;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  .modal-footer {
+    flex-wrap: unset;
+  }
 }
