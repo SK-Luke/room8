@@ -5,10 +5,10 @@
                     action: "submit->setup-chores#send"
                     }) do |f| %>
   <div class="modal-body" style="color: #7e6b6b">
-    <%= f.input :name %>
-    <%= f.input :frequency, label: "Happens", collection: %w(daily weekly monthly), class: "mx-3" %>
-    <%= f.input :repetition, label: false %>
-    <%= f.input :duration, :label => "Minutes taken to perform chore" %>
+    <%= f.input :name, placeholder: 'e.g Clean the toilet' %>
+    <%= f.input :frequency, label: "Happens",placeholder: 'monthly', collection: %w(daily weekly monthly), class: "mx-3" %>
+    <%= f.input :repetition, label: false,placeholder: '2 (twice)' %>
+    <%= f.input :duration, :label => "Minutes taken to perform chore",placeholder: '30' %>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-action="click->setup-chores#modalClose">Close</button>
