@@ -202,9 +202,52 @@ h1 {
 }
 
 .orange-set {
-  color: white;
+  color: #fb723b;
+  border-radius: 8px;
+  background-color: transparent;
+  border-width: 0.14rem;
+  width: 150px;
 }
 
 .green-mark {
-  color: white;
+  color: #46be7f;
+  border-radius: 8px;
+  background-color: transparent;
+  border-width: 0.14rem;
+  width: 150px;
+}
+
+@keyframes line-in {
+  0% {
+    transform: translate(-50px);
+    opacity: 0;
+    background-size: 0% 5px;
+  }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+    background-size: 90% 5px;
+  }
+}
+
+.chore-list-title {
+  font-weight: 700;
+  left: 50%;
+  transform: translate(50px);
+  opacity: 0;
+  text-align: left;
+  width: fit-content;
+  padding-bottom: 0.3rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(#fb723b, #fb723b);
+  background-size: 0% 5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  animation: 500ms line-in 200ms forwards ease-in;
+}
+
+.chore-list-header {
+  display: flex;
+  justify-content: center; /* horizontal, when using flex-direction: row; */
+  align-items: center;
 }
