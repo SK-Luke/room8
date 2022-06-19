@@ -251,3 +251,10 @@ h1 {
   justify-content: center; /* horizontal, when using flex-direction: row; */
   align-items: center;
 }
+
+.cancel-neutral {
+  background: transparent;
+  color: darkslategray;
+  border-width: 0.14rem;
+  border-radius: 8px;
+}
