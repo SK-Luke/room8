@@ -10,6 +10,8 @@
   border: 2px solid #f02d34;
   animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s;
+  position: absolute;
+  display: block;
   p {
     margin-bottom: 0px;
   }
