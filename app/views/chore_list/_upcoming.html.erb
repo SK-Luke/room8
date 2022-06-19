@@ -9,7 +9,7 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @upcoming.blank? %>
-      <div class="swiper-slide">No chores to display</div>
+      <div class="swiper-slide upcoming-img" >No chores to display</div>
       <% else %> <% @upcoming.keys.each do |task| %>
       <div class="swiper-slide">
         <div class="card">
