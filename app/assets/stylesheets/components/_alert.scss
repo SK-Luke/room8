@@ -39,6 +39,8 @@
   background: white;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   animation: hide 0.1s linear 2.5s 1 forwards;
+  position: absolute;
+  z-index: 1;
 }
 
 @keyframes hide {
