@@ -128,7 +128,6 @@ class ChoreListController < ApplicationController
       # num = number of instances to create
       num = @total_days.days.fdiv(gap.values[0]).round
       # d = start_date
-
       @last_chore = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: c.name).chore_lists.last
       if @last_chore.present?
         # This gives date of last chore
@@ -144,10 +143,11 @@ class ChoreListController < ApplicationController
       # This will give us a new start_date, assuming changes will only be implemented next month
       for d in 1..num do
         # Create and assign chore, deadline, month, except for user
-        @chore_lists_to_assign << ChoreList.new(deadline: deadline += (gap.values[0] - 1.seconds), chore: c, month_list: MonthList.create(month:Date.today.next_month))
+        @chore_lists_to_assign << ChoreList.new(deadline: deadline += (gap.values[0] - 1.seconds + 1.days), chore: c, month_list: MonthList.create(month:Date.today.next_month))
         # ChoreList.new(deadline: DateTime.now + 2.days, chore: Chore.first, month_list: MonthList.create(month: Date.today.next_month))
         # raise
       end
+      @chore_lists_to_assign << ChoreList.new(deadline: deadline += (gap.values[0] - 1.seconds + 1.days), chore: c, month_list: MonthList.create(month:Date.today.next_month)) if num.zero?
     end
     # End of this method, I should get an array of total chore_lists
     # @chore_lists_to_assign = [cl_instance, cl_instance, cl_instance]
@@ -177,8 +177,9 @@ class ChoreListController < ApplicationController
         # Take reference from days
         # This should return gap in days
         gap = @total_days.fdiv(c.repetition).days if @days_to_eom <= 7
-        gap = Date.new(Date.today.year, Date.today.mon, -1).day.days if @days_to_eom > 7
+        gap = Date.new(Date.today.year, Date.today.mon, -1).day.to_f.days if @days_to_eom > 7
         @gap << { c.name.to_s => gap }
+        # raise
       end
     end
   end
@@ -281,7 +282,8 @@ class ChoreListController < ApplicationController
   def total_chores_hours(chore_name_query)
     # Duration is an integer
     sum = 0
-    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(complete: true)
+    cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists
+    # cl = current_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(complete: true)
     cl.each do |c|
       sum += c.chore.duration
     end
@@ -292,6 +294,11 @@ class ChoreListController < ApplicationController
     sum = 0
     if select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).nil?
       sum
+    elsif select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user).where(complete: true).blank?
+      cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user)
+      cl.each do |c|
+        sum += c.chore.duration
+      end
     else
       cl = select_user.flat_users.find_by(active: true).flat.chores.find_by(name: chore_name_query).chore_lists.where(user: select_user).where(complete: true)
       cl.each do |c|
