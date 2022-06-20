@@ -21,8 +21,8 @@ export default class extends Controller {
     console.log(this.tickTarget.dataset.value);
     console.log(document.querySelector("#mark-complete"));
     console.log(this.choreTarget.innerText);
-    document.querySelector("#exampleModalLabel").innerText =
-      this.choreTarget.innerText;
+    // document.querySelector("#exampleModalLabel").innerText =
+    //   this.choreTarget.innerText;
     // console.log(mark);
     document.querySelector("#mark-complete").addEventListener("click", (e) => {
       // mark = true;

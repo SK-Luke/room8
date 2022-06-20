@@ -13,17 +13,19 @@
   <%# <div class="edit-close">
     <i class="fa fa-times"></i>
   </div> %>
-    <h2><%= @task.chore.name %></h2>
+    <h2 style="color: #fb723b;margin-bottom: 1em;">Set deadline</h2>
 
     <%= simple_form_for([@task],
                       data: { edit_deadline_target: "formDets",
                       action: "submit->edit-deadline#send"
                       }) do |f| %>
-      <%= f.input :deadline, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :deadline,label: false, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%# <div class="d-flex w-100 justify-content-around"> %>
-      <div class="d-flex" style="justify-content: space-around">
+      <div class="d-flex" style="justify-content: space-between">
         <a class="btn btn-secondary cancel-neutral" id="edit-close">Close</a>
-        <%= f.button :submit, "Set deadline", class: "btn btn-success green-mark" %>
+        <div width="100px;">
+          <%= f.button :submit, "Confirm", class: "btn btn-success green-mark" %>
+        </div>
 
       </div>
       <%# </div> %>
