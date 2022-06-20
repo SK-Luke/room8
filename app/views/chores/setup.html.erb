@@ -12,6 +12,7 @@ data-setup-chores-flatid-value="<%= params[:id] %>">
       <div class="chore_card" id="chore-<%= chore.id %>"
       <% if @highlight %>
         data-action="click->setup-chores#highlight"
+        data-action="touchstart->setup-chores#highlight"
       <% end %>
       data-setup-chores-target="choreCard">
         <div class="chore-top d-flex">
@@ -28,7 +29,7 @@ data-setup-chores-flatid-value="<%= params[:id] %>">
             <% end %>
           <% end %>
         </div>
-        <div class="chore_edit_button" data-action="click->setup-chores#editFormAppear">
+        <div class="chore_edit_button" data-action="click->setup-chores#editFormAppear" data-action="touchstart->setup-chores#editFormAppear">
           <p>Edit</p>
         </div>
       </div>
