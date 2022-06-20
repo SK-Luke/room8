@@ -86,7 +86,10 @@ class ChoreListController < ApplicationController
             elsif cl.chore_lists.first.deadline < DateTime.now
               @incomplete << cl.chore_lists.first
             elsif @to_do.include?(cl.chore_lists.first)
-              @upcoming << cl.chore_lists.first.chore
+              while i < arr.length
+                @upcoming << cl.chore_lists.first.chore
+                i += 1
+              end
             elsif cl.chore_lists.first.deadline > DateTime.now
               @to_do << cl.chore_lists.first
             end
