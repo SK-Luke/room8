@@ -41,11 +41,11 @@
     <% end %>
   </div>
   <%# Add chore %>
-  <div id="addChoreModal" class="modal" tabindex="-1">
+  <div id="addChoreModal" class="modals" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add Chore</h5>
+          <h5 class="modal-title" style="color:#fb723b">Add Chore</h5>
           <button type="button" data-action="click->setup-chores#modalClose" class="btn-close" aria-label="Close"></button>
         </div>
       <%= render partial: "newchore", locals: {chore: @chore} %>
