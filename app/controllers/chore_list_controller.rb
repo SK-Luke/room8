@@ -63,25 +63,42 @@ class ChoreListController < ApplicationController
       # If no, check deadline, If overdued, -> incomplete
       # if not due -> to do, the rest go upcoming
       while i < arr.length
-        if arr[i].chore_lists.first.complete
-          @completed << arr[i].chore_lists.first.chore
-          i += 1
-        elsif arr[i].chore_lists.first.deadline < DateTime.now
-          @incomplete << arr[i].chore_lists.first
-          i += 1
-        elsif arr[i].chore_lists.first.deadline > DateTime.now
-          @to_do << arr[i].chore_lists.first
-          i += 1
-          # If nested while doesn't work, use until
-          while i < arr.length
-            @upcoming << arr[i].chore_lists.first.chore
+        if arr.count == 1
+          if arr[i].chore_lists.first.complete
+            @completed << arr[i].chore_lists.first.chore
             i += 1
+          elsif arr[i].chore_lists.first.deadline < DateTime.now
+            @incomplete << arr[i].chore_lists.first
+            i += 1
+          elsif arr[i].chore_lists.first.deadline > DateTime.now
+            @to_do << arr[i].chore_lists.first
+            i += 1
+            # If nested while doesn't work, use until
+            while i < arr.length
+              @upcoming << arr[i].chore_lists.first.chore
+              i += 1
+            end
           end
+        elsif arr.count > 1
+          arr.each do |cl|
+            if cl.chore_lists.first.complete
+              @completed << cl.chore_lists.first.chore
+            elsif cl.chore_lists.first.deadline < DateTime.now
+              @incomplete << cl.chore_lists.first
+            elsif @to_do.include?(cl.chore_lists.first)
+              @upcoming << cl.chore_lists.first.chore
+            elsif cl.chore_lists.first.deadline > DateTime.now
+              @to_do << cl.chore_lists.first
+            end
+          end
+          i += 1
         end
       end
     end
-    @upcoming = @upcoming.group_by(&:name)
-    @completed = @completed.group_by(&:name)
+    @upcoming = @upcoming.uniq.group_by(&:name)
+    @completed = @completed.uniq.group_by(&:name)
+    @to_do = @to_do.uniq
+    @incomplete = @incomplete.uniq
   end
 
   def demonalgo
