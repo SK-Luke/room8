@@ -9,7 +9,9 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @incomplete.blank? %>
-      <div class="swiper-slide">No chores to display</div>
+      <div class="swiper-slide overdue-img" style="background-image: url('https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');background-size: cover;">
+        Great job! No incomplete chore!
+      </div>
       <% else %> <% @incomplete.each do |task| %>
       <div class="swiper-slide">
         <div class="card" data-controller="mark-complete">
@@ -41,6 +43,8 @@
                   data-mark-complete-target="tick"
                   data-action="click->mark-complete#mark"
                   data-value="<%= task.id %>"
+                  data-title="<%= task %>"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
                 >
                   Mark complete
                 </div>

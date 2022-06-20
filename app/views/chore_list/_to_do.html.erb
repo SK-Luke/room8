@@ -9,7 +9,7 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @to_do.blank? %>
-      <div class="swiper-slide">No chores to display</div>
+      <div class="swiper-slide to-do-img" style="background-image: url('https://images.unsplash.com/photo-1525373612132-b3e820b87cea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80');background-size: cover;">0 chores to-do now, have a break, you deserved it! Cheers!</div>
       <% else %> <% @to_do.each do |task| %>
       <div class="swiper-slide">
         <div class="card" data-controller="mark-complete edit-deadline">
@@ -50,6 +50,7 @@
                   data-mark-complete-target="tick"
                   data-action="click->mark-complete#mark"
                   data-value="<%= task.id %>"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
                 >
                   Mark complete
                 </div>

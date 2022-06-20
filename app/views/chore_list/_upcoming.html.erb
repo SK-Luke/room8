@@ -9,7 +9,7 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @upcoming.blank? %>
-      <div class="swiper-slide">No chores to display</div>
+      <div class="swiper-slide upcoming-img"  style="background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');background-size: cover;">No more upcoming chores! Let's party!</div>
       <% else %> <% @upcoming.keys.each do |task| %>
       <div class="swiper-slide">
         <div class="card">
