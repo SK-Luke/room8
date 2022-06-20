@@ -1,37 +1,44 @@
 <%# <%= render "template" %>
 <div class="cards-frame tabcontent" id="to-do">
-  <h1>Chores to do now</h1>
+  <div class="chore-list-header">
+    <h1 class="chore-list-title">Chores to do now</h1>
+  </div>
   <!-- Slider main container -->
   <div class="swiper2" data-controller="swiper">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @to_do.blank? %>
-      <div class="swiper-slide">No chores to display</div>
+      <div class="swiper-slide to-do-img" style="background-image: url('https://images.unsplash.com/photo-1525373612132-b3e820b87cea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80');background-size: cover;">0 chores to-do now, have a break, you deserved it! Cheers!</div>
       <% else %> <% @to_do.each do |task| %>
       <div class="swiper-slide">
         <div class="card" data-controller="mark-complete edit-deadline">
           <div class="d-flex">
-            <div class="vl"></div>
+            <div class="vl" style = "background-color: #e29647"></div>
 
             <div class="card-body">
               <div class="card-title">
-                <h2
+                <h4
                   data-mark-complete-target="chore"
                   data-value="<%= task.chore.name %>"
                 >
-                  <%= task.chore.name %>
-                </h2>
+                  <%= task.chore.name.capitalize %>
+                </h4>
               </div>
               <div class="card-duration">
                 <p>
-                  <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
-                  task.chore.duration %>mins <br />
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                   Takes <%=task.chore.duration %>mins <br />
+
+                   <% if task.chore.frequency == "daily" %>
+                    <%= task.deadline.strftime("%A, %d/%m/%y, %H:%M") %>
+                  <% else %>
                   By <%= task.deadline.strftime("%A, %d/%m/%y") %>
+                  <% end %>
                 </p>
               </div>
               <div
-                class="btn btn-warning"
+                class="btn btn-warning orange-set"
                 data-task-id="<%= task.id %>"
                 data-action="click->edit-deadline#send"
               >
@@ -39,12 +46,13 @@
               </div>
               <div class="card-mark-complete">
                 <div
-                  class="btn btn-success"
+                  class="btn btn-success green-mark"
                   data-mark-complete-target="tick"
                   data-action="click->mark-complete#mark"
                   data-value="<%= task.id %>"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
                 >
-                  Mark as complete
+                  Mark complete
                 </div>
               </div>
               <div class="d-none" data-edit-deadline-target="form">

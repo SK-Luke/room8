@@ -68,5 +68,40 @@ class Chore < ApplicationRecord
       duration: 30,
       flat_id: flat_id
     )
+    Chore.create(
+      name: "Clean the kitchen",
+      frequency: "weekly",
+      repetition: 1,
+      duration: 45,
+      flat_id: flat_id
+    )
+    Chore.create(
+      name: "Vacuum furniture",
+      frequency: "monthly",
+      repetition: 1,
+      duration: 30,
+      flat_id: flat_id
+    )
+    Chore.create(
+      name: "Organize living room",
+      frequency: "monthly",
+      repetition: 1,
+      duration: 30,
+      flat_id: flat_id
+    )
+    Chore.create(
+      name: "Wash windows",
+      frequency: "monthly",
+      repetition: 1,
+      duration: 30,
+      flat_id: flat_id
+    )
+    Chore.create(
+      name: "Laundry for bedsheets",
+      frequency: "monthly",
+      repetition: 1,
+      duration: 20,
+      flat_id: flat_id
+    )
   end
 end

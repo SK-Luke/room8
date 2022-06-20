@@ -1,4 +1,4 @@
-<div class="container mt-3 setup"
+<div onclick="void(0);" class="container my-3 setup"
 data-controller="setup-chores"
 data-setup-chores-flatid-value="<%= params[:id] %>">
   <h2 class="header" style="display: inline-block;">Setup your chores</h2>
@@ -6,11 +6,6 @@ data-setup-chores-flatid-value="<%= params[:id] %>">
   <i class="fa-solid fa-plus-large"></i>
   </button>
 
-  <div id="clickCard" class="tooltip" role="tooltip">
-    <p>Tap on a chore to select/unselect them.</p>
-    <div class="py-1 links" data-action="click->user-guide#stopTour">Stop Tour</div>
-    <div id="arrow" data-popper-arrow></div>
-  </div>
   <!-- Display all chores -->
   <div class="chores" data-setup-chores-target="choresList">
     <% @chores.each do |chore| %>

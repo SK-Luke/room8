@@ -1,5 +1,7 @@
-<div class="container preferences text-center mt-3" id="preferences" data-controller="preferences">
-  <h2 class="header">Rate your Chores</h2>
+<div class="container preferences text-center mt-3" data-controller="preferences">
+  <div class="wrapper" id="preferences">
+    <h2 class="header">Rate your Chores</h2>
+  </div>
 
   <% @preferences.each do |preference| %>
     <div class="rating_card" data-preferences-target="prefCard">

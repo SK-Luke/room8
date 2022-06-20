@@ -1,27 +1,31 @@
 <%# <%= render "template" %>
 <div class="cards-frame tabcontent" id="incomplete">
-  <h1>Incompleted chores</h1>
+  <div class="chore-list-header">
+    <h1 class="chore-list-title">Incompleted chores</h1>
+  </div>
   <!-- Slider main container -->
   <div class="swiper1" data-controller="swiper">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
       <!-- Slides -->
       <% if @incomplete.blank? %>
-      <div class="swiper-slide">No chores to display</div>
+      <div class="swiper-slide overdue-img" style="background-image: url('https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80');background-size: cover;">
+        Great job! No incomplete chore!
+      </div>
       <% else %> <% @incomplete.each do |task| %>
       <div class="swiper-slide">
         <div class="card" data-controller="mark-complete">
           <div class="d-flex">
-            <div class="vl"></div>
+            <div class="vl" style="background-color: #F46262"></div>
 
             <div class="card-body">
               <div class="card-title">
-                <h2
+                <h4
                   data-mark-complete-target="chore"
                   data-value="<%= task.chore.name %>"
                 >
-                  <%= task.chore.name %>
-                </h2>
+                  <%= task.chore.name.capitalize %>
+                </h4>
               </div>
               <div class="card-duration">
                 <p>
@@ -35,10 +39,12 @@
               </div>
               <div class="card-mark-complete">
                 <div
-                  class="btn btn-success"
+                  class="btn btn-success green-mark"
                   data-mark-complete-target="tick"
                   data-action="click->mark-complete#mark"
                   data-value="<%= task.id %>"
+                  data-title="<%= task %>"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal"
                 >
                   Mark complete
                 </div>
