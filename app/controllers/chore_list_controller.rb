@@ -85,11 +85,10 @@ class ChoreListController < ApplicationController
               @completed << cl.chore_lists.first.chore
             elsif cl.chore_lists.first.deadline < DateTime.now
               @incomplete << cl.chore_lists.first
+            elsif @to_do.include?(cl.chore_lists.first)
+              @upcoming << cl.chore_lists.first.chore
             elsif cl.chore_lists.first.deadline > DateTime.now
               @to_do << cl.chore_lists.first
-              while i < arr.length
-                @upcoming << cl.chore_lists.first.chore
-              end
             end
           end
           i += 1
@@ -98,6 +97,8 @@ class ChoreListController < ApplicationController
     end
     @upcoming = @upcoming.uniq.group_by(&:name)
     @completed = @completed.uniq.group_by(&:name)
+    @to_do = @to_do.uniq
+    @incomplete = @incomplete.uniq
   end
 
   def demonalgo
