@@ -1,4 +1,4 @@
-chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Clean the toilets", "Clean the kitchen", "Buy some beers", "Cook dinner", "Clean the windows", "Water the plants", "Clean the table", "Wash the curtains", "Wash the car", "Defrost the fridge"]
+chores_array = ["Sweep the floor", "Throw out the garbage", "Do the dishes", "Clean the toilets", "Clean the kitchen", "Buy some beers", "Cook dinner", "Clean the windows", "Water the plants", "Clean the table", "Wash the curtains", "Wash the car", "Defrost the fridge"]
 frequencies_array = ["daily", "weekly", "monthly"]
 repetitions_array = [1, 2, 3]
 durations_array = [15, 30, 60, 90, 120]
@@ -119,7 +119,7 @@ Flat.all.each do |flat|
 end
 puts "🧹 Created #{chores_array.count} chores for 'Big Fish Pond' flat, and assigned them to random users"
 
-# Creating 2 more chores for my man Sek Kun
+# Creating 3 more chores for my man Sek Kun
 skchore1 = Chore.new({
   name: "Mop the floor",
   frequency: "weekly",
@@ -137,7 +137,6 @@ chore_list.deadline = Date.today+1
 chore_list.user = user2
 chore_list.month_list_id = month_list.id
 chore_list.complete = false
-# chore_list.complete = [true, false].sample
 chore_list.save!
 
 skchore2 = Chore.new({
@@ -157,7 +156,25 @@ chore_list.deadline = Date.today+1
 chore_list.user = user2
 chore_list.month_list_id = month_list.id
 chore_list.complete = false
-# chore_list.complete = [true, false].sample
+chore_list.save!
+
+skchore3 = Chore.new({
+  name: "Pay the rent",
+  frequency: "monthly",
+  repetition: 1,
+  duration: 15
+})
+skchore3.flat = flat
+skchore3.save!
+
+month_list = MonthList.create(month: Date.today)
+
+chore_list = ChoreList.new
+chore_list.chore = skchore3
+chore_list.deadline = Date.today-1
+chore_list.user = user2
+chore_list.month_list_id = month_list.id
+chore_list.complete = false
 chore_list.save!
 
 
