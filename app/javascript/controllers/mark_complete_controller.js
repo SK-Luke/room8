@@ -18,7 +18,8 @@ export default class extends Controller {
   mark(event) {
     event.preventDefault();
     // let mark = false;
-    console.log(document.getElementById("mark-complete-done"));
+    console.log(this.tickTarget.dataset.value);
+    console.log(document.querySelector("#mark-complete"));
     console.log(this.choreTarget.innerText);
     document.querySelector("#exampleModalLabel").innerText =
       this.choreTarget.innerText;
@@ -26,8 +27,9 @@ export default class extends Controller {
     document.querySelector("#mark-complete").addEventListener("click", (e) => {
       // mark = true;
       // console.log(mark);
+      console.log(e);
+      console.log("click");
       $("#exampleModal").modal("hide");
-
       fetch(`/chore_list/${this.tickTarget.dataset.value}`, {
         method: "PUT",
         headers: { Accept: "application/json", "X-CSRF-Token": csrfToken() },
