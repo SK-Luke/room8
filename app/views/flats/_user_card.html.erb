@@ -6,9 +6,9 @@
     <div class="card-right">
       <h2 class="mb-0"><%= user.name %></h2>
       <div class="card-info">
-        <p><%= user.chore_lists.count - user.chore_lists.where("complete = true").count %> chores remaining</p>
-        <p><%= user.chore_lists.where("complete = true").count %> chores completed</p>
-        <p><%= user.chore_lists.where("deadline < ?", @date).count %> chores overdue</p>
+        <p><%= user.chore_lists.count - user.chore_lists.where("complete = true").count - user.chore_lists.where("deadline < ?", @date).where("complete != true").count %> remaining chores</p>
+        <p><%= user.chore_lists.where("complete = true").count %> completed chores</p>
+        <p><%= user.chore_lists.where("deadline < ?", @date).where("complete != true").count %> overdue chores</p>
       </div>
     </div>
   </div>

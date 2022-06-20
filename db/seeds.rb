@@ -1,8 +1,8 @@
-chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed Kenny", "Buy some beers", "Vacuum", "Clean the windows"]
+chores_array = ["Sweep the floor", "Throw out the garbage", "Pay the rent", "Do the dishes", "Do the laundry", "Clean the toilets", "Clean the kitchen", "Mop the floor", "Feed Kenny", "Buy some beers", "Cook dinner", "Clean the windows", "Water the plants", "Clean the table", "Wash the curtains", "Wash the car", "Defrost the fridge"]
 frequencies_array = ["daily", "weekly", "monthly"]
 repetitions_array = [1, 2, 3]
 durations_array = [30, 60, 90, 120]
-seed_quotes = ['“Seeds never lose their potential, not even in dirt.”', '“A seed has a few friends, but a tree has many enemies.”', '“All memories carry the seeds of suffering.”', '“Show me your seed and I\'ll show you your harvest.”']
+seed_quotes = ['"Cause and effect, means and ends, seed and fruit, cannot be severed; for the effect already blooms in the cause, the end preexists in the means, the fruit in the seed."']
 
 # DB wipeout
 puts "_______"
@@ -62,12 +62,12 @@ user5 = User.new({
   password: "123123"
 })
 user5.save!
-user5 = User.new({
+user6 = User.new({
   name: "Victor",
   email: "victor@gmail.com",
   password: "123123"
 })
-user5.save!
+user6.save!
 
 signed_in_users = [user1, user2, user3, user4]
 
@@ -138,7 +138,7 @@ puts "❤️ Created preferences for each user"
 puts "_______"
 
 
-puts "🌱 Lowfi seeds completed"
+puts "🌱 Hifi seeds completed"
 puts "Now loading seed quote..."
 sleep 2
 puts seed_quotes.sample

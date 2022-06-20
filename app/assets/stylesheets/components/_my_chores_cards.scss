@@ -184,6 +184,7 @@ h1 {
   border-radius: 8px;
   transition: 300ms;
   pointer-events: none;
+  border: 1px solid #fb723b;
 
   &.open {
     transform: translate(-50%, -50%) scale(1);
@@ -250,4 +251,46 @@ h1 {
   display: flex;
   justify-content: center; /* horizontal, when using flex-direction: row; */
   align-items: center;
+}
+
+.cancel-neutral {
+  background: transparent;
+  color: darkslategray;
+  border-width: 0.14rem;
+  border-radius: 8px;
+}
+
+.completed-img {
+  color: white;
+  opacity: 0.9;
+  font-size: larger;
+  font-weight: 700;
+}
+.overdue-img {
+  color: white;
+  opacity: 0.9;
+  font-size: larger;
+  font-weight: 700;
+  padding-bottom: 36%;
+}
+.to-do-img {
+  opacity: 0.9;
+  font-weight: 700;
+  padding-right: 81px;
+  padding-top: 44%;
+}
+.upcoming-img {
+  opacity: 0.7;
+  color: wheat;
+  font-weight: 700;
+  font-size: larger;
+}
+
+.modal-content-cl {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  .modal-footer-cl {
+    flex-wrap: unset;
+  }
 }
