@@ -111,7 +111,7 @@ class ChoreListController < ApplicationController
 
   def total_flats_chores(y, m)
     # Get array of total chores
-    total_chores = current_user.flat_users.find_by(active: true).flat.chores
+    total_chores = current_user.flat_users.find_by(active: true).flat.chores.sort_by(&:duration).reverse
     # For each chore, calculate the gap (freq / rate)
     calc_gap(total_chores)
     # Here we will need to from gap, calculate the number of chore_list instance to create
