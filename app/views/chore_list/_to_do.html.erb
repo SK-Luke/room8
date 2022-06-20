@@ -18,7 +18,7 @@
 
             <div class="card-body">
               <div class="card-title">
-                <h4
+                <h4 style="font-size: 24px;"
                   data-mark-complete-target="chore"
                   data-value="<%= task.chore.name %>"
                 >
@@ -28,14 +28,13 @@
               <div class="card-duration">
                 <p>
                   <i class="fa-solid fa-clock-rotate-left"></i>
-                   Takes <%=task.chore.duration %>mins <br />
-
-                   <% if task.chore.frequency == "daily" %>
-                    <%= task.deadline.strftime("%A, %d/%m/%y, %H:%M") %>
-                  <% else %>
-                  By <%= task.deadline.strftime("%A, %d/%m/%y") %>
-                  <% end %>
+                   Takes <%=task.chore.duration %>mins
                 </p>
+                <p><i class="fa-solid fa-calendar"></i> <% if task.chore.frequency == "daily" %>
+                  Complete by  <%= task.deadline.strftime("%a, %d/%m/%y, %H:%M") %>
+                  <% else %>
+                  Complete by <%= task.deadline.strftime("%a, %d/%m/%y") %>
+                  <% end %></p>
               </div>
               <div
                 class="btn btn-warning orange-set"
