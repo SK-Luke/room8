@@ -1,6 +1,7 @@
 <div class="chore_card_selected" id="chore-<%= chore.id %>"
 <% if @highlight %>
         data-action="click->setup-chores#highlight"
+        data-action="touchstart->setup-chores#highlight"
       <% end %>
 data-setup-chores-target="choreCard">
   <div class="chore-top d-flex">
@@ -17,7 +18,7 @@ data-setup-chores-target="choreCard">
       <% end %>
     <% end %>
   </div>
-  <div class="chore_edit_button_display" data-action="click->setup-chores#editFormAppear">
+  <div class="chore_edit_button_display" data-action="click->setup-chores#editFormAppear" data-action="touchstart->setup-chores#editFormAppear">
     <p>Edit</p>
   </div>
 </div>

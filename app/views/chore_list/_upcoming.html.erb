@@ -24,10 +24,14 @@
                   <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
                   @upcoming[task].first.duration %>mins
                 </p>
+<<<<<<< HEAD
               </div>
               <div class="card-instances">
               <%# added chorelist count below %>
                 <p><%= @upcoming[task].first.chore_lists.where(user: @user).count %> X left</p>
+=======
+                <p><%= @upcoming[task].count %> X left</p>
+>>>>>>> master
               </div>
             </div>
           </div>
