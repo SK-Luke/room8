@@ -5,7 +5,7 @@
 
   <% if current_user.preferences.all? { |pref| pref.rating == 2 } || current_user.preferences.nil? %>
     <div class="animate__animated animate__fadeIn d-flex justify-content-between" id="notification">
-      <div style="width: 300px;">
+      <div style="width: 335px;">
         <p>You have not rated your chore preferences. <br><span style="text-decoration: underline;color: #f02d34;"><%= link_to "Go to my chore preferences", preferences_path %></span></p>
       </div>
       <div class="align-self-center" data-action="click->setup-chores#close">
@@ -41,11 +41,11 @@
     <% end %>
   </div>
   <%# Add chore %>
-  <div id="addChoreModal" class="modal" tabindex="-1">
+  <div id="addChoreModal" class="modals" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add Chore</h5>
+          <h5 class="modal-title" style="color:#fb723b">Add Chore</h5>
           <button type="button" data-action="click->setup-chores#modalClose" class="btn-close" aria-label="Close"></button>
         </div>
       <%= render partial: "newchore", locals: {chore: @chore} %>
