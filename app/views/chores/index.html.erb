@@ -5,7 +5,7 @@
 
   <% if current_user.preferences.all? { |pref| pref.rating == 2 } || current_user.preferences.nil? %>
     <div class="animate__animated animate__fadeIn d-flex justify-content-between" id="notification">
-      <div style="width: 300px;">
+      <div style="width: 335px;">
         <p>You have not rated your chore preferences. <br><span style="text-decoration: underline;color: #f02d34;"><%= link_to "Go to my chore preferences", preferences_path %></span></p>
       </div>
       <div class="align-self-center" data-action="click->setup-chores#close">
