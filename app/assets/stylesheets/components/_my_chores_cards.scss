@@ -292,5 +292,6 @@ h1 {
   border-radius: 8px;
   .modal-footer-cl {
     flex-wrap: unset;
+    pointer-events: all;
   }
 }
