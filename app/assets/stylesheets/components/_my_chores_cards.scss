@@ -106,9 +106,6 @@
 }
 
 .card-mark-complete {
-  display: flex;
-  justify-content: center;
-  padding: 16px;
   .mark_message {
     margin-left: 12px;
     padding-top: 4px;
@@ -206,16 +203,19 @@ h1 {
   color: #fb723b;
   border-radius: 8px;
   background-color: transparent;
-  border-width: 0.14rem;
-  width: 150px;
+  border-width: 1px;
+  width: 100%;
+  margin-top: 0.5em;
 }
 
 .green-mark {
-  color: #46be7f;
+  color: #f46162;
+  border-color: #f46162;
   border-radius: 8px;
   background-color: transparent;
-  border-width: 0.14rem;
-  width: 150px;
+  border-width: 1px;
+  width: 100%;
+  margin-top: 1em;
 }
 
 @keyframes line-in {
@@ -255,9 +255,11 @@ h1 {
 
 .cancel-neutral {
   background: transparent;
-  color: darkslategray;
+  color: #a59e92;
+  border-color: #a59e92;
   border-width: 0.14rem;
   border-radius: 8px;
+  margin-top: 1em;
 }
 
 .completed-img {

@@ -14,11 +14,11 @@
       <div class="swiper-slide">
         <div class="card" data-controller="mark-complete edit-deadline">
           <div class="d-flex">
-            <div class="vl" style = "background-color: #e29647"></div>
+            <div class="vl" style = "background-color: #fb723b"></div>
 
             <div class="card-body">
               <div class="card-title">
-                <h4 style="font-size: 24px;"
+                <h4 style="font-size: 24px;margin: 0.5em 0;"
                   data-mark-complete-target="chore"
                   data-value="<%= task.chore.name %>"
                 >
@@ -41,7 +41,7 @@
                 data-task-id="<%= task.id %>"
                 data-action="click->edit-deadline#send"
               >
-                Set personal deadline
+                Set deadline
               </div>
               <div class="card-mark-complete">
                 <div
