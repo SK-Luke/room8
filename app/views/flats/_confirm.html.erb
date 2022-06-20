@@ -5,7 +5,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <%= Chore.create_defaults(@flat.id) %>
+  <% Chore.create_defaults(@flat.id) %>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="color: #fb723b;">
@@ -17,7 +17,7 @@
           Would you like to select from our chore list or create all from scratch?
         </span>
       <div class="btn-container d-flex gap-3 mt-3">
-        <button type="button" class="btn btn-warning" id="<%= Chore.last(12).map {|chore| chore.id}.join(" ") %>" data-action="click->add-flatmates#destroyPreset">
+        <button type="button" class="btn btn-warning" id="<%= Chore.last(7).map {|chore| chore.id}.join(" ") %>" data-action="click->add-flatmates#destroyPreset">
           <%= link_to "Create from scratch", setup_chores_flat_path(@flat), style: 'color: white; font-size:14px;' %>
         </button>
         <button type="button" class="btn btn-warning">
