@@ -4,7 +4,7 @@ Rails.application.configure do
   # send email using smtp method
   config.action_mailer.delivery_method = :smtp
   # allow herokuapp to send mail
-  config.action_mailer.default_url_options = { host: "the-room-8.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "http://the-roommate.club" }
   config.action_mailer.perform_deliveries = true
   # config.action_controller.asset_host = 'the-room-8.herokuapp.com'
   # config.action_mailer.asset_host = config.action_controller.asset_host

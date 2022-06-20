@@ -15,7 +15,6 @@
         <div class="card">
           <div class="d-flex">
             <div class="vl" style="background-color: #a59e92"></div>
-
             <div class="card-body">
               <div class="card-title">
                 <h4 style="font-size: 24px;margin: 0.5em 0;"><%= task.capitalize %></h4>
@@ -25,7 +24,14 @@
                   <i class="fa-solid fa-clock-rotate-left"></i> Takes <%=
                   @upcoming[task].first.duration %>mins
                 </p>
+<<<<<<< HEAD
+              </div>
+              <div class="card-instances">
+              <%# added chorelist count below %>
+                <p><%= @upcoming[task].first.chore_lists.where(user: @user).count %> X left</p>
+=======
                 <p><%= @upcoming[task].count %> X left</p>
+>>>>>>> master
               </div>
             </div>
           </div>
